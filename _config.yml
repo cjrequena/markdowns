@@ -1,0 +1,23 @@
+# To configure the environment locally to test the website, check out
+# https://help.github.com/en/github/working-with-github-pages/testing-your-github-pages-site-locally-with-jekyll
+
+title: Markdowns
+description: Markdowns
+remote_theme: pmarsceill/just-the-docs
+plugins:
+    - jemoji
+
+search_enabled: true
+
+gh_edit_link: true
+gh_edit_link_text: "Edit this page on GitHub."
+gh_edit_repository: "http://cjrequena.com/markdowns/"
+gh_edit_branch: "master"
+gh_edit_source: docs
+gh_edit_view_mode: "tree"
+
+aux_links:
+    "GitHub Repository":
+        - "http://cjrequena.com/markdowns/"
+    "Markdowns home":
+        - "http://cjrequena.com/markdowns/"
