@@ -2,7 +2,7 @@
 layout: default
 title: Node cheat sheet
 parent: Cheat sheets
-nav_order: 1
+nav_order: 3
 ---
 # Node cheat sheet
 {: .no_toc }
