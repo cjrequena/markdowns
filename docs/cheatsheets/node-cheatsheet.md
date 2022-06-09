@@ -4,8 +4,16 @@ title: Node cheat sheet
 parent: Cheat sheets
 nav_order: 1
 ---
-
 # Node cheat sheet
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+   {:toc}
+
+---
 
 ## Install NVM (Node Version Manager)
 
