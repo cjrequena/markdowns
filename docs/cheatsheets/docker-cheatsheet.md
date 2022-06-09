@@ -5,9 +5,10 @@ parent: Cheat sheets
 nav_order: 2
 ---
 # Docker cheat sheet
+{: .no_toc }
 This cheat sheet features the most important and commonly used docker commands for easy reference.
 Docker Tips and Tricks (A collection of useful tips and tricks for Docker)
-{: .no_toc }
+
 
 ## Table of contents
 {: .no_toc .text-delta }
