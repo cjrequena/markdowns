@@ -11,7 +11,7 @@ nav_order: 1
 {: .no_toc .text-delta }
 
 1. TOC
-   {:toc}
+{:toc}
 
 ---
 
@@ -56,6 +56,6 @@ NVM_HOMEBREW="/usr/local/opt/nvm/nvm.sh"
 ````bash
 [ -x "$(command -v npm)" ] && export NODE_PATH=$NODE_PATH:`npm root -g`
 ````
-
+---
 
 
