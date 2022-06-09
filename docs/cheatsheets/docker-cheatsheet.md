@@ -8,9 +8,6 @@ nav_order: 2
 {: .no_toc }
 This cheat sheet features the most important and commonly used docker commands for easy reference.
 
-
-# Docker Tips and Tricks (A collection of useful tips and tricks for Docker)
-
 ## Table of contents
 {: .no_toc .text-delta }
 
@@ -18,6 +15,8 @@ This cheat sheet features the most important and commonly used docker commands f
 {:toc}
 
 ---
+# Docker Tips and Tricks (A collection of useful tips and tricks for Docker)
+
 ## [Docker Commands](https://docs.docker.com/engine/reference/commandline/docker/#child-commands)
 
 ## Stop all containers
