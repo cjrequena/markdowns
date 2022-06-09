@@ -1,8 +1,8 @@
 ---
 layout: default
-title: [HLD] High level design template
+title: High level design template
 parent: Templates
 nav_order: 2
 ---
 
-# [HLD] High level design template
+# High level design template
