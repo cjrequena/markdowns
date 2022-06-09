@@ -7,8 +7,9 @@ nav_order: 2
 # Docker cheat sheet
 {: .no_toc }
 This cheat sheet features the most important and commonly used docker commands for easy reference.
-Docker Tips and Tricks (A collection of useful tips and tricks for Docker)
 
+
+# Docker Tips and Tricks (A collection of useful tips and tricks for Docker)
 
 ## Table of contents
 {: .no_toc .text-delta }
