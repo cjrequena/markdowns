@@ -6,6 +6,14 @@ nav_order: 4
 ---
 # Shasum cheat sheet
 {: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
 Running shasum is often the quickest way to compute SHA message digests. The user simply feeds data to the script
 through files or standard input, and then collects the results from standard output.
 
@@ -15,13 +23,6 @@ checksum value; if it matches we can be relatively confident that the file hasn'
 
 You might be asked to verify a file's sha1sum or sha2sum–all this means is calculating and verifying the cryptographic
 sha1 or sha2 hash value or digest included in the file.
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
 ---
 
 ## SHA256
