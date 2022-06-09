@@ -35,9 +35,9 @@ $ git config --global user.email "[valid-email]"
 $ git config --global color.ui auto
 ```
 
-## Isolating work in branches, changing context, and integrating changes
+## Branch
 
-### List your branches. a * will appear next to the currently active branch
+### List your branches
 ```sh
 $ git branch
 ```
