@@ -18,7 +18,7 @@ Git Tips and Tricks (A collection of useful tips and tricks for Git)
 
 ---
 
-## [Github Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
+## [Git Cheat Sheet PDF](https://education.github.com/git-cheat-sheet-education.pdf)
 
 ## Configuring user information used across all local repositories
 
