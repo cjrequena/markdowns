@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Git cheat sheet
+title: Git cheatsheet
 parent: Cheat sheets
 nav_order: 2
 ---
