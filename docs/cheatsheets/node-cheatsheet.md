@@ -15,7 +15,7 @@ nav_order: 3
 
 ---
 
-## Install NVM (Node Version Manager)
+## Install NVM (Node Version Manager) on MacOS
 
 Node version manager is a script to manage multiple active node.js versions.
 see [Installing Node.js with `nvm` to Linux & macOS & WSL](https://gist.github.com/d2s/372b5943bce17b964a79)
@@ -57,5 +57,9 @@ NVM_HOMEBREW="/usr/local/opt/nvm/nvm.sh"
 [ -x "$(command -v npm)" ] && export NODE_PATH=$NODE_PATH:`npm root -g`
 ````
 ---
-
-
+## [npm cheatsheet](https://devhints.io/npm)
+### Package management
+### Listing
+### Misc features
+### Install names
+### Updating
