@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Shasum cheatsheet
-parent: Cheat sheets
+parent: Cheatsheets
 nav_order: 4
 ---
 # Shasum cheat sheet

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Node cheatsheet
-parent: Cheat sheets
+parent: Cheatsheets
 nav_order: 3
 ---
 # Node cheat sheet
@@ -9,6 +9,7 @@ nav_order: 3
 
 ## Table of contents
 {: .no_toc .text-delta }
+see [NPM cheatsheet](https://devhints.io/npm)
 
 1. TOC
 {:toc}
@@ -17,10 +18,8 @@ nav_order: 3
 
 ## Install NVM (Node Version Manager) on MacOS
 
-Node version manager is a script to manage multiple active node.js versions.
-- see [Installing Node.js with `nvm` to Linux & macOS & WSL](https://gist.github.com/d2s/372b5943bce17b964a79)
-- see [NPM cheatsheet](https://devhints.io/npm)
-
+Node version manager is a script to manage multiple active node.js versions. 
+see [Installing Node.js with `nvm` to Linux & macOS & WSL](https://gist.github.com/d2s/372b5943bce17b964a79)
 
 Install NVM on MacOS using brew
 ````bash

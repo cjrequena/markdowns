@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Docker cheatsheet
-parent: Cheat sheets
+parent: Cheatsheets
 nav_order: 1
 ---
 # Docker cheat sheet
