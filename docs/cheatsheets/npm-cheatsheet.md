@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Node cheatsheet
+title: NPM cheatsheet
 parent: Cheatsheets
 nav_order: 3
 ---
@@ -9,12 +9,12 @@ nav_order: 3
 
 ## Table of contents
 {: .no_toc .text-delta }
-see [NPM cheatsheet](https://devhints.io/npm)
 
 1. TOC
 {:toc}
 
 ---
+## see [NPM cheatsheet](https://devhints.io/npm)
 
 ## Install NVM (Node Version Manager) on MacOS
 
