@@ -4,7 +4,7 @@ title: Git cheatsheet
 parent: Cheatsheets
 nav_order: 2
 ---
-# Git cheat sheet
+# Git cheatsheet
 {: .no_toc }
 This cheat sheet features the most important and commonly used git commands for easy reference.
 Git Tips and Tricks (A collection of useful tips and tricks for Git)

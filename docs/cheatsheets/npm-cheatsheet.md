@@ -4,7 +4,7 @@ title: NPM cheatsheet
 parent: Cheatsheets
 nav_order: 3
 ---
-# Node cheat sheet
+# NPM cheatsheet
 {: .no_toc }
 
 ## Table of contents

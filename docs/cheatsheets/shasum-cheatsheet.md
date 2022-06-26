@@ -4,7 +4,7 @@ title: Shasum cheatsheet
 parent: Cheatsheets
 nav_order: 4
 ---
-# Shasum cheat sheet
+# Shasum cheatsheet
 {: .no_toc }
 
 ## Table of contents

@@ -4,7 +4,7 @@ title: Angular-CLI cheatsheet
 parent: Cheatsheets
 nav_order: 5
 ---
-# Angular-CLI cheat sheet
+# Angular-CLI cheatsheet
 {: .no_toc }
 
 ## Table of contents
