@@ -47,14 +47,14 @@ Check if everything is working as expected
 $ nvm run node --version
 ````
 
-**Create two user environment variables `NVM_DIR` and `NVM_HOMEBREW`.**
+Create two user environment variables `NVM_DIR` and `NVM_HOMEBREW`
 ````bash
 export NVM_DIR="$HOME/.nvm"
 NVM_HOMEBREW="/usr/local/opt/nvm/nvm.sh"
 [ -s "$NVM_HOMEBREW" ] && \. "$NVM_HOMEBREW"
 ````
 
-**The `NODE_PATH` variable can also be useful for some applications, for example, VScode, this is the code you need to put after the previous variables.**
+The `NODE_PATH` variable can also be useful for some applications, for example, VScode, this is the code you need to put after the previous variables.
 ````bash
 [ -x "$(command -v npm)" ] && export NODE_PATH=$NODE_PATH:`npm root -g`
 ````
