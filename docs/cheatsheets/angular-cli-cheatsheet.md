@@ -34,6 +34,16 @@ $ npm uninstall -g @angular/cli cache clean
 $ npm install -g @angular/cli@latest
 ```
 
+## Updating projects
+* [Angular Update Guide](https://update.angular.io/)
+
+*For simple updates, the CLI command ng update is all you need. Without additional arguments, ng update lists the updates 
+that are available to you and provides recommended steps to update your application to the most current version.* 
+
+```sh
+$ ng update
+```
+
 ## Help
 ```sh
 $ ng help # Get general help:
