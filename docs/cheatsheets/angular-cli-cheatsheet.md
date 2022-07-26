@@ -36,11 +36,6 @@ $ npm install -g @angular/cli@latest
 
 ## Help
 ```sh
-$ ng help
-```
-
-## Help
-```sh
 $ ng help # Get general help:
 $ ng help generate # Or get help for a specific command:
 ```
@@ -48,7 +43,7 @@ $ ng help generate # Or get help for a specific command:
 ## New Project
 ```sh
 $ ng new my-app
-$ ng new my-app --prefix yo --style scss --skip-tests --verbose # An example with a few flags:
+$ ng new my-app --prefix yo --style scss --skip-tests --verbose # An example with a few flags
 ```
 And here are a few flags you can use:
 * --dry-run: See which files would be created, but don’t actually do anything.
@@ -63,47 +58,47 @@ And here are a few flags you can use:
 * --inline-style: Use inline styles for components instead of separate files.
 * --inline-template: Use inline templates for components instead of separate files.
 
-## Generate a component:
+## Generate a component
 ```sh
 $ ng g c unicorn-component
 ```
 
-## Generate a service:
+## Generate a service
 ```sh
 $ ng g s everything-service
 ```
 
-## Generate a pipe:
+## Generate a pipe
 ```sh
 $ ng g pipe my-pipe
 ```
 
-## Generate a directive:
+## Generate a directive
 ```sh
 $ ng g directive my-directive
 ```
 
-## Generate an enum:
+## Generate an enum
 ```sh
 $ ng g enum some-enum
 ```
 
-## Generate a module:
+## Generate a module
 ```sh
 $ ng g module fancy-module
 ```
 
-## Generate a class:
+## Generate a class
 ```sh
 $ ng g cl my-class
 ```
 
-## Generate an interface:
+## Generate an interface
 ```sh
 $ ng g interface my-interface
 ```
 
-## Generate a route guard:
+## Generate a route guard
 ```sh
 $ ng g guard my-guard
 ```
