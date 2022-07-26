@@ -103,7 +103,7 @@ $ ng g interface my-interface
 $ ng g guard my-guard
 ```
 
-> The --dry-run and --verbose flags can be used with any generate command.
+*The --dry-run and --verbose flags can be used with any generate command.*
 
 ## Serving
 ```sh
