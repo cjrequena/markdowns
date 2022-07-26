@@ -106,3 +106,8 @@ $ ng g guard my-guard
 > The --dry-run and --verbose flags can be used with any generate command.
 
 ## Serving
+```sh
+$ ng s # Serve your project
+$ ng s -o # Serve and open in your default browser automatically
+$ ng s --port 5555 # Serve to a different port
+```
