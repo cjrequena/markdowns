@@ -1,7 +1,7 @@
 ---
 layout: default
 title: jenv cheatsheet
-parent: Cheatsheets
+parent: cheatsheets
 nav_order: 7
 ---
 # jenv cheatsheet

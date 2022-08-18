@@ -1,7 +1,7 @@
 ---
 layout: default
 title: angular-cli cheatsheet
-parent: Cheatsheets
+parent: cheatsheets
 nav_order: 5
 ---
 # Angular-CLI cheatsheet

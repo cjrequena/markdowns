@@ -1,7 +1,7 @@
 ---
 layout: default
 title: rbenv cheatsheet
-parent: Cheatsheets
+parent: cheatsheets
 nav_order: 6
 ---
 # rbenv cheatsheet

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: awscli cheatsheet
-parent: Cheatsheets
-nav_order: 10
+title: test template
+parent: templates
+nav_order: 999
 ---
-# awscli cheatsheet
+# test template
 {: .no_toc }
 
 ## Table of contents

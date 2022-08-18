@@ -1,10 +1,10 @@
 ---
 layout: default
-title: pyenv cheatsheet
+title: awscli cheatsheet
 parent: Cheatsheets
-nav_order: 7
+nav_order: 9
 ---
-# pyenv cheatsheet
+# awscli cheatsheet
 {: .no_toc }
 
 ## Table of contents
@@ -14,3 +14,10 @@ nav_order: 7
 {:toc}
 
 ---
+
+## Test 1
+## Test 2
+## Test 3
+## Test 4
+## Test 5
+## Test 6

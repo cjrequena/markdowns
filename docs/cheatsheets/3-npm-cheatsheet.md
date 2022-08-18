@@ -1,7 +1,7 @@
 ---
 layout: default
-title: NPM cheatsheet
-parent: Cheatsheets
+title: npm cheatsheet
+parent: cheatsheets
 nav_order: 3
 ---
 # NPM cheatsheet

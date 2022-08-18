@@ -1,10 +1,10 @@
 ---
 layout: default
-title: test cheatsheet
+title: pyenv cheatsheet
 parent: cheatsheets
-nav_order: 999
+nav_order: 8
 ---
-# test cheatsheet
+# pyenv cheatsheet
 {: .no_toc }
 
 ## Table of contents
@@ -14,10 +14,3 @@ nav_order: 999
 {:toc}
 
 ---
-
-## Test 1
-## Test 2
-## Test 3
-## Test 4
-## Test 5
-## Test 6
