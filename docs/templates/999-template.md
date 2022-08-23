@@ -1,10 +1,10 @@
 ---
 layout: default
-title: test template
+title: template
 parent: templates
 nav_order: 999
 ---
-# test template
+# template
 {: .no_toc }
 
 ## Table of contents

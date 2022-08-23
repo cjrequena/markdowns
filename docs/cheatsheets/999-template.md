@@ -1,10 +1,10 @@
 ---
 layout: default
-title: test cheatsheet
+title: template
 parent: cheatsheets
 nav_order: 999
 ---
-# test cheatsheet
+# template
 {: .no_toc }
 
 ## Table of contents
