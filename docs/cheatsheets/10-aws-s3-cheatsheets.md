@@ -17,8 +17,7 @@ nav_order: 10
 
 - **Simple Storage Service** (S3) Object-based storage. Store unlimited amount of data without worry of underlying storage
     infrastructure.
-## Test 2
-## Test 3
-## Test 4
-## Test 5
-## Test 6
+- S3 replicates data across at least 3 AZs to ensure 99.99% Availability and 11'9s of durability.
+- Objects contain data (they're like files).
+- Objects can be size anywhere from 0 Bytes up to 5 Terabytes.
+- Buckets contain objects. Buckets can also contain folders which can in turn can contain objects.
