@@ -15,7 +15,8 @@ nav_order: 10
 
 ---
 
-## Test 1
+- **Simple Storage Service** (S3) Object-based storage. Store unlimited amount of data without worry of underlying storage
+    infrastructure.
 ## Test 2
 ## Test 3
 ## Test 4
