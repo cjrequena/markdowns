@@ -1,8 +1,8 @@
 ---
 layout: default
-title: template
-parent: aws-cheatsheets
-nav_order: 999
+title: s3-cheatsheets
+parent: cheatsheets
+nav_order: 10
 ---
 # template
 {: .no_toc }
