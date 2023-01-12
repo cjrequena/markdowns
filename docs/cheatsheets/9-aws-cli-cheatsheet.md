@@ -1,7 +1,7 @@
 ---
 layout: default
-title: awscli cheatsheet
-parent: Cheatsheets
+title: aws-cli cheatsheet
+parent: cheatsheets
 nav_order: 9
 ---
 # awscli cheatsheet

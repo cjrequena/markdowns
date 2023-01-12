@@ -1,6 +1,6 @@
 ---
 layout: default
-title: s3-cheatsheets
+title: aws-s3-cheatsheet
 parent: cheatsheets
 nav_order: 10
 ---
