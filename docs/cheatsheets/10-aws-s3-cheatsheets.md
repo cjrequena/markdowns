@@ -34,3 +34,9 @@ nav_order: 10
 - **Access control** is configured using **Bucket Policies** and **Access Control List**
 - **Bucket Policies** are JSON documents which let you write complex control access.
 - **ACLs** are legacy method (not deprecated) where you grant access to objects and buckets with simple actions.
+- **Security in Transit** Uploading files is done over SSL
+- **SSE** stand for Server Side Encryption. AWS has 3 options for SSE.
+- **SSE-AES** S3 handles the key, uses AES-256 algorithm.
+- **SSE-KMS** Envelope encryption via AWS KMS and you manage the keys.
+- **SSE-C** Customer provided keys (you manage the keys).
+- **Client-Side Encryption** You must encrypt your own files before uploading them to S3.
