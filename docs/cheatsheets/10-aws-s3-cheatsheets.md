@@ -40,3 +40,9 @@ nav_order: 10
 - **SSE-KMS** Envelope encryption via AWS KMS and you manage the keys.
 - **SSE-C** Customer provided keys (you manage the keys).
 - **Client-Side Encryption** You must encrypt your own files before uploading them to S3.
+- **Cross Region Replication (CRR)** allows you to replicate files across regions for greater durability. You must have versioning
+    turned on in the source and the destination bucket. You can have CRR to replicate to a bucket in another AWS account.
+- **Transfer Acceleration** provide faster and secure uploads from anywhere in the world. Data is uploaded via distinct url
+    to an Edge Location. Data is transported to your S3 bucket via AWS backbone network.
+- **Presigned URLs** is a URL generated via the AWS CLI and SDK. It provides temporary access to write or download object data.
+    Presigned URLs are commonly used to access private objects.
