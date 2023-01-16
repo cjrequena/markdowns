@@ -37,14 +37,34 @@ $ git config --global color.ui auto
 
 ## Branch
 
-### List your branches
-```sh
-$ git branch
-```
 ### Create a new branch at the current commit
 ```sh
 $ git branch [branch-name]
+$ git push origin [branch-name] --set-upstream
 ```
+
+### List your branches
+```sh
+# Existing branches are listed. Current branch will be highlighted with an asterisk.
+$ git branch --list
+
+# List outdated branches that have been merged into the current one.
+$ git branch -a --merged
+```
+### Delete a local branch
+```sh
+$ git branch -d [branch]
+```
+
+### Delete remote branch
+```sh
+$ git branch -d [branch]
+$ git push origin :[branch]
+
+# Other way, Works for tags, too!
+$ git push origin --delete :[branchname]
+```
+
 ### Switch to another branch and check it out into your working directory
 ```sh
 $ git checkout
@@ -56,11 +76,6 @@ $ git merge [branch]
 ### Show all commits in the current branch’s history
 ```sh
 $ git log
-```
-### Delete remote branch
-```sh
-$ git branch -d [branch]
-$ git push origin :[branch]
 ```
 
 ## Rewriting the history
