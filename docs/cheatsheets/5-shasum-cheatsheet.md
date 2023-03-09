@@ -2,7 +2,7 @@
 layout: default
 title: shasum cheatsheet
 parent: cheatsheets
-nav_order: 4
+nav_order: 5
 ---
 # Shasum cheatsheet
 {: .no_toc }

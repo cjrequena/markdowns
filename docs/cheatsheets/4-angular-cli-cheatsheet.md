@@ -2,7 +2,7 @@
 layout: default
 title: angular-cli cheatsheet
 parent: cheatsheets
-nav_order: 5
+nav_order: 4
 ---
 # Angular-CLI cheatsheet
 {: .no_toc }
