@@ -47,7 +47,14 @@ $ aws --version
 ```
 This command should output the version number of the AWS CLI that you just installed.
 
-## Test 2
+## Configuration
+After installing the AWS CLI, you need to configure it to access your AWS resources. The configuration process 
+involves creating an IAM user, generating an access key and secret access key, and configuring the CLI with the 
+access keys.
+
+You can configure the AWS CLI by using the **aws configure** command. The command prompts you to enter your 
+AWS access key ID, secret access key, default region, and default output format.
+
 ## Test 3
 ## Test 4
 ## Test 5
