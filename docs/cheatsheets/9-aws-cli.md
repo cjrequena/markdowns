@@ -1,6 +1,6 @@
 ---
 layout: default
-title: aws-cli cheatsheet
+title: aws-cli
 parent: cheatsheets
 nav_order: 9
 ---
