@@ -4,7 +4,7 @@ title: aws-cli cheatsheet
 parent: cheatsheets
 nav_order: 9
 ---
-# awscli cheatsheet
+# aws-cli cheatsheet
 {: .no_toc }
 
 ## Table of contents
@@ -42,7 +42,7 @@ This command will download and install the AWS CLI and its dependencies.
 After the installation is complete, you can verify that the AWS CLI is installed by running the following command:
 
 ```bash
-sh aws --version
+$ aws --version
 ```
 This command should output the version number of the AWS CLI that you just installed.
 
