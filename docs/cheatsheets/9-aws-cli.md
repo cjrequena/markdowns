@@ -55,7 +55,111 @@ access keys.
 You can configure the AWS CLI by using the **aws configure** command. The command prompts you to enter your 
 AWS access key ID, secret access key, default region, and default output format.
 
-## Test 3
-## Test 4
+### Working with multiple AWS profiles
+Working with multiple AWS profiles is a common scenario for many AWS users, especially those who have multiple AWS 
+accounts or IAM roles to access different resources. The AWS CLI allows you to easily switch between different 
+profiles without having to reconfigure the CLI every time.      
+
+Here are the steps to work with several and different AWS profiles:     
+
+**Step 1: Create multiple profiles**
+
+You can create multiple profiles in your AWS credentials file. The default location of this file is ~/.aws/credentials 
+on Linux, macOS, or Unix, and %USERPROFILE%\.aws\credentials on Windows.
+
+You can create a new profile by adding a new section to the credentials file with the profile name in square brackets 
+([]), followed by the AWS access key ID and secret access key:
+
+```makefile
+[profile1]
+aws_access_key_id = <access-key-id>
+aws_secret_access_key = <secret-access-key>
+
+[profile2]
+aws_access_key_id = <access-key-id>
+aws_secret_access_key = <secret-access-key>
+```
+
+also you can add or create a new profile executing the following command line:
+
+```bash
+$ aws configure --profile profile1
+```
+
+You can also include other options such as the default region and output format for each profile.
+
+**Step 2: Configure the AWS CLI to use profiles**   
+
+Once you have created multiple profiles, you can configure the AWS CLI to use them. You can set the AWS_PROFILE 
+environment variable to specify which profile to use. For example:
+
+```bash
+$ export AWS_PROFILE=profile1
+```
+
+This sets the AWS_PROFILE environment variable to profile1, which tells the AWS CLI to use the credentials for 
+that profile.
+
+Alternatively, you can specify the profile name in the CLI command itself by using the --profile option:
+
+```bash
+$ aws ec2 describe-instances --profile profile1
+```
+
+This tells the aws command to use the profile1 profile for the ec2 describe-instances command.
+
+**Step 3: Switch between profiles**     
+
+You can switch between profiles by changing the AWS_PROFILE environment variable or by specifying a different profile
+name in the --profile option.
+
+For example, to switch from profile1 to profile2, you can use the following command:
+
+```shell
+$ export AWS_PROFILE=profile2
+```
+
+Or, you can use the --profile option with the aws command:
+
+```shell
+$ aws ec2 describe-instances --profile profile2
+```
+
+## Getting information about the AWS account associated with a specific profile
+To get information about the AWS account associated with a specific profile, you can use the AWS CLI command aws 
+sts get-caller-identity with the --profile option.
+
+Here are the steps to get information about the AWS account associated with a specific profile:
+
+**Step 1: Set the profile**     
+
+First, set the AWS_PROFILE environment variable to the name of the profile you want to use. For example, to use a 
+profile named "myprofile", you can run:
+
+```shell
+$ export AWS_PROFILE=myprofile
+```
+
+**Step 2: Run the aws sts get-caller-identity command**     
+
+Next, run the aws sts get-caller-identity command with the --profile option. This command retrieves information about 
+the AWS account associated with the specified profile.
+
+```shell
+$ aws sts get-caller-identity --profile myprofile
+```
+
+The output of this command includes the AWS account ID, the IAM user or role name, and the Amazon Resource Name (ARN) of the user or role.
+
+For example:
+
+```json
+{
+    "Account": "123456789012",
+    "UserId": "ABCDEFGHIJKLMNOPQRSTU:myuser",
+    "Arn": "arn:aws:iam::123456789012:user/myuser"
+}
+```
+
 ## Test 5
 ## Test 6
