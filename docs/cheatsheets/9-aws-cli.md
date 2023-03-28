@@ -55,6 +55,16 @@ access keys.
 You can configure the AWS CLI by using the **aws configure** command. The command prompts you to enter your 
 AWS access key ID, secret access key, default region, and default output format.
 
+Example:
+
+```shell
+$ aws configure
+```
+
+```shell
+$ aws configure --profile profile1
+```
+
 ### Working with multiple AWS profiles
 Working with multiple AWS profiles is a common scenario for many AWS users, especially those who have multiple AWS 
 accounts or IAM roles to access different resources. The AWS CLI allows you to easily switch between different 
