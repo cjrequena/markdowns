@@ -86,7 +86,7 @@ region=us-west-2
 output=json
 ```
 
-### Working with multiple AWS profiles
+## Working with multiple AWS profiles
 Working with multiple AWS profiles is a common scenario for many AWS users, especially those who have multiple AWS 
 accounts or IAM roles to access different resources. The AWS CLI allows you to easily switch between different 
 profiles without having to reconfigure the CLI every time.      
@@ -156,7 +156,7 @@ Or, you can use the --profile option with the aws command:
 $ aws ec2 describe-instances --profile profile2
 ```
 
-## Getting information about the AWS account associated with a specific profile
+### Getting information about the AWS account associated with a specific profile
 To get information about the AWS account associated with a specific profile, you can use the AWS CLI command aws 
 sts get-caller-identity with the --profile option.
 
