@@ -59,7 +59,7 @@ You can configure additional profiles by using aws configure with the --profile 
 entries to the config and credentials files. For more information on the config and credentials files, see 
 [Configuration and credential file settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
 
-Example:
+Examples:
 
 ```shell
 $ aws configure
