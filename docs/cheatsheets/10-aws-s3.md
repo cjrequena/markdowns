@@ -7,12 +7,6 @@ nav_order: 10
 # AWS S3 cheatsheet
 {: .no_toc }
 
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-   {:toc}
-
 ---
 
 - **Simple Storage Service** (S3) Object-based storage. Store **unlimited** amount of data without worry of underlying storage
