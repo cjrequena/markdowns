@@ -192,5 +192,93 @@ For example:
 }
 ```
 
-## Test 5
-## Test 6
+
+## AWS CLI Commands for Amazon S3
+
+### 1. Creating a Bucket
+
+To create an S3 bucket, use the `aws s3api create-bucket` command:
+
+```bash
+aws s3api create-bucket --bucket your-bucket-name --region your-preferred-region
+```
+
+### 2. Uploading Files to a Bucket
+
+To upload a file to an S3 bucket, use the `aws s3 cp` command:
+
+```bash
+aws s3 cp /path/to/local/file s3://your-bucket-name/destination/filename
+```
+
+### 3. Downloading Files from a Bucket
+
+To download a file from an S3 bucket, use the `aws s3 cp` command:
+
+```bash
+aws s3 cp s3://your-bucket-name/source/filename /path/to/local/destination
+```
+
+### 4. Listing Buckets
+
+To list all the S3 buckets in your AWS account, use the `aws s3api list-buckets` command:
+
+```bash
+aws s3api list-buckets
+```
+
+### 5. Listing Objects in a Bucket
+
+To list all the objects within an S3 bucket, use the `aws s3 ls` command:
+
+```bash
+aws s3 ls s3://your-bucket-name
+```
+
+### 6. Copying Objects
+
+To copy an object from one bucket to another, use the `aws s3 cp` command with the appropriate source and destination parameters:
+
+```bash
+aws s3 cp s3://source-bucket-name/source-file s3://destination-bucket-name/destination-file
+```
+
+### 7. Deleting Objects
+
+To delete an object from an S3 bucket, use the `aws s3 rm` command:
+
+```bash
+aws s3 rm s3://your-bucket-name/object-key
+```
+
+### 8. Deleting a Bucket
+
+To delete an empty S3 bucket, use the `aws s3api delete-bucket` command:
+
+```bash
+aws s3api delete-bucket --bucket your-bucket-name
+```
+
+### 9. Enabling Bucket Versioning
+
+To enable versioning for an S3 bucket, use the `aws s3api put-bucket-versioning` command:
+
+```bash
+aws s3api put-bucket-versioning --bucket your-bucket-name --versioning-configuration Status=Enabled
+```
+
+### 10. Setting Bucket ACL (Access Control List)
+
+To set the ACL for an S3 bucket, use the `aws s3api put-bucket-acl` command:
+
+```bash
+aws s3api put-bucket-acl --bucket your-bucket-name --acl public-read
+```
+
+Note: Replace `your-bucket-name` and other placeholders with the appropriate values according to your setup.
+
+These are some of the commonly used AWS CLI commands for Amazon S3. You can explore more commands and their options in the [AWS CLI Command Reference for S3](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html) documentation.
+
+Remember to configure the AWS CLI with your AWS credentials before running these commands using the `aws configure` command.
+
+Hope this helps! Let me know if you have any further questions.
