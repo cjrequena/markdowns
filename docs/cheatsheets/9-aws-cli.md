@@ -4,7 +4,7 @@ title: aws-cli
 parent: cheatsheets
 nav_order: 9
 ---
-# aws-cli cheatsheet
+# AWS CLI
 {: .no_toc }
 
 ## Table of contents
