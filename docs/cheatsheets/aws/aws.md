@@ -4,6 +4,7 @@ title: aws
 nav_order: 2
 has_children: true
 parent: cheatsheets
+permalink: /docs/cheatsheets/aws
 ---
 
 # AWS
