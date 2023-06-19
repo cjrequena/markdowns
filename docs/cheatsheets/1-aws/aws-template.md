@@ -3,6 +3,7 @@ layout: default
 title: aws-template
 parent: aws
 grand_parent: cheatsheets
+permalink: /docs/aws/aws-template
 nav_order: 999
 ---
 # template
