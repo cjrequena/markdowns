@@ -3,7 +3,7 @@ layout: default
 title: aws
 nav_order: 13
 has_children: true
-parent: cheatsheets
+parent: /docs/cheatsheets
 permalink: /docs/cheatsheets/aws
 ---
 
