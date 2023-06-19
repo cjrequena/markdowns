@@ -1,8 +1,10 @@
 ---
 layout: default
 title: aws-s3
-parent: cheatsheets
-nav_order: 10
+parent: aws
+grand_parent: cheatsheets
+permalink: /docs/aws/aws-s3
+nav_order: 2
 ---
 # AWS S3 cheatsheet
 {: .no_toc }
