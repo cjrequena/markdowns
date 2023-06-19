@@ -2,6 +2,7 @@
 layout: default
 title: aws-template
 parent: aws
+grand_parent: cheatsheets
 nav_order: 999
 ---
 # template
