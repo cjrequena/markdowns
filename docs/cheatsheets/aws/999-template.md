@@ -1,7 +1,7 @@
 ---
 layout: default
 title: template
-parent: /docs/cheatsheets/aws
+parent: aws
 nav_order: 999
 ---
 # template
