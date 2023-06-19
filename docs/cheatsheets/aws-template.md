@@ -1,6 +1,6 @@
 ---
 layout: default
-title: templatexx
+title: aws-template
 parent: aws
 nav_order: 999
 ---
