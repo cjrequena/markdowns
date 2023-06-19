@@ -3,7 +3,7 @@ layout: default
 title:  aws-vpc-endpoint
 parent: aws
 grand_parent: cheatsheets
-permalink: /docs/aws/ aws-vpc-endpoint
+permalink: /docs/aws/aws-vpc-endpoint
 nav_order: 3
 ---
 # AWS VPC Endpoint CheatSheet
