@@ -1,8 +1,10 @@
 ---
 layout: default
 title: aws-cli
-parent: cheatsheets
-nav_order: 9
+parent: aws
+grand_parent: cheatsheets
+permalink: /docs/aws/aws-cli
+nav_order: 1
 ---
 # AWS CLI
 {: .no_toc }
