@@ -1,8 +1,10 @@
 ---
 layout: default
-title: jenv cheatsheet
-parent: cheatsheets
-nav_order: 7
+title: jenv
+parent: tools
+grand_parent: cheatsheets
+permalink: /docs/aws/jenv
+nav_order: 2
 ---
 # jenv cheatsheet
 {: .no_toc }

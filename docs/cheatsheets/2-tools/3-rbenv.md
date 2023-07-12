@@ -1,8 +1,10 @@
 ---
 layout: default
-title: rbenv cheatsheet
-parent: cheatsheets
-nav_order: 6
+title: rbenv
+parent: tools
+grand_parent: cheatsheets
+permalink: /docs/aws/rbenv
+nav_order: 3
 ---
 # rbenv cheatsheet
 {: .no_toc }

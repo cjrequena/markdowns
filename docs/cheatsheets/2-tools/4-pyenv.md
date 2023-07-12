@@ -1,8 +1,10 @@
 ---
 layout: default
-title: pyenv cheatsheet
-parent: cheatsheets
-nav_order: 8
+title: pyenv
+parent: tools
+grand_parent: cheatsheets
+permalink: /docs/aws/pyenv
+nav_order: 4
 ---
 # pyenv cheatsheet
 {: .no_toc }
