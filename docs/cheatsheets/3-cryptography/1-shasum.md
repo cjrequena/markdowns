@@ -17,45 +17,85 @@ nav_order: 1
 {:toc}
 
 ---
-Running shasum is often the quickest way to compute SHA message digests. The user simply feeds data to the script
-through files or standard input, and then collects the results from standard output.
+## shasum Command Cheat Sheet
 
-For verifying the integrity **(but not authenticity of data, i.e., who authored it or the origin of the file)** of a file,
-it is necessary to run a checksum function on the file which will output a value and compare it to a previously stored
-checksum value; if it matches we can be relatively confident that the file hasn't been tampered with or altered.
+The `shasum` command is used to calculate and verify SHA (Secure Hash Algorithm) checksums of files. It computes the hash values of files using different SHA algorithms such as SHA-1, SHA-224, SHA-256, SHA-384, or SHA-512.
 
-You might be asked to verify a file's sha1sum or sha2sum–all this means is calculating and verifying the cryptographic
-sha1 or sha2 hash value or digest included in the file.
----
+### Basic Usage:
 
-## SHA256
-The program sha256sum is designed to verify data integrity using the SHA-256 (SHA-2 family with a digest length of
-256 bits). SHA-256 hashes used properly can confirm both file integrity and authenticity. SHA-256 serves a similar
-purpose to a prior algorithm recommended by Ubuntu, MD5, but is less vulnerable to attack.
-
-Comparing hashes makes it possible to detect changes in files that would cause errors. The possibility of changes
-(errors) is proportional to the size of the file; the possibility of errors increase as the file becomes larger.
-It is a very good idea to run an SHA-256 hash comparison check when you have a file like an operating system install
-CD that has to be 100% correct.
-
-## Hash
-{hash} is the string of characters. **A hash function** is any function that can be used to map data of arbitrary size to
-fixed-size values. The values returned by a hash function are called hash values, hash codes, digests, or simply hashes.
-
-The values are used to index a fixed-size table called a hash table. Use of a hash function to index a hash table
-is called hashing or scatter storage addressing
-
-## How to get the hash value of a file using sha1:
-```sh
-$ shasum -a 1 filename/path
+```
+shasum [OPTIONS] [FILES]
 ```
 
-## How to get a hash value of a file using sha2:
-```sh
-$ shasum -a 256 filename/path
+### Options:
+
+- `-a`, `--algorithm <algorithm>`: Specifies the SHA algorithm to use. Supported options are `1`, `224`, `256`, `384`, and `512`. The default is SHA-256.
+- `-c`, `--check`: Reads checksums from a file and verifies them against the given files.
+- `-b`, `--binary`: Reads files in binary mode (useful for non-text files).
+- `-p`, `--portable`: Produces output in a portable format that can be used across different platforms.
+- `-s`, `--status`: Suppresses normal output and only displays the status of checksum verification.
+- `-t`, `--text`: Reads files in text mode (default behavior).
+- `-v`, `--verbose`: Enables verbose output, showing filenames and status for each file processed.
+- `--version`: Displays the version information for `shasum`.
+- `--help`: Displays the help message for `shasum`.
+
+### Examples:
+
+1. Calculate the SHA-256 checksum of a file:
+   ```
+   shasum myfile.txt
+   ```
+
+2. Calculate the SHA-512 checksum of multiple files:
+   ```
+   shasum -a 512 file1.txt file2.txt
+   ```
+
+3. Verify checksums stored in a file:
+   ```
+   shasum -c checksums.txt
+   ```
+
+4. Calculate the SHA-256 checksum of a file and display only the checksum value:
+   ```
+   shasum -a 256 -p myfile.txt
+   ```
+
+5. Verify checksums and display the status:
+   ```
+   shasum -s -c checksums.txt
+   ```
+
+### Output Format:
+
+The default output format of `shasum` is:
+
+```
+<checksum>  <filename>
 ```
 
-## SHASUM check
+- `<checksum>`: The computed hash value of the file.
+- `<filename>`: The name of the file.
+
+If the `-p` (portable) option is used, the output format changes to:
+
+```
+<checksum> *<filename>
+```
+
+- `<checksum>`: The computed hash value of the file.
+- `<filename>`: The name of the file, preceded by an asterisk.
+
+### Security Considerations:
+
+- Checksums are used to verify the integrity of files and detect any changes. They do not provide encryption or protection against malicious modifications.
+- Always obtain checksum values from trusted sources to ensure their authenticity.
+- Use a secure channel to transfer or share checksum values to prevent tampering.
+- Verify checksums using a trusted tool and compare against multiple sources if possible.
+
+Remember to consult the `shasum` command's documentation or `man` page for further information or specific details related to your system.
+
+## How to check the hash of a file.
 ```sh
 $ echo "{hash}  {filename}" | shasum -a 256 -c -
 ```
