@@ -7,7 +7,7 @@ permalink: /docs/cryptography/shasum
 nav_order: 1
 ---
 
-# Shasum cheatsheet
+# Shasum Cheat Sheet
 {: .no_toc }
 
 ## Table of contents
@@ -17,7 +17,7 @@ nav_order: 1
 {:toc}
 
 ---
-## shasum Command Cheat Sheet
+## Command Cheat Sheet
 
 The `shasum` command is used to calculate and verify SHA (Secure Hash Algorithm) checksums of files. It computes the hash values of files using different SHA algorithms such as SHA-1, SHA-224, SHA-256, SHA-384, or SHA-512.
 
