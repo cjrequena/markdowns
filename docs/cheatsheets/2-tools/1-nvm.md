@@ -3,7 +3,7 @@ layout: default
 title: nvm
 parent: tools
 grand_parent: cheatsheets
-permalink: /docs/aws/nvm
+permalink: /docs/tools/nvm
 nav_order: 1
 ---
 # NVM

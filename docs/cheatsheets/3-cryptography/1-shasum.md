@@ -1,9 +1,12 @@
 ---
 layout: default
-title: shasum cheatsheet
-parent: cheatsheets
-nav_order: 5
+title: shasum
+parent: cryptography
+grand_parent: cheatsheets
+permalink: /docs/cryptography/shasum
+nav_order: 1
 ---
+
 # Shasum cheatsheet
 {: .no_toc }
 

@@ -1,8 +1,8 @@
 ---
 layout: default
-title: docker cheatsheet
+title: docker
 parent: cheatsheets
-nav_order: 3
+nav_order: 102
 ---
 # Docker cheatsheet
 {: .no_toc }

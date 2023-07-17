@@ -3,7 +3,7 @@ layout: default
 title: jenv
 parent: tools
 grand_parent: cheatsheets
-permalink: /docs/aws/jenv
+permalink: /docs/tools/jenv
 nav_order: 2
 ---
 # jenv cheatsheet

@@ -1,9 +1,13 @@
 ---
 layout: default
-title: angular-cli cheatsheet
-parent: cheatsheets
-nav_order: 4
+title: angular-cli
+parent: tools
+grand_parent: cheatsheets
+permalink: /docs/tools/angular-cli
+nav_order: 5
 ---
+
+
 # Angular-CLI cheatsheet
 {: .no_toc }
 

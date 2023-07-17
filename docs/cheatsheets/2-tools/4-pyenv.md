@@ -3,7 +3,7 @@ layout: default
 title: pyenv
 parent: tools
 grand_parent: cheatsheets
-permalink: /docs/aws/pyenv
+permalink: /docs/tools/pyenv
 nav_order: 4
 ---
 # pyenv cheatsheet
