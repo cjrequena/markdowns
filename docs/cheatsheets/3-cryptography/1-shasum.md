@@ -67,11 +67,11 @@ shasum [OPTIONS] [FILES]
    ```
 7. Check the hash of a file
    ```shell
-   echo "{hash}  {filename}" | shasum -a 256 -c -
-   echo | shasum -a 256 {filename} | shasum -a 256 -c -
-   shasum -c <<< "{hash}  {filename}"
-   shasum -c <<< "a4bffc71f406e7c381b3a9692e980d233c244ce26b3f7ea7170c447f8fe3f1e5  BlockstreamGreen_MacOS_x86_64.zip"
-   shasum -c SHA256SUMS.asc
+   $ echo "{hash}  {filename}" | shasum -a 256 -c -
+   $ echo | shasum -a 256 {filename} | shasum -a 256 -c -
+   $ shasum -c <<< "{hash}  {filename}"
+   $ shasum -c <<< "a4bffc71f406e7c381b3a9692e980d233c244ce26b3f7ea7170c447f8fe3f1e5  BlockstreamGreen_MacOS_x86_64.zip"
+   $ shasum -c SHA256SUMS.asc
    ```
 ### Output Format:
 
