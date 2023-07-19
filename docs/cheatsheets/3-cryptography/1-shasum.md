@@ -61,18 +61,17 @@ shasum [OPTIONS] [FILES]
    ```shell
    shasum -s -c checksums.txt
    ```
-6. Assuming you have a checksum file named checksums.txt in the current directory, use the following command:
-   ```shell
-   shasum -c checksums.txt
-   ```
-7. If you have a specific checksum value (e.g., a1b2c3d4e5f6) and want to verify a single file, use the following command:
+6. If you have a specific checksum value (e.g., a1b2c3d4e5f6) and want to verify a single file, use the following command:
    ```shell
    shasum -c <<< "a1b2c3d4e5f6  filename.txt"
    ```
-8. Check the hash of a file
+7. Check the hash of a file
    ```shell
    echo "{hash}  {filename}" | shasum -a 256 -c -
    echo | shasum -a 256 {filename} | shasum -a 256 -c -
+   shasum -c <<< "{hash}  {filename}"
+   shasum -c <<< "a4bffc71f406e7c381b3a9692e980d233c244ce26b3f7ea7170c447f8fe3f1e5  BlockstreamGreen_MacOS_x86_64.zip"
+   shasum -c SHA256SUMS.asc
    ```
 ### Output Format:
 
