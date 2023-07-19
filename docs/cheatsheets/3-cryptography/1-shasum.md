@@ -42,30 +42,38 @@ shasum [OPTIONS] [FILES]
 ### Examples:
 
 1. Calculate the SHA-256 checksum of a file:
-   ```
+   ```shell
    shasum myfile.txt
    ```
-
 2. Calculate the SHA-512 checksum of multiple files:
-   ```
+   ```shell
    shasum -a 512 file1.txt file2.txt
    ```
-
 3. Verify checksums stored in a file:
-   ```
+   ```shell
    shasum -c checksums.txt
    ```
-
 4. Calculate the SHA-256 checksum of a file and display only the checksum value:
-   ```
+   ```shell
    shasum -a 256 -p myfile.txt
    ```
-
 5. Verify checksums and display the status:
-   ```
+   ```shell
    shasum -s -c checksums.txt
    ```
-
+6. Assuming you have a checksum file named checksums.txt in the current directory, use the following command:
+   ```shell
+   shasum -c checksums.txt
+   ```
+7. If you have a specific checksum value (e.g., a1b2c3d4e5f6) and want to verify a single file, use the following command:
+   ```shell
+   shasum -c <<< "a1b2c3d4e5f6  filename.txt"
+   ```
+8. Check the hash of a file
+   ```shell
+   echo "{hash}  {filename}" | shasum -a 256 -c -
+   echo | shasum -a 256 {filename} | shasum -a 256 -c -
+   ```
 ### Output Format:
 
 The default output format of `shasum` is:
@@ -94,16 +102,5 @@ If the `-p` (portable) option is used, the output format changes to:
 - Verify checksums using a trusted tool and compare against multiple sources if possible.
 
 Remember to consult the `shasum` command's documentation or `man` page for further information or specific details related to your system.
-
-## How to check the hash of a file.
-```sh
-$ echo "{hash}  {filename}" | shasum -a 256 -c -
-```
-**or**
-
-```sh
-$ echo | shasum -a 256 {filename} | shasum -a 256 -c -
-```
----
 
 
