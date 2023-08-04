@@ -76,33 +76,60 @@ The `NODE_PATH` variable can also be useful for some applications, for example, 
 
 ## NVM Commands
 
-## Install a specific Node.js version `nvm install <version>`
+### Install a specific Node.js version. `nvm install <version>`
 ```bash
 $ nvm install 14.17.0
 ```
 
-- `nvm use <version>`: Use a specific Node.js version.
-  Example: `nvm use 12.22.1`
+### Use a specific Node.js version. `nvm use <version>`
+```bash
+$ nvm use 14.17.0
+```
 
-- `nvm uninstall <version>`: Uninstall a specific Node.js version.
-  Example: `nvm uninstall 10.15.3`
+### Uninstall a specific Node.js version. `nvm uninstall <version>`
+```bash
+$ nvm uninstall 14.17.0
+```
 
-- `nvm ls`: List installed Node.js versions.
+### List installed Node.js versions.
+```bash
+$ nvm ls
+```
 
-- `nvm ls-remote`: List available Node.js versions that can be installed.
+### List available Node.js versions that can be installed.
+```bash
+$ nvm ls-remote
+```
 
-- `nvm current`: Display the currently active Node.js version.
+### Display the currently active Node.js version.
+```bash
+$ nvm current
+```
 
-- `nvm alias <name> <version>`: Create an alias for a specific Node.js version.
-  Example: `nvm alias default 14.17.0`
+### Create an alias for a specific Node.js version. `nvm alias <name> <version>`
+```bash
+$ nvm alias default 14.17.0
+```
 
-- `nvm use default`: Use the default Node.js version set by an alias.
+###  Use the default Node.js version set by an alias.
+```bash
+$ nvm use default
+```
 
-- `nvm which <version>`: Display the path to a specific Node.js version.
+###  Display the path to a specific Node.js version. `nvm which <version>`
+```bash
+$ nvm which 14.17.0
+```
 
-- `nvm version`: Display the current NVM version.
+###  Display the current NVM version.
+```bash
+$ nvm version
+```
 
-- `nvm --version`: Display the current NVM version (alternative command).
+###  Display the current NVM version (alternative command)
+```bash
+$ nvm --version
+```
 
 Note: Replace `<version>` with the desired Node.js version (e.g., 14.17.0, 12.22.1).
 
