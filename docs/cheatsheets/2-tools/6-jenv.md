@@ -4,7 +4,7 @@ title: jenv
 parent: tools
 grand_parent: cheatsheets
 permalink: /docs/tools/jenv
-nav_order: 2
+nav_order: 6
 ---
 # jenv cheatsheet
 {: .no_toc }

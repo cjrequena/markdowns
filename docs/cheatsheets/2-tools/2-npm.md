@@ -4,7 +4,7 @@ title: npm
 parent: tools
 grand_parent: cheatsheets
 permalink: /docs/tools/npm
-nav_order: 6
+nav_order: 2
 ---
 
 # NPM cheatsheet
