@@ -76,8 +76,10 @@ The `NODE_PATH` variable can also be useful for some applications, for example, 
 
 ## NVM Commands
 
-- `nvm install <version>`: Install a specific Node.js version.
-  Example: `nvm install 14.17.0`
+## Install a specific Node.js version `nvm install <version>`
+```bash
+$ nvm install 14.17.0
+```
 
 - `nvm use <version>`: Use a specific Node.js version.
   Example: `nvm use 12.22.1`
