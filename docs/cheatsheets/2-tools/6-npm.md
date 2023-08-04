@@ -21,6 +21,12 @@ nav_order: 6
 
 ---
 ## Package management
+
+### Generate a plain old package.json using legacy init:
+```bash
+$ npm init
+```
+
 ### Alias for npm install
 ```bash
 $ npm i
