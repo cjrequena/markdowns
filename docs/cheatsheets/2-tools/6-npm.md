@@ -99,6 +99,7 @@ $ npm outdated
 ## Install names
 ## Updating
 
+---
 ## NPM Ussage
 ````bash
 Usage:
