@@ -106,6 +106,27 @@ $ npm version patch
 --save is the default as of npm@5. Previously, using npm install without --save doesn’t update package.json.
 
 ## Listing
+### Lists the installed versions of all dependencies in this software
+```bash
+$ npm list	
+```
+
+### Lists the installed versions of all globally installed packages
+```bash
+$ npm list -g --depth 0
+```
+
+### Lists the latest versions of all dependencies in this software
+```bash
+$ npm view
+```
+
+### Lists only the dependencies in this software which are outdated
+```bash
+$ npm outdated
+```
+	
+
 ## Misc features
 ## Install names
 ## Updating
