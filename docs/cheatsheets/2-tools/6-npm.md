@@ -53,6 +53,19 @@ More configuration info: npm help config
 Configuration fields: npm help 7 config
 ````
 ## Package management
+`npm i`	Alias for npm install
+`npm install`	Install everything in package.json
+`npm install` --production	Install everything in package.json, except devDependecies
+`npm install lodash`	Install a package
+`npm install --save-dev lodash`	Install as devDependency
+`npm install --save-exact lodash`	Install with exact
+`npm version 1.2.3`	Bump the package version to 1.2.3
+`npm version major`	Bump the major package version by 1 (1.2.3 → 2.0.0)
+`npm version minor`	Bump the minor package version by 1 (1.2.3 → 1.3.0)
+`npm version patch`	Bump the patch package version by 1 (1.2.3 → 1.2.4)
+
+--save is the default as of npm@5. Previously, using npm install without --save doesn’t update package.json.
+
 ## Listing
 ## Misc features
 ## Install names
