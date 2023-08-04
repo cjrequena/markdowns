@@ -135,7 +135,7 @@ Note: Replace `<version>` with the desired Node.js version (e.g., 14.17.0, 12.22
 
 That's it! You now have a cheat sheet for installing and using Node Version Manager (NVM) on different operating systems.
 
-### NVM Usage
+## NVM Usage
 ````bash
 Usage:
   nvm --help                                  Show this message
