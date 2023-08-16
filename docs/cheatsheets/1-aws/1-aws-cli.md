@@ -284,3 +284,67 @@ These are some of the commonly used AWS CLI commands for Amazon S3. You can expl
 Remember to configure the AWS CLI with your AWS credentials before running these commands using the `aws configure` command.
 
 Hope this helps! Let me know if you have any further questions.
+
+## AWS CLI Commands for Amazon VPC
+
+### Create a VPC
+```bash
+aws ec2 create-vpc --cidr-block 10.0.0.0/16
+```
+
+### Create a Subnet
+```bash
+aws ec2 create-subnet --vpc-id vpc-12345678 --cidr-block 10.0.1.0/24
+```
+
+### Create an Internet Gateway
+```bash
+aws ec2 create-internet-gateway
+aws ec2 attach-internet-gateway --internet-gateway-id igw-12345678 --vpc-id vpc-12345678
+```
+
+### Create a Route Table
+```bash
+aws ec2 create-route-table --vpc-id vpc-12345678
+```
+
+### Associate Subnet with Route Table
+```bash
+aws ec2 associate-route-table --subnet-id subnet-12345678 --route-table-id rtb-12345678
+```
+
+### Create a Security Group
+```bash
+aws ec2 create-security-group --group-name MySecurityGroup --description "My security group" --vpc-id vpc-12345678
+```
+
+### Authorize Inbound Traffic (Security Group)
+```bash
+aws ec2 authorize-security-group-ingress --group-id sg-12345678 --protocol tcp --port 22 --source 0.0.0.0/0
+```
+
+### Create a Network ACL
+```bash
+aws ec2 create-network-acl --vpc-id vpc-12345678
+```
+
+### Create a NAT Gateway
+```bash
+aws ec2 create-nat-gateway --subnet-id subnet-12345678 --allocation-id eipalloc-12345678
+```
+
+### Create VPC Peering Connection
+```bash
+aws ec2 create-vpc-peering-connection --vpc-id vpc-1 --peer-vpc-id vpc-2
+```
+
+### Enable VPC Flow Logs
+```bash
+aws ec2 create-flow-logs --resource-type VPC --resource-id vpc-12345678 --traffic-type ALL --log-group-name my-flow-logs
+```
+
+Remember to replace placeholder values (e.g., `vpc-12345678`) with actual resource IDs.
+
+This cheat sheet provides basic commands for common VPC tasks. Refer to the official AWS documentation for more detailed information and advanced configurations.
+
+---
