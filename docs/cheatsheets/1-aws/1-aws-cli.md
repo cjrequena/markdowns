@@ -198,98 +198,98 @@ For example:
 
 ## AWS CLI Commands for IAM
 
-### 1. Create a New IAM User
+### Create a New IAM User
 ```bash
 aws iam create-user --user-name <username>
 ```
 
-### 2. List IAM Users
+### List IAM Users
 ```bash
 aws iam list-users
 ```
 
-### 3. Update IAM User Information
+### Update IAM User Information
 ```bash
 aws iam update-user --user-name <username> --new-path <new-path> --new-user-name <new-username>
 ```
 
-### 4. Delete IAM User
+### Delete IAM User
 ```bash
 aws iam delete-user --user-name <username>
 ```
 
 **IAM Role Management**
 
-### 5. Create an IAM Role
+### Create an IAM Role
 ```bash
 aws iam create-role --role-name <role-name> --assume-role-policy-document <policy-document>
 ```
 
-### 6. List IAM Roles
+### List IAM Roles
 ```bash
 aws iam list-roles
 ```
 
-### 7. Update an IAM Role
+### Update an IAM Role
 ```bash
 aws iam update-role --role-name <role-name> --new-role-name <new-role-name> --new-path <new-path>
 ```
 
-### 8. Delete an IAM Role
+### Delete an IAM Role
 ```bash
 aws iam delete-role --role-name <role-name>
 ```
 
 **IAM Policy Management**
 
-### 9. Create an IAM Policy
+### Create an IAM Policy
 ```bash
 aws iam create-policy --policy-name <policy-name> --policy-document <policy-document>
 ```
 
-### 10. List IAM Policies
+### List IAM Policies
 ```bash
 aws iam list-policies
 ```
 
-### 11. Attach an IAM Policy to a User, Group, or Role
+### Attach an IAM Policy to a User, Group, or Role
 ```bash
 aws iam attach-policy --policy-arn <policy-arn> --user-name <username> 
 ```
 
-### 12. Detach an IAM Policy from a User, Group, or Role
+### Detach an IAM Policy from a User, Group, or Role
 ```bash
 aws iam detach-policy --policy-arn <policy-arn> --user-name <username>
 ```
 
-### 13. Delete an IAM Policy
+### Delete an IAM Policy
 ```bash
 aws iam delete-policy --policy-arn <policy-arn>
 ```
 
 **IAM Group Management**
 
-### 14. Create an IAM Group
+### Create an IAM Group
 ```bash
 aws iam create-group --group-name <group-name>
 ```
 
-### 15. List IAM Groups
+### List IAM Groups
 ```bash
 aws iam list-groups
 ```
 
-### 16. Add a User to an IAM Group
+### Add a User to an IAM Group
 ```bash
 aws iam add-user-to-group --user-name <username> --group-name <group-name>
 ```
 
-### 17. Remove a User from an IAM Group
+### Remove a User from an IAM Group
 ```bash
 aws iam remove-user-from-group --user-name <username> --group-name <group-name>
 ```
 
-### 18. Delete an IAM Group
+### Delete an IAM Group
 ```bash
 aws iam delete-group --group-name <group-name>
 ```
