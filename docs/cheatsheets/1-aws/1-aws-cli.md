@@ -158,7 +158,7 @@ Or, you can use the --profile option with the aws command:
 $ aws ec2 describe-instances --profile profile2
 ```
 
-### Getting information about the AWS account associated with a specific profile
+## Getting information about the AWS account associated with a specific profile
 To get information about the AWS account associated with a specific profile, you can use the AWS CLI command aws 
 sts get-caller-identity with the --profile option.
 
