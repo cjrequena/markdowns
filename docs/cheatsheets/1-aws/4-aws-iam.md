@@ -6,7 +6,7 @@ grand_parent: cheatsheets
 permalink: /docs/aws/aws-iam
 nav_order: 4
 ---
-# AWS VPC Endpoint CheatSheet
+# AWS IAM
 {: .no_toc }
 
 ## Table of contents
