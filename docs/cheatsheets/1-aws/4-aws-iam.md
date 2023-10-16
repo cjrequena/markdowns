@@ -37,7 +37,7 @@ Policies are attached to IAM identities. [Policy structure](https://docs.aws.ama
 - **Customer Managed Policies:** are policies created by the customer or user and can be edited.
 - **Inline Policies:** are policies which are directly attached to a user. 
 
-** IAM Policy Example**
+**IAM Policy Example**
 ```json
 
 {
@@ -73,6 +73,6 @@ Policies are attached to IAM identities. [Policy structure](https://docs.aws.ama
 ```
 
 ## Resources
-- https://aws.amazon.com/iam/getting-started/?nc=sn&loc=3
-- https://aws.amazon.com/iam/resources/?nc=sn&loc=4&iam-blogs.sort-by=item.additionalFields.createdDate&iam-blogs.sort-order=desc
-- https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html
+- [Getting Started with AWS Identity and Access Management (IAM)](https://aws.amazon.com/iam/getting-started/?nc=sn&loc=3)
+- [AWS Identity and Access Management (IAM) Resources](https://aws.amazon.com/iam/resources/?nc=sn&loc=4&iam-blogs.sort-by=item.additionalFields.createdDate&iam-blogs.sort-order=desc)
+- [What is IAM?](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)
