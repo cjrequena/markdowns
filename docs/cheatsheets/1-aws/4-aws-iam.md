@@ -17,6 +17,7 @@ nav_order: 4
 
 ---
 
+## IAM
 - **Identity Access Management** is used to manage access to users and resources.
 - IAM is a universal system. (Applied to all regions at the same time). IAM is a free service.
 - A root account is the account initially created when AWS is set up (Full administrator).
@@ -37,7 +38,7 @@ Policies are attached to IAM identities. [Policy structure](https://docs.aws.ama
 - **Customer Managed Policies:** are policies created by the customer or user and can be edited.
 - **Inline Policies:** are policies which are directly attached to a user. 
 
-**IAM Policy Example**
+## IAM Policy Example
 ```json
 
 {
