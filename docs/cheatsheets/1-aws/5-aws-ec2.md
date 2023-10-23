@@ -135,6 +135,11 @@ nav_order: 5
 - Steady state or predictable usage
 - Commit to EC2 over a 1 or 3 years term
 - Can sell unused reserved instances
+- **Standard** Up to 75% reduced price, cannot change the RI attributes
+- **Convertible** Up to 54% reduced pricing, allows you to change RI attributes if greater or equal in value
+- **Scheduled** You reserve instances for specific time periods. Eg. once a week for a few hours. Savings vary
+- **Terms** You commit to a 1 year or 3 years contract. The longer the term the greater the savings.
+- **Payment Options** All Upfront, Partial Upfront, and No Upfront. The greater the upfront the greater the savings.
 
 ### Spot
 
