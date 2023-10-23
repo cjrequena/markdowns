@@ -119,3 +119,35 @@ nav_order: 5
 - Use Systems Manager for patch management, automation, and maintenance of EC2 instances.
 
 ## EC2 Pricing Model
+
+### On Demand
+
+- Least commitment
+- Only pay per hour
+- Short term, spiky, unpredictable workloads
+- Cannot be interrupted
+- For first time apps
+
+### Reserved
+
+- Best long-term
+- Up to 75% off
+- Steady state or predictable usage
+- Commit to EC2 over a 1 or 3 years term
+- Can sell unused reserved instances
+
+### Spot
+
+- Biggest savings
+- Up to 90% off
+- Request spare computing capacity
+- Flexible start and end times
+- Can handle interruptions (Sever randomly starting and stopping)
+- For non-critical background jobs
+
+### Dedicated
+
+- Most expensive
+- Dedicated servers
+- Can be on-demand or reserved
+- When you need guarantee or isolate hardware (Enterprise requirements)
