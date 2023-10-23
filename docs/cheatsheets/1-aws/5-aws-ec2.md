@@ -150,6 +150,9 @@ nav_order: 5
 - Flexible start and end times
 - Can handle interruptions (Sever randomly starting and stopping)
 - For non-critical background jobs
+- **Termination Conditions**
+  - Instances can be terminated by AWS at anytime, you do not get charged for partial hour of usage
+  - If you terminate your instance you will be charge for any hour that it ran
 
 ### Dedicated
 
