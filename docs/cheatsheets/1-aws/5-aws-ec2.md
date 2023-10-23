@@ -134,7 +134,8 @@ nav_order: 5
 - Up to 75% off
 - Steady state or predictable usage
 - Commit to EC2 over a 1 or 3 years term
-- Can sell unused reserved instances
+- Can sell unused reserved instances (Reserved Instances Marketplace)
+- Can be shared between multiple account within an organization
 - **Standard** Up to 75% reduced price, cannot change the RI attributes
 - **Convertible** Up to 54% reduced pricing, allows you to change RI attributes if greater or equal in value
 - **Scheduled** You reserve instances for specific time periods. Eg. once a week for a few hours. Savings vary
