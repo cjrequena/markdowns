@@ -32,3 +32,90 @@ nav_order: 5
 - **User Data** a script that will be automatically run when launching an EC2 instance.
 - **MetaData** meta data about the current instance. You access this meta data via local end-point when SSH into the EC2 instance. eg ```sh curl http://169.254.169.254/latest/meta-data```
 - **Instance Profile** a container for an IAM role that you can use to pass role information to an EC2 instance when the instance starts.
+
+## EC2 Basics
+
+1. **EC2 Instance Types:**
+- EC2 instances come in various types optimized for different workloads (e.g., t2.micro, m5.large, c5.xlarge).
+
+2. **Regions and Availability Zones:**
+- Choose the AWS region and availability zone carefully for fault tolerance and proximity to users.
+
+3. **Amazon Machine Images (AMIs):**
+- AMIs are pre-configured templates for creating EC2 instances. Choose an AMI that fits your requirements.
+
+4. **Security Groups:**
+- Security groups act as virtual firewalls for EC2 instances. Define inbound/outbound rules to control network traffic.
+
+5. **Key Pairs:**
+- Use key pairs to securely access EC2 instances. Create and store the private key securely.
+
+## Launching and Managing EC2 Instances
+
+6. **EC2 Launch Wizard:**
+- AWS provides an EC2 Launch Wizard to simplify instance setup for specific use cases.
+
+7. **Launch Templates:**
+- Use launch templates to standardize instance configurations and simplify instance launches.
+
+8. **Auto Scaling:**
+- Set up auto scaling groups to automatically adjust the number of instances based on load or a schedule.
+
+9. **Elastic Load Balancing:**
+- Use ELB to distribute incoming traffic across multiple EC2 instances for high availability and fault tolerance.
+
+10. **Instance Store vs. EBS:**
+- Understand the differences between instance store and Elastic Block Store (EBS) for storage options.
+
+11. **Instance Metadata:**
+- EC2 instances can access metadata for configuration details via http://169.254.169.254/latest/meta-data/.
+
+## Elastic Block Store (EBS)
+
+12. **EBS Volume Types:**
+- EBS offers various volume types such as GP2, IO1, SC1, ST1, and gp3 with different performance characteristics.
+
+13. **Snapshots:**
+- Create EBS snapshots for data backups and recovery. Snapshots are incremental and stored in Amazon S3.
+
+14. **EBS Encryption:**
+- You can encrypt EBS volumes at rest for enhanced security.
+
+15. **EBS Performance:**
+- Optimize EBS performance with appropriate volume type, size, and IOPS (input/output operations per second).
+
+## Networking
+
+16. **VPC (Virtual Private Cloud):**
+- Isolate your network resources using VPC. Define subnets, route tables, and security groups.
+
+17. **Elastic IP Addresses:**
+- Use Elastic IPs for static, public IPv4 addresses. Associate them with EC2 instances to ensure they retain the same IP even if instances are replaced.
+
+18. **VPC Peering:**
+- Connect VPCs to enable communication between instances in different VPCs.
+
+19. **Network Interfaces:**
+- Attach additional network interfaces to EC2 instances for multi-networking.
+
+20. **Elastic Network Adapter (ENA):**
+- ENA is a high-performance network interface for enhanced networking capabilities.
+
+## Monitoring and Management
+
+21. **CloudWatch:**
+- Use CloudWatch for monitoring EC2 instances, setting up alarms, and collecting performance data.
+
+22. **Instance Metadata and User Data:**
+- EC2 instances can retrieve instance metadata and user data for custom configuration during instance startup.
+
+23. **Tagging:**
+- Apply tags to EC2 instances for organization and resource management.
+
+24. **EC2 Instance Roles:**
+- Assign IAM roles to EC2 instances to grant them permissions to access AWS services.
+
+25. **EC2 Systems Manager:**
+- Use Systems Manager for patch management, automation, and maintenance of EC2 instances.
+
+## EC2 Pricing Model
