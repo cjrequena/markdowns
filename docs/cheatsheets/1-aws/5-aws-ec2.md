@@ -160,3 +160,70 @@ nav_order: 5
 - Dedicated servers
 - Can be on-demand or reserved
 - When you need guarantee or isolate hardware (Enterprise requirements)
+
+Certainly! Here's a cheat sheet for AWS Placement Groups:
+
+## AWS Placement Groups Cheat Sheet
+
+### What is an AWS Placement Group?
+
+- An AWS Placement Group is a logical grouping of instances in a way that influences how they are placed on the underlying hardware.
+- It helps control the placement of instances to meet specific requirements for performance, availability, and isolation.
+
+### Types of AWS Placement Groups:
+
+1. **Cluster Placement Group:**
+
+  - Grouping strategy: Packs instances closely together within a single Availability Zone.
+  - Recommended for applications that require low network latency and high network throughput.
+  - No instances from different clusters can share the same placement group.
+
+2. **Partition Placement Group:**
+
+  - Grouping strategy: Splits instances into logical partitions, each residing on separate underlying hardware.
+  - Ideal for distributed and replicated workloads like Hadoop, Cassandra, or Kafka.
+  - Each partition has its own set of racks to improve fault tolerance.
+
+3. **Spread Placement Group:**
+
+  - Grouping strategy: Spreads instances across underlying hardware, minimizing the risk of concurrent hardware failures.
+  - Recommended for applications where instances must be separated to meet compliance and risk requirements.
+  - Can span multiple Availability Zones.
+
+### Key Considerations:
+
+- Placement Groups can be used with Amazon EC2 instances.
+- Instances within a placement group must belong to the same VPC.
+- You cannot move an existing instance into a placement group; you must create the instance within the group.
+- Instance types must be compatible for a placement group (e.g., instances with enhanced networking for a Cluster Placement Group).
+- Placement Groups can be used with Auto Scaling groups to maintain the desired placement.
+
+### Usage Tips:
+
+- Cluster Placement Groups are suitable for applications like high-performance computing (HPC) or tightly coupled, data-intensive applications.
+- Partition Placement Groups are best for large distributed applications and databases.
+- Spread Placement Groups offer isolation and high availability, making them suitable for critical applications.
+- Always consider the trade-offs between performance, availability, and fault tolerance when choosing a placement group type.
+
+### AWS CLI Commands:
+
+- **Creating a Placement Group:**
+  ```
+  aws ec2 create-placement-group --group-name my-cluster-group --strategy cluster
+  ```
+
+- **Describing Placement Groups:**
+  ```
+  aws ec2 describe-placement-groups --group-names my-cluster-group
+  ```
+
+- **Launching an EC2 Instance into a Placement Group:**
+  ```
+  aws ec2 run-instances --image-id ami-12345 --instance-type t2.micro --placement GroupName=my-cluster-group
+  ```
+
+- **Adding an Existing Instance to a Placement Group (Not Supported):**
+  You cannot move an existing instance into a placement group. You must create a new instance within the group.
+
+- **Changing Placement Group for an Auto Scaling Group:**
+  You can specify the placement group when creating or updating an Auto Scaling group.
