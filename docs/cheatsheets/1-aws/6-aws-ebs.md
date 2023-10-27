@@ -25,22 +25,29 @@ AWS documentation for the most up-to-date information. (Amazon Elastic Block Sto
 
 ## Amazon EBS Storage Classes
 
-- **General Purpose SSD (gp2):**
-    - *Volume Size*: 1 GiB to 16 TiB
-    - *Throughput*: 128 MiB/s per GiB of volume size, with a minimum of 100 MiB/s
-    - *IOPS*: 3 IOPS per GiB of volume size, with a minimum of 100 IOPS and a maximum of 16,000 IOPS
+### General Purpose SSD (gp2):
 
-- **Provisioned IOPS SSD (io2 and io1):**
-    - *Volume Size*: 4 GiB to 16 TiB
-    - *Throughput*: 256 KiB/s per provisioned IOPS, with a minimum of 100 MiB/s
-    - *IOPS*: Up to 64,000 IOPS (io2) or 32,000 IOPS (io1) per volume
-    - *Max IOPS-to-Volume Size Ratio*: 500 IOPS per GiB (io2) or 50 IOPS per GiB (io1)
+- *Volume Size*: 1 GiB to 16 TiB
+
+- *Throughput*: 128 MiB/s per GiB of volume size, with a minimum of 100 MiB/s
+
+- *IOPS*: 3 IOPS per GiB of volume size, with a minimum of 100 IOPS and a maximum of 16,000 IOPS
+
+### Provisioned IOPS SSD (io2 and io1):
+
+- *Volume Size*: 4 GiB to 16 TiB
+
+- *Throughput*: 256 KiB/s per provisioned IOPS, with a minimum of 100 MiB/s
+
+- *IOPS*: Up to 64,000 IOPS (io2) or 32,000 IOPS (io1) per volume
+
+- *Max IOPS-to-Volume Size Ratio*: 500 IOPS per GiB (io2) or 50 IOPS per GiB (io1)
 
 Amazon Elastic Block Store (EBS) io classes, specifically io1 and io2, are designed for applications that require high levels of input/output operations per second (IOPS) and 
 low-latency storage performance. Below is a detailed overview of the EBS io classes as of my last knowledge update in January 2022. Please verify the most up-to-date information in 
 the AWS documentation, as offerings may have evolved since then.
 
-- io1 (Provisioned IOPS SSD):**
+- **io1 (Provisioned IOPS SSD):**
 
     - **Use Cases:** io1 volumes are suitable for applications with high I/O requirements, such as relational databases (e.g., MySQL, PostgreSQL), NoSQL databases (e.g., Cassandra), and transactional applications.
 
@@ -52,7 +59,7 @@ the AWS documentation, as offerings may have evolved since then.
 
     - **Durability:** io1 volumes are designed to provide high durability and availability for critical applications.
 
-- io2 (Provisioned IOPS SSD):**
+- **io2 (Provisioned IOPS SSD):**
 
     - **Use Cases:** io2 volumes are designed for critical production workloads that require consistently high IOPS performance, low-latency storage, and enhanced durability. They are suitable for applications like SAP HANA, high-performance databases, and financial applications.
 
@@ -76,17 +83,17 @@ Remember that when choosing between io1 and io2 volumes, io2 is often preferred 
 high performance, making it suitable for a wide range of demanding applications. Additionally, io2 Block Express provides the highest levels of IOPS and throughput performance. Always consult the latest 
 AWS documentation for any updates or changes to EBS offerings and performance characteristics.
 
-- **Throughput Optimized HDD (st1):**
+### Throughput Optimized HDD (st1):
 
-    - *Volume Size*: 500 GiB to 16 TiB
-  
-    - *Throughput*: A baseline of 40 MiB/s per TiB of volume size, with a burst rate of up to 250 MiB/s per TiB
+- *Volume Size*: 500 GiB to 16 TiB
 
-- **Cold HDD (sc1):**
+- *Throughput*: A baseline of 40 MiB/s per TiB of volume size, with a burst rate of up to 250 MiB/s per TiB
 
-    - *Volume Size*: 500 GiB to 16 TiB
-  
-    - *Throughput*: A baseline of 12 MiB/s per TiB of volume size, with a burst rate of up to 80 MiB/s per TiB
+### Cold HDD (sc1):
+
+- *Volume Size*: 500 GiB to 16 TiB
+
+- *Throughput*: A baseline of 12 MiB/s per TiB of volume size, with a burst rate of up to 80 MiB/s per TiB
 
 - **Magnetic (standard):**
     
