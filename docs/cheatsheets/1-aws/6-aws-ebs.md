@@ -21,17 +21,45 @@ nav_order: 6
 EBS is a block storage service that provides scalable, high-performance storage volumes for use with Amazon EC2 instances. 
 Below, you'll find information on the various EBS storage classes and their respective quotas as of my last knowledge update 
 in January 2022. Please note that AWS service offerings and quotas may have changed since then, so it's essential to check the 
-AWS documentation for the most up-to-date information. (Amazon Elastic Block Store endpoints and quotas)[https://docs.aws.amazon.com/general/latest/gr/ebs-service.html]
+AWS documentation for the most up-to-date information. [Amazon Elastic Block Store endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/ebs-service.html)
 
 ## Amazon EBS Storage Classes
 
 ### General Purpose SSD (gp2):
+
+Amazon Elastic Block Store (EBS) offers General Purpose SSD (gp2) volumes designed for a wide range of workloads with balanced performance characteristics. Below is a detailed overview of the gp2 EBS volumes as of my last knowledge update in January 2022. Please verify the most up-to-date information in the AWS documentation, as offerings may have evolved since then.
 
 - **Volume Size**: 1 GiB to 16 TiB
 
 - **Throughput**: 128 MiB/s per GiB of volume size, with a minimum of 100 MiB/s
 
 - **IOPS**: 3 IOPS per GiB of volume size, with a minimum of 100 IOPS and a maximum of 16,000 IOPS
+
+- **Use Cases:** gp2 volumes are ideal for a broad spectrum of workloads, including web servers, development and testing environments, small to medium-sized databases, and other applications that require a balance of performance and cost-effectiveness.
+
+- **Volume Size:** You can create gp2 volumes with sizes ranging from 1 GiB to 16 TiB.
+
+- **Throughput:** The throughput of gp2 volumes is determined by the volume size. You get a baseline throughput of 128 MiB/s per GiB of volume size, with a minimum of 100 MiB/s. For example, a 100 GiB gp2 volume has a baseline throughput of 12,800 MiB/s.
+
+- **IOPS Performance:** gp2 volumes provide a balanced IOPS-to-storage ratio. You get 3 IOPS per GiB of volume size, with a minimum of 100 IOPS. For example, a 100 GiB gp2 volume would offer 300 IOPS as its baseline performance.
+
+- **Durability:** gp2 volumes provide a high level of data durability and availability for general-purpose workloads.
+
+- **Burst Capability:** gp2 volumes have a burst capability, allowing them to burst up to 3,000 IOPS for a short duration. The burst duration depends on the accumulated I/O credits. Each volume earns I/O credits over time when not in use, which can be used during bursts.
+
+- **I/O Credits:** To understand burst capabilities better, consider I/O credits. A gp2 volume earns credits when it is not using its maximum IOPS rate. These credits are then used during bursts when the volume's IOPS exceed its baseline. The more credits a volume has, the longer it can burst at a higher IOPS rate.
+
+- **Baseline IOPS and Throughput:** The baseline IOPS and throughput can be sustained indefinitely, as long as you have credits to cover them. Once credits are exhausted, the volume operates at its baseline performance level.
+
+- **Snapshot Performance:** Creating EBS snapshots from gp2 volumes is fully supported.
+
+- **Multi-Attach Support:** gp2 volumes can be attached to only one EC2 instance at a time. Multi-Attach support is not available for gp2 volumes.
+
+- **Data Encryption:** You can enable data encryption for gp2 volumes, ensuring data security at rest.
+
+General Purpose SSD (gp2) volumes are versatile and cost-effective storage options suitable for a wide range of workloads. They offer a balance between performance and cost, making them a popular choice for many applications. It's essential to monitor I/O credits and adjust the volume size or type if your application consistently requires more performance than the baseline to avoid performance degradation.
+
+Always consult the latest AWS documentation for any updates or changes to EBS offerings and performance characteristics.
 
 ### Provisioned IOPS SSD (io2 and io1):
 
