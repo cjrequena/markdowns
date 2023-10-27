@@ -27,25 +27,25 @@ AWS documentation for the most up-to-date information. (Amazon Elastic Block Sto
 
 ### General Purpose SSD (gp2):
 
-- *Volume Size*: 1 GiB to 16 TiB
+- **Volume Size**: 1 GiB to 16 TiB
 
-- *Throughput*: 128 MiB/s per GiB of volume size, with a minimum of 100 MiB/s
+- **Throughput**: 128 MiB/s per GiB of volume size, with a minimum of 100 MiB/s
 
-- *IOPS*: 3 IOPS per GiB of volume size, with a minimum of 100 IOPS and a maximum of 16,000 IOPS
+- **IOPS**: 3 IOPS per GiB of volume size, with a minimum of 100 IOPS and a maximum of 16,000 IOPS
 
 ### Provisioned IOPS SSD (io2 and io1):
 
-- *Volume Size*: 4 GiB to 16 TiB
-
-- *Throughput*: 256 KiB/s per provisioned IOPS, with a minimum of 100 MiB/s
-
-- *IOPS*: Up to 64,000 IOPS (io2) or 32,000 IOPS (io1) per volume
-
-- *Max IOPS-to-Volume Size Ratio*: 500 IOPS per GiB (io2) or 50 IOPS per GiB (io1)
-
-Amazon Elastic Block Store (EBS) io classes, specifically io1 and io2, are designed for applications that require high levels of input/output operations per second (IOPS) and 
-low-latency storage performance. Below is a detailed overview of the EBS io classes as of my last knowledge update in January 2022. Please verify the most up-to-date information in 
+Amazon Elastic Block Store (EBS) io classes, specifically io1 and io2, are designed for applications that require high levels of input/output operations per second (IOPS) and
+low-latency storage performance. Below is a detailed overview of the EBS io classes as of my last knowledge update in January 2022. Please verify the most up-to-date information in
 the AWS documentation, as offerings may have evolved since then.
+
+- **Volume Size**: 4 GiB to 16 TiB
+
+- **Throughput**: 256 KiB/s per provisioned IOPS, with a minimum of 100 MiB/s
+
+- **IOPS**: Up to 64,000 IOPS (io2) or 32,000 IOPS (io1) per volume
+
+- **Max IOPS-to-Volume Size Ratio**: 500 IOPS per GiB (io2) or 50 IOPS per GiB (io1)
 
 - **io1 (Provisioned IOPS SSD):**
 
