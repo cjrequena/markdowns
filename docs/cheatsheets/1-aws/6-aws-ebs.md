@@ -49,35 +49,35 @@ the AWS documentation, as offerings may have evolved since then.
 
 #### **io1 (Provisioned IOPS SSD):**
 
-    - **Use Cases:** io1 volumes are suitable for applications with high I/O requirements, such as relational databases (e.g., MySQL, PostgreSQL), NoSQL databases (e.g., Cassandra), and transactional applications.
+- **Use Cases:** io1 volumes are suitable for applications with high I/O requirements, such as relational databases (e.g., MySQL, PostgreSQL), NoSQL databases (e.g., Cassandra), and transactional applications.
 
-    - **Volume Size:** Ranging from 4 GiB to 16 TiB.
+- **Volume Size:** Ranging from 4 GiB to 16 TiB.
 
-    - **IOPS Performance:** You can provision a specific number of IOPS per volume, ranging from 100 IOPS to a maximum of 32,000 IOPS.
+- **IOPS Performance:** You can provision a specific number of IOPS per volume, ranging from 100 IOPS to a maximum of 32,000 IOPS.
 
-    - **Throughput:** The throughput of io1 volumes is directly related to the provisioned IOPS, with 256 KiB/s per provisioned IOPS as the baseline.
+- **Throughput:** The throughput of io1 volumes is directly related to the provisioned IOPS, with 256 KiB/s per provisioned IOPS as the baseline.
 
-    - **Durability:** io1 volumes are designed to provide high durability and availability for critical applications.
+- **Durability:** io1 volumes are designed to provide high durability and availability for critical applications.
 
 #### **io2 (Provisioned IOPS SSD):**
 
-    - **Use Cases:** io2 volumes are designed for critical production workloads that require consistently high IOPS performance, low-latency storage, and enhanced durability. They are suitable for applications like SAP HANA, high-performance databases, and financial applications.
+- **Use Cases:** io2 volumes are designed for critical production workloads that require consistently high IOPS performance, low-latency storage, and enhanced durability. They are suitable for applications like SAP HANA, high-performance databases, and financial applications.
 
-    - **Volume Size:** Ranging from 4 GiB to 16 TiB.
+- **Volume Size:** Ranging from 4 GiB to 16 TiB.
 
-    - **IOPS Performance:** io2 volumes support provisioned IOPS ranging from 100 IOPS to a maximum of 64,000 IOPS. They also offer Burst IOPS, which allows you to burst to 64,000 IOPS for volumes at or above 100 GiB in size.
+- **IOPS Performance:** io2 volumes support provisioned IOPS ranging from 100 IOPS to a maximum of 64,000 IOPS. They also offer Burst IOPS, which allows you to burst to 64,000 IOPS for volumes at or above 100 GiB in size.
 
-    - **Throughput:** The throughput is based on the provisioned IOPS, with 256 KiB/s per provisioned IOPS as the minimum throughput.
+- **Throughput:** The throughput is based on the provisioned IOPS, with 256 KiB/s per provisioned IOPS as the minimum throughput.
 
-    - **Durability:** io2 volumes are designed to deliver the highest level of data durability compared to other EBS volume types. They provide 99.999% durability.
+- **Durability:** io2 volumes are designed to deliver the highest level of data durability compared to other EBS volume types. They provide 99.999% durability.
 
-    - **Burst Capability:** For io2 volumes 100 GiB and larger, there is a burst capability that allows the volume to burst to 64,000 IOPS and 1,000 MiB/s for up to 30 minutes.
+- **Burst Capability:** For io2 volumes 100 GiB and larger, there is a burst capability that allows the volume to burst to 64,000 IOPS and 1,000 MiB/s for up to 30 minutes.
 
-    - **Multi-Attach Support:** io2 volumes support Multi-Attach, which enables attaching a single EBS volume to multiple EC2 instances simultaneously. This is useful for applications that require shared storage access.
+- **Multi-Attach Support:** io2 volumes support Multi-Attach, which enables attaching a single EBS volume to multiple EC2 instances simultaneously. This is useful for applications that require shared storage access.
 
-    - **Provisioned IOPS to Volume Size Ratio:** With io2 volumes, you can achieve higher IOPS per GiB, with a maximum ratio of 4,000 IOPS per GiB.
+- **Provisioned IOPS to Volume Size Ratio:** With io2 volumes, you can achieve higher IOPS per GiB, with a maximum ratio of 4,000 IOPS per GiB.
 
-    - **IO2 Block Express:** This is a sub-category of io2 volumes designed for ultra-high performance and lower-latency workloads. IO2 Block Express volumes offer high IOPS and throughput with a provisioned IOPS-to-volume-size ratio of 4,000 IOPS per GiB.
+- **IO2 Block Express:** This is a sub-category of io2 volumes designed for ultra-high performance and lower-latency workloads. IO2 Block Express volumes offer high IOPS and throughput with a provisioned IOPS-to-volume-size ratio of 4,000 IOPS per GiB.
 
 Remember that when choosing between io1 and io2 volumes, io2 is often preferred due to its enhanced durability, burst capability, and consistent 
 high performance, making it suitable for a wide range of demanding applications. Additionally, io2 Block Express provides the highest levels of IOPS and throughput performance. Always consult the latest 
