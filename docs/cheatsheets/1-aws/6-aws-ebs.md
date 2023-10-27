@@ -47,7 +47,7 @@ the AWS documentation, as offerings may have evolved since then.
 
 - **Max IOPS-to-Volume Size Ratio**: 500 IOPS per GiB (io2) or 50 IOPS per GiB (io1)
 
-- **io1 (Provisioned IOPS SSD):**
+#### **io1 (Provisioned IOPS SSD):**
 
     - **Use Cases:** io1 volumes are suitable for applications with high I/O requirements, such as relational databases (e.g., MySQL, PostgreSQL), NoSQL databases (e.g., Cassandra), and transactional applications.
 
@@ -59,7 +59,7 @@ the AWS documentation, as offerings may have evolved since then.
 
     - **Durability:** io1 volumes are designed to provide high durability and availability for critical applications.
 
-- **io2 (Provisioned IOPS SSD):**
+#### **io2 (Provisioned IOPS SSD):**
 
     - **Use Cases:** io2 volumes are designed for critical production workloads that require consistently high IOPS performance, low-latency storage, and enhanced durability. They are suitable for applications like SAP HANA, high-performance databases, and financial applications.
 
