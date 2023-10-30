@@ -6,7 +6,7 @@ grand_parent: cheatsheets
 permalink: /docs/aws/aws-efs
 nav_order: 7
 ---
-# template
+# Amazon Elastic File System (EFS) Cheat Sheet
 {: .no_toc }
 
 ## Table of contents
@@ -87,7 +87,7 @@ Performance considerations for EFS:
 
 - You can use the AWS DataSync service or rsync for data synchronization and migration to and from EFS.
 
-## Limits and constrains
+## Limits and Constrains
 
 Amazon Elastic File System (EFS) has various constraints and limits that you should be aware of when designing your file 
 storage solutions. These constraints may change over time, so it's important to check the AWS documentation for the 
