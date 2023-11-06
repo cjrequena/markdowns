@@ -1,6 +1,6 @@
 ---
 layout: default
-title: aws-elb
+title: aws-asg
 parent: aws
 grand_parent: cheatsheets
 permalink: /docs/aws/aws-asg
