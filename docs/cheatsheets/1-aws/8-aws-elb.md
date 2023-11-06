@@ -43,3 +43,50 @@ There are four classes of AWS ELB:
 AWS ELB automatically routes traffic to healthy instances, monitors the health of the backend resources, and scales based on demand. It also offers 
 features like SSL termination, sticky sessions, security group integration, and access logs. ELB plays a crucial role in ensuring the availability 
 and reliability of applications hosted on AWS by distributing traffic across multiple instances or resources.
+
+## ELB Classes:
+
+1. **Application Load Balancer (ALB)**:
+   - Designed for HTTP/HTTPS traffic and provides advanced routing, content-based routing, and support for containers.
+   - Supports routing based on host, path, query parameters, and more.
+   - Best suited for web applications and microservices.
+
+2. **Network Load Balancer (NLB)**:
+   - Ideal for TCP/UDP traffic and provides high-performance, low-latency load balancing.
+   - Supports static IP addresses and preserves the source IP of the client.
+   - Best for applications requiring extreme performance.
+
+3. **Classic Load Balancer** (Deprecated - Consider migrating to ALB or NLB):
+   - Supports both HTTP and TCP/UDP traffic.
+   - Provides basic load balancing capabilities.
+   - Legacy load balancer class, consider migrating to ALB or NLB for enhanced features.
+   
+4. **Gateway Load Balancer**:
+   - 
+   - 
+   - 
+
+### Quotas and Constraints:
+
+- **Application Load Balancer (ALB)**:
+  - Max Listeners per Load Balancer: 75
+  - Max Target Groups per Load Balancer: 75
+  - Max Rules per Listener: 50
+  - Max URLs per Rule: 100
+  - Idle Connection Timeout: 60 seconds
+
+- **Network Load Balancer (NLB)**:
+  - Max Listeners per Load Balancer: 25
+  - Max Target Groups per Load Balancer: 25
+  - Idle Connection Timeout: Configurable (Default: 350 seconds)
+  - Max Elastic IP addresses: Per your AWS account limits
+
+- **Classic Load Balancer** (Deprecated):
+  - Max Listeners per Load Balancer: 1
+  - Max Instances per Load Balancer: 100
+  - Idle Connection Timeout: 60 seconds
+
+- **Gateway Load Balancer**
+  - 
+  -  
+  - 
