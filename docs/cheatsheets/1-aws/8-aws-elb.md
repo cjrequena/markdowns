@@ -62,9 +62,9 @@ and reliability of applications hosted on AWS by distributing traffic across mul
    - Legacy load balancer class, consider migrating to ALB or NLB for enhanced features.
    
 4. **Gateway Load Balancer**:
-   - 
-   - 
-   - 
+   - xxx
+   - xxx
+   - xxx
 
 ### Quotas and Constraints:
 
@@ -87,11 +87,10 @@ and reliability of applications hosted on AWS by distributing traffic across mul
   - Idle Connection Timeout: 60 seconds
 
 - **Gateway Load Balancer**
-  - 
-  -  
-  - 
+  - xxx
+  - xxx
+  - xxx
 
-Certainly! Here's a cheat sheet for AWS Elastic Load Balancer (ELB) rules:
 
 ## AWS ELB Rules Cheat Sheet
 
@@ -110,7 +109,7 @@ Certainly! Here's a cheat sheet for AWS Elastic Load Balancer (ELB) rules:
   - Priority: 2
   - Condition: If the host is 'api.example.com', route to Target Group B.
 
-#### 2. Target Group Rules:
+### 2. Target Group Rules:
 
 - **Description**: Target group rules determine how traffic within a target group is routed to registered instances. Specific to ALB.
 
@@ -124,7 +123,7 @@ Certainly! Here's a cheat sheet for AWS Elastic Load Balancer (ELB) rules:
     - Path Pattern: /videos/* -> Route to instances in Target Group B.
     - Weighted Routing: 75% to Target Group C, 25% to Target Group D.
 
-#### 3. Host-Based Routing:
+### 3. Host-Based Routing:
 
 - **Description**: Specific to ALB, allows routing based on the host header in HTTP requests.
 
@@ -134,7 +133,7 @@ Certainly! Here's a cheat sheet for AWS Elastic Load Balancer (ELB) rules:
   - Route traffic for example.com to Target Group A.
   - Route traffic for api.example.com to Target Group B.
 
-#### 4. Path-Based Routing:
+### 4. Path-Based Routing:
 
 - **Description**: Specific to ALB, allows routing based on the URL path.
 
@@ -144,7 +143,7 @@ Certainly! Here's a cheat sheet for AWS Elastic Load Balancer (ELB) rules:
   - Route traffic for /app1/* to Target Group A.
   - Route traffic for /app2/* to Target Group B.
 
-#### 5. Query String Rules:
+### 5. Query String Rules:
 
 - **Description**: Specific to ALB, allows routing based on query string parameters.
 
@@ -154,7 +153,7 @@ Certainly! Here's a cheat sheet for AWS Elastic Load Balancer (ELB) rules:
   - Route traffic with ?product=123 to Target Group A.
   - Route traffic with ?category=books to Target Group B.
 
-#### 6. Redirect Rules:
+### 6. Redirect Rules:
 
 - **Description**: Specific to ALB, allows creating URL redirects.
 
@@ -163,7 +162,7 @@ Certainly! Here's a cheat sheet for AWS Elastic Load Balancer (ELB) rules:
 - **Example**:
   - Redirect /old-path to /new-path with a 301 status code.
 
-#### 7. Fixed Response Rules:
+### 7. Fixed Response Rules:
 
 - **Description**: Specific to ALB, allows generating fixed responses for specific requests.
 
@@ -187,7 +186,7 @@ play a critical role in enabling advanced routing, load balancing, and customiza
   - Improves traffic distribution and fault tolerance.
   - Helps in distributing traffic to instances across availability zones for better utilization.
 
-#### 2. Enabling Cross-Zone Load Balancing:
+### 2. Enabling Cross-Zone Load Balancing:
 
 - **ALB**:
   - Enabled by default; no action needed.
