@@ -17,7 +17,7 @@ nav_order: 8
 
 ---
 
-## AWS Elastic Load Balancer (ELB)
+## AWS Elastic Load Balancer (ELB):
 
 A Load Balancer is a networking device or service that distributes incoming network traffic (such as web requests or application data) 
 across multiple servers or instances to ensure high availability, reliability, and optimal performance. The primary purpose of a load balancer 
@@ -92,7 +92,7 @@ and reliability of applications hosted on AWS by distributing traffic across mul
   - xxx
 
 
-## AWS ELB Rules Cheat Sheet
+## AWS ELB Rules:
 
 ### 1. Listener Rules:
 
@@ -174,7 +174,7 @@ and reliability of applications hosted on AWS by distributing traffic across mul
 These are some of the key rule types and elements you can configure in an AWS Application Load Balancer (ALB) to control how traffic is routed to your target groups and instances. Rules 
 play a critical role in enabling advanced routing, load balancing, and customization for your applications hosted on AWS ELB.
 
-## Cross-Zone Load Balancing Cheat Sheet:
+## Cross-Zone Load Balancing:
 
 ### 1. Cross-Zone Load Balancing:
 
@@ -537,3 +537,77 @@ Your SSL/TLS certificate is now issued and ready to use with your AWS resources.
 
 5. **Access Logs and Monitoring**:
     - Enable access logs and CloudWatch monitoring for the Classic Load Balancer.
+
+### Configuring an Application Load Balancer (ALB) with an Auto Scaling group:
+
+**Prerequisites**:
+- You should have your Amazon Machine Images (AMIs) prepared for your Auto Scaling instances.
+- You should have created the necessary security groups, VPC, subnets, and IAM roles.
+- Make sure you have an existing application or web server configuration that you want to deploy.
+
+**Step 1: Create an Application Load Balancer (ALB)**
+
+1. **Sign in to AWS Console**:
+   - Go to the AWS Management Console.
+
+2. **Navigate to EC2 Dashboard**:
+   - From the AWS Management Console, go to the EC2 dashboard.
+
+3. **Create an Application Load Balancer**:
+   - In the EC2 dashboard, select "Load Balancers" from the navigation pane and click "Create Load Balancer."
+
+4. **Configure Load Balancer Settings**:
+   - Choose "Application Load Balancer."
+   - Configure the listener settings, subnets, and security groups.
+   - Configure routing rules to direct traffic to target groups.
+
+5. **Create a New Target Group**:
+   - Set up a target group for the ALB. This target group will be used to route traffic to your Auto Scaling group instances.
+
+6. **Configure Health Checks**:
+   - Set up health checks to monitor the status of your target instances.
+
+7. **Review and Create the ALB**:
+   - Review your configuration, and then create the ALB.
+
+**Step 2: Create an Auto Scaling Group**
+
+1. **Navigate to Auto Scaling**:
+   - In the AWS Management Console, navigate to the Auto Scaling dashboard.
+
+2. **Create an Auto Scaling Group**:
+   - Click "Create Auto Scaling group."
+   - Select your desired AMI and instance type.
+   - Configure the Auto Scaling group settings, including the initial capacity and scaling policies.
+
+3. **Configure Load Balancer**:
+   - In the "Load balancing" section, select the ALB you created earlier.
+   - Define the target group to route traffic to.
+
+4. **Configure Scaling Policies**:
+   - Create scaling policies based on triggers such as CPU utilization or network traffic.
+
+5. **Set Up Notifications**:
+   - Configure CloudWatch Alarms and SNS notifications for scaling events if desired.
+
+6. **Configure Advanced Settings**:
+   - Define advanced settings like instance protection, termination policies, and scaling cooldown periods.
+
+7. **Review and Create the Auto Scaling Group**:
+   - Review your configuration, and then create the Auto Scaling group.
+
+**Step 3: Testing and Monitoring**
+
+1. **Monitoring**:
+   - Monitor the performance and health of your Auto Scaling group instances and your ALB using CloudWatch.
+
+2. **Testing**:
+   - Test your ALB by accessing your application using the ALB's DNS name.
+
+**Step 4: Adjusting Scaling Policies**
+
+1. **Fine-Tune Scaling Policies**:
+   - Adjust your Auto Scaling group's scaling policies based on actual performance and traffic patterns.
+
+2. **Scaling Out or In**:
+   - You can manually adjust the desired capacity of your Auto Scaling group if necessary.
