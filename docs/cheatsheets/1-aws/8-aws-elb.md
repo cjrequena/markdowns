@@ -66,7 +66,7 @@ and reliability of applications hosted on AWS by distributing traffic across mul
    - xxx
    - xxx
 
-### Quotas and Constraints:
+## Quotas and Constraints:
 
 - **Application Load Balancer (ALB)**:
   - Max Listeners per Load Balancer: 75
@@ -351,6 +351,59 @@ and the backend instances. ELB supports SSL/TLS termination, allowing it to hand
 Securely configuring SSL/TLS on AWS ELB is essential for protecting sensitive data in transit. Be sure to select appropriate SSL policies, 
 manage certificates, and configure listeners to meet your security and compliance requirements.
 
+## Step-by-step guide to create an SSL/TLS certificate using AWS Certificate Manager (ACM)
+
+**Step 1: Log in to the AWS Management Console**
+
+- Go to the AWS Management Console (https://aws.amazon.com/).
+- Sign in to your AWS account.
+
+**Step 2: Open the ACM Console**
+
+- In the AWS Management Console, search for "ACM" in the services search bar, and click on "AWS Certificate Manager."
+
+**Step 3: Request a Certificate**
+
+- In the ACM dashboard, click the "Request a certificate" button.
+
+**Step 4: Choose the Certificate Type**
+
+- In the "Request a certificate" wizard, select the type of certificate you want. You can choose either "Public certificate" or "Private certificate."
+
+**Step 5: Add Domain Names**
+
+- On the "Add domain names" page, enter the domain names for which you want to obtain the certificate (e.g., www.example.com, example.com). You can add multiple domain names.
+
+**Step 6: Configure Domain Validation**
+
+- Choose the method for domain validation. ACM provides three methods:
+    - Email validation (requires receiving emails at specified email addresses associated with the domain).
+    - DNS validation (involves creating DNS records).
+    - AWS Identity and Access Management (IAM) role (useful for wildcard certificates).
+
+**Step 7: Review and Confirm**
+
+- Review the domain names and validation methods.
+- Click the "Next" button to proceed.
+
+**Step 8: Review and Confirm the Certificate Request**
+
+- Review the details of the certificate request.
+- Click the "Confirm and request" button to submit the certificate request.
+
+**Step 9: Validation**
+
+- ACM will initiate the validation process based on the method you chose in step 6. Follow the instructions to validate your domain ownership.
+- Once the validation is complete, the status of your certificate will change to "Issued."
+
+**Step 10: Use the Certificate**
+
+- After the certificate is issued and validated, you can use it with AWS services like Elastic Load Balancers (ELB), CloudFront, and more.
+- You can also view and manage your certificates in the ACM dashboard.
+
+Your SSL/TLS certificate is now issued and ready to use with your AWS resources. Remember to renew the certificate before it expires to ensure uninterrupted secure communication.
+
+
 ## Step-by-step guide to install and configure SSL/TLS on an ALB:
 
 **Note**: Before you begin, make sure you have your SSL/TLS certificate and private key ready for upload. You can use a certificate issued by AWS Certificate Manager (ACM) or a certificate from an external Certificate Authority (CA).
@@ -426,57 +479,6 @@ manage certificates, and configure listeners to meet your security and complianc
 Your ALB is now configured to use SSL/TLS for secure communication. It will terminate SSL/TLS connections and forward traffic to your backend instances over an encrypted channel. 
 Make sure to test your configuration thoroughly to ensure that it works as expected.
 
-## Step-by-step guide to create an SSL/TLS certificate using AWS Certificate Manager (ACM) 
-
-**Step 1: Log in to the AWS Management Console**
-
-- Go to the AWS Management Console (https://aws.amazon.com/).
-- Sign in to your AWS account.
-
-**Step 2: Open the ACM Console**
-
-- In the AWS Management Console, search for "ACM" in the services search bar, and click on "AWS Certificate Manager."
-
-**Step 3: Request a Certificate**
-
-- In the ACM dashboard, click the "Request a certificate" button.
-
-**Step 4: Choose the Certificate Type**
-
-- In the "Request a certificate" wizard, select the type of certificate you want. You can choose either "Public certificate" or "Private certificate."
-
-**Step 5: Add Domain Names**
-
-- On the "Add domain names" page, enter the domain names for which you want to obtain the certificate (e.g., www.example.com, example.com). You can add multiple domain names.
-
-**Step 6: Configure Domain Validation**
-
-- Choose the method for domain validation. ACM provides three methods:
-    - Email validation (requires receiving emails at specified email addresses associated with the domain).
-    - DNS validation (involves creating DNS records).
-    - AWS Identity and Access Management (IAM) role (useful for wildcard certificates).
-
-**Step 7: Review and Confirm**
-
-- Review the domain names and validation methods.
-- Click the "Next" button to proceed.
-
-**Step 8: Review and Confirm the Certificate Request**
-
-- Review the details of the certificate request.
-- Click the "Confirm and request" button to submit the certificate request.
-
-**Step 9: Validation**
-
-- ACM will initiate the validation process based on the method you chose in step 6. Follow the instructions to validate your domain ownership.
-- Once the validation is complete, the status of your certificate will change to "Issued."
-
-**Step 10: Use the Certificate**
-
-- After the certificate is issued and validated, you can use it with AWS services like Elastic Load Balancers (ELB), CloudFront, and more.
-- You can also view and manage your certificates in the ACM dashboard.
-
-Your SSL/TLS certificate is now issued and ready to use with your AWS resources. Remember to renew the certificate before it expires to ensure uninterrupted secure communication.
 
 ## Step-by-Step Guide for Configuring ELB:
 
