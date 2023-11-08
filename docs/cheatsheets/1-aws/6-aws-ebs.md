@@ -210,7 +210,13 @@ For Windows, you can check in "Disk Management."
 
 You should see the attached volume listed, often as `/dev/xvdX` on Linux or as a new disk in Disk Management on Windows.
 
-**Step 4: Format and Mount the EBS Volume (Linux)**
+**Step 4: Check the Filesystem Volume**
+```bash
+$ sudo blkid -o value -s TYPE /dev/xvdX
+$ sudo file -s /dev/xvdX
+```
+
+**Step 5: Format and Mount the EBS Volume (Linux)**
 
 If you are using a Linux instance, follow these steps to format and mount the EBS volume:
 
@@ -219,6 +225,14 @@ If you are using a Linux instance, follow these steps to format and mount the EB
 ```bash
 sudo mkfs -t ext4 /dev/xvdX
 ```
+
+OR
+
+```bash
+sudo mkfs -t xfs /dev/xvdX
+```
+
+[XFS vs EXT4 Filesystem | Key Difference Between XFS and EXT4](https://www.storagetutorials.com/xfs-vs-ext4-filesystem/#:~:text=Performance%3A%20XFS%20is%20optimized%20for,performance%20for%20large%20file%20transfers.)
 
 2. Create a directory where you want to mount the EBS volume. For example:
 
