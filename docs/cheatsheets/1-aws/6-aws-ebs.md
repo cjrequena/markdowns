@@ -201,7 +201,7 @@ You need to connect to your EC2 instance to configure the attached EBS volume. U
 
 Once you're connected to your EC2 instance, you need to check if the attached volume is available. Run the following command (for Linux):
 
-```bash
+```shell
 $ lsblk
 ```
 > **lsblk** lists information about all available or the specified block devices. The lsblk command reads the sysfs filesystem and udev db to gather information.
@@ -212,34 +212,47 @@ You should see the attached volume listed, often as `/dev/xvdX` on Linux or as a
 
 **Step 4: Check the Filesystem Volume**
 ```shell
-$ sudo blkid -o value -s TYPE /dev/xvdX
+sudo blkid -o value -s TYPE /dev/xvdX
 ```
 
 **Step 5: Format and Mount the EBS Volume (Linux)**
 
 If you are using a Linux instance, follow these steps to format and mount the EBS volume:
 
-1. Create a filesystem on the EBS volume. For example, to create an ext4 filesystem, you can use the following command:
+Create a filesystem on the EBS volume. For example, to create an ext4 filesystem, you can use the following command:
+
+For ext4:
 
 ```shell
 sudo mkfs -t ext4 /dev/xvdX
 ```
+For xfs:
 
-2. Create a directory where you want to mount the EBS volume. For example:
+```shell
+sudo mkfs -t xfs /dev/xvdX
+```
 
-```bash
+Create a directory where you want to mount the EBS volume. For example:
+
+```shell
 sudo mkdir /mnt/myebsvolume
 ```
 
-3. Mount the EBS volume to the directory:
+Mount the EBS volume to the directory:
 
-```bash
+```shell
 sudo mount /dev/xvdX /mnt/myebsvolume
 ```
 
-4. To make the mount persistent across reboots, add an entry to `/etc/fstab`:
+Verify the EBS volume was mounted:
 
-```bash
+```shell
+df -k
+```
+
+To make the mount persistent across reboots, add an entry to `/etc/fstab`:
+
+```shell
 echo '/dev/xvdX /mnt/myebsvolume ext4 defaults 0 0' | sudo tee -a /etc/fstab
 ```
 
@@ -253,9 +266,11 @@ If you are using a Windows instance, follow these steps to format and assign a d
 
 **Step 7: Verify the Mount**
 
-Check that the EBS volume is mounted correctly by navigating to the directory where you mounted it. For Linux, use `cd /mnt/myebsvolume` (or your chosen directory), and for Windows, you should see the drive letter you assigned.
+Check that the EBS volume is mounted correctly by navigating to the directory where you mounted it. For Linux, use `cd /mnt/myebsvolume` 
+(or your chosen directory), and for Windows, you should see the drive letter you assigned.
 
-You've now successfully attached, formatted, and mounted your EBS volume to your EC2 instance. It's ready for use as additional storage for your application or data.
+You've now successfully attached, formatted, and mounted your EBS volume to your EC2 instance. It's ready for use as additional storage for your 
+application or data.
 
 ### Automating the process of attaching, formatting, and mounting Amazon Elastic Block Store (EBS)
 
