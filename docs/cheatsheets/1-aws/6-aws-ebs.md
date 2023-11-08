@@ -213,6 +213,7 @@ You should see the attached volume listed, often as `/dev/xvdX` on Linux or as a
 **Step 4: Check the Filesystem Volume**
 ```shell
 sudo blkid -o value -s TYPE /dev/xvdX
+sudo file -s /dev/xvdX
 ```
 
 **Step 5: Format and Mount the EBS Volume (Linux)**
@@ -250,26 +251,43 @@ Verify the EBS volume was mounted:
 df -k
 ```
 
-To make the mount persistent across reboots, 
+**To mount an attached volume automatically after reboot**
 
-Get the UUID of your Volume with this command
+(Optional) Create a backup of your /etc/fstab file that you can use if you accidentally destroy or delete this file while editing it.
+
+```shell
+sudo cp /etc/fstab /etc/fstab.BACKUP
+```
+
+Use the blkid command to find the UUID of the device. Make a note of the UUID of the device that you want to mount after reboot. You'll need it in the following step.
+
+For example, the following command shows that there are two devices mounted to the instance, and it shows the UUIDs for both devices.
 
 ```shell
 sudo blkid
 ```
-
-Add an entry to `/etc/fstab`:
-
-For ext4
-
 ```shell
-echo 'UUID=<your-volume-uuid> /dev/xvdX /mnt/myebsvolume ext4 defaults 0 0' | sudo tee -a /etc/fstab
+/dev/xvda1: LABEL="/" UUID="ca774df7-756d-4261-a3f1-76038323e572" TYPE="xfs" PARTLABEL="Linux" PARTUUID="02dcd367-e87c-4f2e-9a72-a3cf8f299c10"
+/dev/xvdf: UUID="aebf131c-6957-451e-8d34-ec978d9581ae" TYPE="xfs"
 ```
 
-For xfs
+Open the /etc/fstab file using any text editor, such as nano or vim.
+```shell
+sudo vim /etc/fstab
+```
+
+Add the following entry to /etc/fstab to mount the device at the specified mount point. The fields are the UUID value returned by blkid (or lsblk for Ubuntu 18.04), the mount point, 
+the file system, and the recommended file system mount options. For more information about the required fields, run man fstab to open the fstab manual.
+
+```text
+UUID=aebf131c-6957-451e-8d34-ec978d9581ae  /mnt/myebsvolume  xfs  defaults,nofail  0  2
+```
+
+To verify that your entry works, run the following commands to unmount the device and then mount all file systems in /etc/fstab. If there are no errors, the /etc/fstab file is OK and your file system will mount automatically after it is rebooted.
 
 ```shell
-echo 'UUID=<your-volume-uuid> /dev/xvdX /mnt/myebsvolume xfs defaults 0 0' | sudo tee -a /etc/fstab
+sudo umount /data
+sudo mount -a
 ```
 
 **Step 6: Format and Assign a Drive Letter (Windows)**
