@@ -209,8 +209,8 @@ You should see the attached volume listed, often as `/dev/xvdX` on Linux or as a
 
 If you are using a Linux instance, follow these steps to format and mount the EBS volume:
 
-> [!NOTE]  
-> Replace `/dev/xvdX` with the device name you noted earlier.
+> [!IMPORTANT]  
+> <p style="color: red">Replace `/dev/xvdX` with the device name you noted earlier.</p>
 
 1. Create a filesystem on the EBS volume. For example, to create an ext4 filesystem, you can use the following command:
 
