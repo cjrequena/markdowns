@@ -211,9 +211,8 @@ For Windows, you can check in "Disk Management."
 You should see the attached volume listed, often as `/dev/xvdX` on Linux or as a new disk in Disk Management on Windows.
 
 **Step 4: Check the Filesystem Volume**
-```bash
+```shell
 $ sudo blkid -o value -s TYPE /dev/xvdX
-$ sudo file -s /dev/xvdX
 ```
 
 **Step 5: Format and Mount the EBS Volume (Linux)**
@@ -222,17 +221,9 @@ If you are using a Linux instance, follow these steps to format and mount the EB
 
 1. Create a filesystem on the EBS volume. For example, to create an ext4 filesystem, you can use the following command:
 
-```bash
+```shell
 sudo mkfs -t ext4 /dev/xvdX
 ```
-
-OR
-
-```bash
-sudo mkfs -t xfs /dev/xvdX
-```
-
-[XFS vs EXT4 Filesystem | Key Difference Between XFS and EXT4](https://www.storagetutorials.com/xfs-vs-ext4-filesystem/#:~:text=Performance%3A%20XFS%20is%20optimized%20for,performance%20for%20large%20file%20transfers.)
 
 2. Create a directory where you want to mount the EBS volume. For example:
 
@@ -252,7 +243,7 @@ sudo mount /dev/xvdX /mnt/myebsvolume
 echo '/dev/xvdX /mnt/myebsvolume ext4 defaults 0 0' | sudo tee -a /etc/fstab
 ```
 
-**Step 4: Format and Assign a Drive Letter (Windows)**
+**Step 6: Format and Assign a Drive Letter (Windows)**
 
 If you are using a Windows instance, follow these steps to format and assign a drive letter to the EBS volume:
 
@@ -260,7 +251,7 @@ If you are using a Windows instance, follow these steps to format and assign a d
 
 2. You should see the attached EBS volume. Right-click on it, initialize the disk, create a new simple volume, format it with a filesystem (e.g., NTFS), and assign a drive letter.
 
-**Step 5: Verify the Mount**
+**Step 7: Verify the Mount**
 
 Check that the EBS volume is mounted correctly by navigating to the directory where you mounted it. For Linux, use `cd /mnt/myebsvolume` (or your chosen directory), and for Windows, you should see the drive letter you assigned.
 
