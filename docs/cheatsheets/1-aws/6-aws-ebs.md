@@ -169,7 +169,11 @@ AWS documentation for any updates or changes to EBS offerings and performance ch
 
 ## Mounting and configuring an Amazon Elastic Block Store (EBS) volume
 
-Mounting and configuring an Amazon Elastic Block Store (EBS) volume on an Amazon Elastic Compute Cloud (EC2) instance involves several steps. I'll guide you through the process, assuming you have an EC2 instance and an EBS volume already created.
+Mounting and configuring an Amazon Elastic Block Store (EBS) volume on an Amazon Elastic Compute Cloud (EC2) instance involves several steps. I'll guide you through the process, assuming you 
+have an EC2 instance and an EBS volume already created.
+
+> <p style="color: red">[!IMPORTANT]</p>  
+> Replace `/dev/xvdX` with the proper device name.
 
 **Step 1: Attach the EBS Volume to Your EC2 Instance**
 
@@ -208,9 +212,6 @@ You should see the attached volume listed, often as `/dev/xvdX` on Linux or as a
 **Step 4: Format and Mount the EBS Volume (Linux)**
 
 If you are using a Linux instance, follow these steps to format and mount the EBS volume:
-
-> [!IMPORTANT]  
-> <p style="color: red">Replace `/dev/xvdX` with the device name you noted earlier.</p>
 
 1. Create a filesystem on the EBS volume. For example, to create an ext4 filesystem, you can use the following command:
 
