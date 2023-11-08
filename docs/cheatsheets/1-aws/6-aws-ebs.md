@@ -250,10 +250,26 @@ Verify the EBS volume was mounted:
 df -k
 ```
 
-To make the mount persistent across reboots, add an entry to `/etc/fstab`:
+To make the mount persistent across reboots, 
+
+Get the UUID of your Volume with this command
 
 ```shell
-echo '/dev/xvdX /mnt/myebsvolume ext4 defaults 0 0' | sudo tee -a /etc/fstab
+sudo blkid
+```
+
+Add an entry to `/etc/fstab`:
+
+For ext4
+
+```shell
+echo 'UUID=<your-volume-uuid> /dev/xvdX /mnt/myebsvolume ext4 defaults 0 0' | sudo tee -a /etc/fstab
+```
+
+For xfs
+
+```shell
+echo 'UUID=<your-volume-uuid> /dev/xvdX /mnt/myebsvolume xfs defaults 0 0' | sudo tee -a /etc/fstab
 ```
 
 **Step 6: Format and Assign a Drive Letter (Windows)**
