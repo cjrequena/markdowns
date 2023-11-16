@@ -67,7 +67,7 @@ and reliability of applications hosted on AWS by distributing traffic across mul
   - The true IP of the client is inserted in the header X-Forwarded-For
   - We can also get the port (X-Forwarded-Port) and Proto (X-Forwarded-Proto)
 
-#### AWS Target Groups
+**AWS Target Groups**
 
 Target groups route requests to individual registered targets, such as EC2 instances, using the protocol and port number that you specify. You can
 register a target with multiple target groups. You can configure health checks on a per target group basis. Health checks are performed on all
@@ -80,7 +80,7 @@ for your application. You can use each target group with only one load balancer.
 
 **Target groups can be:**
 
-- EC2 Instances can be managed by an Autoscaling Group - HTTP.
+- EC2 Instances (can be managed by an Autoscaling Group) - HTTP.
 - ECS tasks (managed by ECS itself) - HTTP.
 - Lambda functions - HTTP request is translated to a json event.
 - IP addresses - must be a private IP.
