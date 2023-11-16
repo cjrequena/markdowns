@@ -46,6 +46,11 @@ and reliability of applications hosted on AWS by distributing traffic across mul
 
 ## ELB Classes:
 
+### Classic Load Balancer** (Deprecated - Consider migrating to ALB or NLB):
+- Supports both HTTP and TCP/UDP traffic.
+- Provides basic load balancing capabilities.
+- Legacy load balancer class, consider migrating to ALB or NLB for enhanced features.
+
 ### Application Load Balancer (ALB)
 
 - It is a layer 7 (HTTP)  
@@ -62,7 +67,7 @@ and reliability of applications hosted on AWS by distributing traffic across mul
   - The true IP of the client is inserted in the header X-Forwarded-For
   - We can also get the port (X-Forwarded-Port) and Proto (X-Forwarded-Proto)
 
-### AWS Target Groups
+#### AWS Target Groups
 
 Target groups route requests to individual registered targets, such as EC2 instances, using the protocol and port number that you specify. You can
 register a target with multiple target groups. You can configure health checks on a per target group basis. Health checks are performed on all
@@ -82,17 +87,12 @@ for your application. You can use each target group with only one load balancer.
 - ALB can route to multiple target groups.
 - Health checks are at the target group level.
 
-## Network Load Balancer (NLB):
+### Network Load Balancer (NLB):
 - Ideal for TCP/UDP traffic and provides high-performance, low-latency load balancing.
 - Supports static IP addresses and preserves the source IP of the client.
 - Best for applications requiring extreme performance.
-
-## Classic Load Balancer** (Deprecated - Consider migrating to ALB or NLB):
-   - Supports both HTTP and TCP/UDP traffic.
-   - Provides basic load balancing capabilities.
-   - Legacy load balancer class, consider migrating to ALB or NLB for enhanced features.
    
-## Gateway Load Balancer:
+### Gateway Load Balancer:
    - xxx
    - xxx
    - xxx
