@@ -46,22 +46,53 @@ and reliability of applications hosted on AWS by distributing traffic across mul
 
 ## ELB Classes:
 
-1. **Application Load Balancer (ALB)**:
-   - Designed for HTTP/HTTPS traffic and provides advanced routing, content-based routing, and support for containers.
-   - Supports routing based on host, path, query parameters, and more.
-   - Best suited for web applications and microservices.
+### Application Load Balancer (ALB)
 
-2. **Network Load Balancer (NLB)**:
-   - Ideal for TCP/UDP traffic and provides high-performance, low-latency load balancing.
-   - Supports static IP addresses and preserves the source IP of the client.
-   - Best for applications requiring extreme performance.
+- It is a layer 7 (HTTP)  
+- Load balancing to multiple HTTP applications across machines (target groups)
+- Load balancing to multiple HTTP applications on the same machine (ex. containers)
+- Support for HTTP/2 and WebSockets.
+- Support redirects (ex. from HTTP to HTTPS)
+- Designed for HTTP/HTTPS traffic and provides advanced routing, content-based routing, and support for containers.
+- Supports routing based on host, path, query parameters, and more.
+- Best suited for web applications and microservices.
+- Has a port mapping feature to redirect to a dynamic port in ECS.
+- Fixed hostname for the ALB (xxx.region.elb.amazonaws.com)
+- The application servers do not see the IP of the client directly.
+  - The true IP of the client is inserted in the header X-Forwarded-For
+  - We can also get the port (X-Forwarded-Port) and Proto (X-Forwarded-Proto)
 
-3. **Classic Load Balancer** (Deprecated - Consider migrating to ALB or NLB):
+### AWS Target Groups
+
+Target groups route requests to individual registered targets, such as EC2 instances, using the protocol and port number that you specify. You can
+register a target with multiple target groups. You can configure health checks on a per target group basis. Health checks are performed on all
+targets registered to a target group that is specified in a listener rule for your load balancer.
+
+Each target group is used to route requests to one or more registered targets. When you create each listener rule, you specify a target group and
+conditions. When a rule condition is met, traffic is forwarded to the corresponding target group. You can create different target groups for
+different types of requests. For example, create one target group for general requests and other target groups for requests to the microservices
+for your application. You can use each target group with only one load balancer.
+
+**Target groups can be:**
+
+- EC2 Instances can be managed by an Autoscaling Group - HTTP.
+- ECS tasks (managed by ECS itself) - HTTP.
+- Lambda functions - HTTP request is translated to a json event.
+- IP addresses - must be a private IP.
+- ALB can route to multiple target groups.
+- Health checks are at the target group level.
+
+## Network Load Balancer (NLB):
+- Ideal for TCP/UDP traffic and provides high-performance, low-latency load balancing.
+- Supports static IP addresses and preserves the source IP of the client.
+- Best for applications requiring extreme performance.
+
+## Classic Load Balancer** (Deprecated - Consider migrating to ALB or NLB):
    - Supports both HTTP and TCP/UDP traffic.
    - Provides basic load balancing capabilities.
    - Legacy load balancer class, consider migrating to ALB or NLB for enhanced features.
    
-4. **Gateway Load Balancer**:
+## Gateway Load Balancer:
    - xxx
    - xxx
    - xxx
@@ -90,6 +121,9 @@ and reliability of applications hosted on AWS by distributing traffic across mul
   - xxx
   - xxx
   - xxx
+
+
+
 
 
 ## AWS ELB Rules:
