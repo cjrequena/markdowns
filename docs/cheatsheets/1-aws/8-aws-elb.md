@@ -47,6 +47,7 @@ and reliability of applications hosted on AWS by distributing traffic across mul
 ## ELB Classes:
 
 ### Classic Load Balancer** (Deprecated - Consider migrating to ALB or NLB):
+
 - Supports both HTTP and TCP/UDP traffic.
 - Provides basic load balancing capabilities.
 - Legacy load balancer class, consider migrating to ALB or NLB for enhanced features.
@@ -67,27 +68,13 @@ and reliability of applications hosted on AWS by distributing traffic across mul
   - The true IP of the client is inserted in the header X-Forwarded-For
   - We can also get the port (X-Forwarded-Port) and Proto (X-Forwarded-Proto)
 
-**AWS Target Groups**
-
-Target groups route requests to individual registered targets, such as EC2 instances, using the protocol and port number that you specify. You can
-register a target with multiple target groups. You can configure health checks on a per target group basis. Health checks are performed on all
-targets registered to a target group that is specified in a listener rule for your load balancer.
-
-Each target group is used to route requests to one or more registered targets. When you create each listener rule, you specify a target group and
-conditions. When a rule condition is met, traffic is forwarded to the corresponding target group. You can create different target groups for
-different types of requests. For example, create one target group for general requests and other target groups for requests to the microservices
-for your application. You can use each target group with only one load balancer.
-
-**Target groups can be:**
-
-- EC2 Instances (can be managed by an Autoscaling Group) - HTTP.
-- ECS tasks (managed by ECS itself) - HTTP.
-- Lambda functions - HTTP request is translated to a json event.
-- IP addresses - must be a private IP.
-- ALB can route to multiple target groups.
-- Health checks are at the target group level.
-
 ### Network Load Balancer (NLB):
+
+- It is a layer 4 load balancer.
+- Forward TCP and UDP traffic to your instances.
+- Handle millions of request per second.
+- Less latency ~100 ms (vs ~400 ms for ALB)
+- Has one static IP per AZ, and support assigning elastic IP (Helpful for whitelisting specific IP)
 - Ideal for TCP/UDP traffic and provides high-performance, low-latency load balancing.
 - Supports static IP addresses and preserves the source IP of the client.
 - Best for applications requiring extreme performance.
@@ -122,9 +109,26 @@ for your application. You can use each target group with only one load balancer.
   - xxx
   - xxx
 
+## AWS Target Groups
 
+Target groups route requests to individual registered targets, such as EC2 instances, using the protocol and port number that you specify. You can
+register a target with multiple target groups. You can configure health checks on a per target group basis. Health checks are performed on all
+targets registered to a target group that is specified in a listener rule for your load balancer.
 
+Each target group is used to route requests to one or more registered targets. When you create each listener rule, you specify a target group and
+conditions. When a rule condition is met, traffic is forwarded to the corresponding target group. You can create different target groups for
+different types of requests. For example, create one target group for general requests and other target groups for requests to the microservices
+for your application. You can use each target group with only one load balancer.
 
+**Target groups can be:**
+
+- EC2 Instances (can be managed by an Autoscaling Group) - HTTP.
+- ECS tasks (managed by ECS itself) - HTTP.
+- Lambda functions - HTTP request is translated to a json event.
+- IP addresses - must be a private IP.
+- To an ALB if the load balancer is a Network Load Balancer. 
+- ALB can route to multiple target groups.
+- Health checks are at the target group level.
 
 ## AWS ELB Rules:
 
