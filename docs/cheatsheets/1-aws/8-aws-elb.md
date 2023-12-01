@@ -80,9 +80,13 @@ and reliability of applications hosted on AWS by distributing traffic across mul
 - Best for applications requiring extreme performance.
    
 ### Gateway Load Balancer:
-   - xxx
-   - xxx
-   - xxx
+- Deploy, scale and manage a fleet of 3rd party network virtual appliances in AWS. 
+- Example: Firewall, intrusion detection and prevention system, deep packet inspection system, payload manipulation, etc.
+- Operates at layer 3 (Network layer) - IP Packets
+- Combines the following functions:
+  - **Transparent network gateway** -- single entry/exit for all traffic.
+  - **Load balancer** -- distributes traffic to your virtual appliances.
+- Uses the GENEVE protocol on port 6081
 
 ## Quotas and Constraints:
 
@@ -228,9 +232,17 @@ play a critical role in enabling advanced routing, load balancing, and customiza
 
 - **ALB**:
   - Enabled by default; no action needed.
+  - No charges for inter AZ data.
+  - You can disabled it at target group level.
 
-- **NLB**:
+- **NLB and GLB**:
+  - Disabled by default.
   - Enabled when creating or modifying an NLB.
+  - You pay charges for inter AZ if enabled.
+
+- **CLB**
+  - Disabled by default.
+  - No charges for inter AZ data.
 
 ## Stickiness:
 
@@ -322,12 +334,24 @@ instances being drained. Connection draining is particularly useful for maintain
 
 ## SSL/TLS on AWS Elastic Load Balancer (ELB):
 
-SSL/TLS (Secure Sockets Layer/Transport Layer Security) on AWS Elastic Load Balancer (ELB) is used to secure the communication between clients and the load balancer and between the load balancer 
+- AN SSL certificate allows traffic between your clients and your load balancer to be encrypted in transit.
+- SSL refers to Secure Sockets Layer, used to encrypt connections.
+- TLS refers to Transport Secure Layer, which is the newer version.
+- Public SSL/TLS certificates are issued by Certificates Authorities (CA). Comodo, Symatec, GoDaddy, GlobalSign, Digicert, Letsencrypt, etc.
+- SSL/TLS certificates have an expiration date (you set) and must be renewed.
+- SSL/TLS (Secure Sockets Layer/Transport Layer Security) on AWS Elastic Load Balancer (ELB) is used to secure the communication between clients and the load balancer and between the load balancer 
 and the backend instances. ELB supports SSL/TLS termination, allowing it to handle the encryption and decryption of traffic on behalf of the backend instances. Here's how SSL/TLS works on AWS ELB:
 
 1. **SSL/TLS Termination**:
    - ELB acts as an SSL/TLS endpoint for incoming client requests.
+   - ELB uses X.509 certificate (SSL/TLS server certificate).
+   - You can manage certificates using ACM (AWS Certificate Manager)
    - Clients establish an encrypted connection with the ELB using SSL/TLS.
+   - You can create and upload your own certificates.
+   - HTTPS Listener:
+     - You must specify a default certificate.
+     - You can add optional list of certs to support multiple domains.
+     - Clients can use SNI (Server Name Indication) to specify the hostname they reach.
 
 2. **Load Balancer to Instance Communication**:
    - ELB decrypts incoming traffic and forwards unencrypted requests to the backend instances.
@@ -349,7 +373,6 @@ and the backend instances. ELB supports SSL/TLS termination, allowing it to hand
    - ELB can be configured to require client authentication using client certificates.
    - This adds an extra layer of security but is optional and depends on your use case.
 
-## AWS ELB SSL/TLS:
 
 ### 1. SSL/TLS Termination:
 
@@ -388,6 +411,13 @@ and the backend instances. ELB supports SSL/TLS termination, allowing it to hand
 
 Securely configuring SSL/TLS on AWS ELB is essential for protecting sensitive data in transit. Be sure to select appropriate SSL policies, 
 manage certificates, and configure listeners to meet your security and compliance requirements.
+
+### Server Name Indication (SNI)
+
+- SNI solves the problem of loading multiple SSL/TLS certificates onto one server (to serve multiple websites).
+- It is a newer protocol, and requires the client to indicate the hostname of the target server in the initial SSL/TLS handshake.
+- The server will find the correct certificate, or return a default one.
+- Only works for ALB and NLB, CloudFront.
 
 ## Step-by-step guide to create an SSL/TLS certificate using AWS Certificate Manager (ACM)
 
