@@ -343,68 +343,60 @@ instances being drained. Connection draining is particularly useful for maintain
 and the backend instances. ELB supports SSL/TLS termination, allowing it to handle the encryption and decryption of traffic on behalf of the backend instances. Here's how SSL/TLS works on AWS ELB:
 
 1. **SSL/TLS Termination**:
-   - ELB acts as an SSL/TLS endpoint for incoming client requests.
-   - ELB uses X.509 certificate (SSL/TLS server certificate).
-   - You can manage certificates using ACM (AWS Certificate Manager)
-   - Clients establish an encrypted connection with the ELB using SSL/TLS.
-   - You can create and upload your own certificates.
-   - HTTPS Listener:
-     - You must specify a default certificate.
-     - You can add optional list of certs to support multiple domains.
-     - Clients can use SNI (Server Name Indication) to specify the hostname they reach.
+
+ELB terminates SSL/TLS connections, offloading encryption/decryption from backend instances.
+
+- Reduces the CPU load on backend instances.
+- Simplifies SSL certificate management.
+- Supports SSL/TLS for secure communication.
+- ELB acts as an SSL/TLS endpoint for incoming client requests.
+- ELB uses X.509 certificate (SSL/TLS server certificate).
+- You can manage certificates using ACM (AWS Certificate Manager)
+- Clients establish an encrypted connection with the ELB using SSL/TLS.
+- You can create and upload your own certificates.
+- HTTPS Listener:
+  - You must specify a default certificate.
+  - You can add optional list of certs to support multiple domains.
+  - Clients can use SNI (Server Name Indication) to specify the hostname they reach.
 
 2. **Load Balancer to Instance Communication**:
-   - ELB decrypts incoming traffic and forwards unencrypted requests to the backend instances.
-   - Backend instances handle the unencrypted traffic, which can be more efficient.
+- ELB decrypts incoming traffic and forwards unencrypted requests to the backend instances.
+- Backend instances handle the unencrypted traffic, which can be more efficient.
 
 3. **Encryption Offload**:
-   - ELB offloads the resource-intensive encryption and decryption tasks from backend instances.
-   - This allows instances to focus on processing application logic.
+- ELB offloads the resource-intensive encryption and decryption tasks from backend instances.
+- This allows instances to focus on processing application logic.
 
 4. **Security and Configuration**:
-   - ELB supports SSL/TLS protocols and ciphers for secure connections.
-   - SSL certificates and private keys are managed and stored on ELB for secure communication.
+- ELB supports SSL/TLS protocols and ciphers for secure connections.
+- SSL certificates and private keys are managed and stored on ELB for secure communication.
 
 5. **Security Policies**:
-   - ELB provides predefined SSL policies with recommended security settings.
-   - You can select an appropriate security policy based on your security and compliance requirements.
+- ELB provides predefined SSL policies with recommended security settings.
+- You can select an appropriate security policy based on your security and compliance requirements.
 
 6. **Optional Client Authentication**:
-   - ELB can be configured to require client authentication using client certificates.
-   - This adds an extra layer of security but is optional and depends on your use case.
+- ELB can be configured to require client authentication using client certificates.
+- This adds an extra layer of security but is optional and depends on your use case.
 
-
-### 1. SSL/TLS Termination:
-
-- **Description**: ELB terminates SSL/TLS connections, offloading encryption/decryption from backend instances.
-
-- **Benefits**:
-    - Reduces the CPU load on backend instances.
-    - Simplifies SSL certificate management.
-    - Supports SSL/TLS for secure communication.
-
-### 2. Supported SSL/TLS Protocols:
-
+7. **Supported SSL/TLS Protocols:**
 - **Protocols**: ELB supports various SSL/TLS protocols, including TLS 1.2 and 1.3.
 - **Ciphers**: ELB provides predefined security policies with recommended ciphers.
 
-### 3. SSL/TLS Certificates:
-
+8. **SSL/TLS Certificates:**
 - **Upload Certificates**: You can upload SSL/TLS certificates to ELB for secure communication.
 - **Certificate Management**: AWS Certificate Manager (ACM) can be used to manage SSL/TLS certificates.
 
-### 4. Security Policies:
-
+9. **Security Policies:**
 - **Predefined Policies**: ELB provides predefined security policies for SSL/TLS with recommended configurations.
 - **Custom Policies**: You can create custom security policies to configure SSL/TLS settings based on your specific needs.
 
-### 5. Listener Configuration:
-
+10. **Listener Configuration:**
 - **Listeners**: Define SSL/TLS listeners on ELB.
 - **Port Mapping**: Map SSL/TLS listeners to target groups with instances.
 - **Backend Protocol**: Define the protocol used between the load balancer and backend instances.
 
-### 6. Client Authentication (Optional):
+11. **Client Authentication (Optional):**
 
 - **Client Certificates**: ELB can be configured to require client authentication using client certificates.
 - **Additional Security**: Provides an extra layer of security for client-to-load balancer communication.
