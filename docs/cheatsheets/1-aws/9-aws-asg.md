@@ -53,29 +53,29 @@ The Auto Scaling Group is free.
     - We can create scale-out policies (increase the number of instances)
     - We can create scale-in policies (decrease the number of instances)
 
-1. **Simple Scaling Policy:**
+### **Simple Scaling Policy:**
     - **Description:** Adds or removes a fixed number of instances.
     - **Use Case:** Suitable for predictable, steady-state workloads.
 
-2. **Step Scaling Policy:**
+### **Step Scaling Policy:**
     - **Description:** Adjusts the ASG capacity in response to changing demand.
     - **Configuration:**
         - Define multiple "steps" for scaling adjustments.
         - Each step has a specified adjustment value and a threshold metric.
 
-3. **Target Tracking Scaling Policy:**
+### **Target Tracking Scaling Policy:**
     - **Description:** Adjusts the ASG capacity to maintain a target value for a specific metric.
     - **Configuration:**
         - Specify a target value for a chosen metric (e.g., CPU utilization).
         - Auto Scaling adjusts the capacity to maintain the target.
 
-4. **Scheduled Scaling:**
+### **Scheduled Scaling:**
     - **Description:** Automatically adjusts the ASG capacity at specific times.
     - **Configuration:**
         - Specify start and end times for the scheduled actions.
         - Define desired capacity for each scheduled action.
 
-5. **Custom Scaling Policy (Using AWS Lambda):**
+### **Custom Scaling Policy (Using AWS Lambda):**
     - **Description:** Leverage Lambda functions to implement custom logic for scaling decisions.
     - **Configuration:**
         - Define Lambda function to evaluate conditions and return scaling recommendations.
