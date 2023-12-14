@@ -132,7 +132,9 @@ and limits for Amazon EFS:
 
 Amazon Elastic Block Store (EBS) and Amazon Elastic File System (EFS) are both storage solutions provided by AWS, but they serve different purposes and have distinct characteristics. Here's a comparison between EBS and EFS:
 
-## EFS vs EBS (Use Cases):
+## EFS vs EBS
+
+### Use Cases
 
 1. **EBS (Elastic Block Store):**
    - Suitable for applications that require low-latency and high-performance block-level storage.
