@@ -1,0 +1,125 @@
+---
+layout: default
+title: aws-rds
+parent: aws
+grand_parent: cheatsheets
+permalink: /docs/aws/aws-rds
+nav_order: 10
+---
+# AWS RDS 
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
+## Introduction to AWS RDS:
+
+AWS RDS is a managed relational database service that simplifies database administration tasks, such as hardware provisioning, 
+database setup, patching, and backups. It supports various database engines, including MySQL, PostgreSQL, Oracle, SQL Server, 
+and MariaDB.
+
+- RDS stands for Relational Database Service.
+- It is a managed DB service and use SQL as query language.
+- It allows you to create databases in the cloud that are managed by AWS
+  - Postgres
+  - MySQL
+  - MariaDB
+  - Oracle
+  - Microsoft SQL Server
+  - Aurora (AWS Proprietary Database)
+
+## Advantages
+
+- RDS is a managed service.
+  - Automated provisioning, OS Patching.
+  - Continuous backups and restore to a specific point in time (Point in time restore).
+  - Monitoring dashboards.
+  - Read replicas for improved read performance.
+  - Multi AZ setup for Disaster Recovery and high availability.
+  - Maintenance windows for upgrades.
+  - Scaling capabilities (Vertical and Horizontal)
+  - Storage backed by EBS (gp2 or io1)
+- You cannot ssh into your instances.  
+
+## Key Concepts:
+
+1. **DB Instances:**
+    - Basic building blocks of RDS.
+    - Represent a single database deployed in the cloud.
+
+2. **Multi-AZ Deployments:**
+    - Provides high availability by replicating the database in a secondary Availability Zone.
+
+3. **Read Replicas:**
+    - Used to scale read-heavy database workloads.
+    - Asynchronous replication from the primary DB instance.
+
+4. **Parameter Groups:**
+    - Configure database engine settings.
+    - Applied to DB instances at launch or during modification.
+
+5. **Option Groups:**
+    - Enable features and functionalities for DB instances.
+    - Applied during DB instance creation or modification.
+
+6. **Snapshots:**
+    - Point-in-time backups of DB instances.
+    - Used for database restoration.
+
+## Security:
+
+1. **VPCs and Security Groups:**
+    - RDS instances reside in VPCs and are associated with security groups.
+    - Security groups control inbound and outbound traffic.
+
+2. **IAM Authentication:**
+    - Use IAM roles to manage database access.
+    - Authenticate using AWS Identity and Access Management.
+
+3. **Encryption:**
+    - RDS supports encryption at rest and in transit.
+    - Use AWS Key Management Service (KMS) for encryption key management.
+
+## Monitoring and Management:
+
+1. **CloudWatch Metrics:**
+    - Monitor RDS performance using CloudWatch.
+    - Metrics include CPU utilization, storage, and database connections.
+
+2. **Enhanced Monitoring:**
+    - Provides additional monitoring insights.
+    - Granular view of database performance.
+
+3. **Event Notifications:**
+    - Set up notifications for database events.
+    - Use Amazon SNS for alerting.
+
+## Maintenance:
+
+1. **Automated Backups:**
+    - Daily automated backups with a retention period.
+    - Enables point-in-time recovery.
+
+2. **DB Snapshots:**
+    - Manually initiated snapshots for backup and recovery.
+
+3. **Maintenance Windows:**
+    - Define a window for routine maintenance.
+    - Automated backups and software patching occur during this window.
+
+## Storage Auto Scaling
+
+- Helps you increase storage on your RDS DB instance dynamically.
+- When RDS detects you are running out of free database storage, it scales automatically.
+- Avoid manually scaling your database storage.
+- You have to set a **Maximum Storage Threshold (Maximum Limit)
+- Automatically modify storage if:
+    - Free storate is less than 10% of allocated storage.
+    - Low-storage lasts at least 5 minutes.
+    - 6 hours have passed since last modification.
+- Useful for applications with unpredictable workloads.
