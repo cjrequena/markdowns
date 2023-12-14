@@ -130,6 +130,79 @@ and limits for Amazon EFS:
 
 16. **One Zone Storage Class**: One Zone EFS stores data in a single Availability Zone, which may have reduced availability compared to Standard EFS.
 
-It's important to note that these constraints and limits may vary by AWS Region, and AWS may allow you to request limit increases for certain resources. Always consult the AWS documentation and AWS support for the most current and region-specific information regarding Amazon EFS constraints and limits.
+Amazon Elastic Block Store (EBS) and Amazon Elastic File System (EFS) are both storage solutions provided by AWS, but they serve different purposes and have distinct characteristics. Here's a comparison between EBS and EFS:
 
-This cheat sheet provides a basic overview of Amazon EFS, its storage classes, and key quotas. Be sure to check the AWS documentation for the latest details and any region-specific limits.
+## EFS vs EBS (Use Cases):
+
+1. **EBS (Elastic Block Store):**
+   - Suitable for applications that require low-latency and high-performance block-level storage.
+   - Ideal for use as boot volumes for EC2 instances, databases, and applications that require dedicated storage.
+
+2. **EFS (Elastic File System):**
+   - Suitable for shared file storage scenarios where multiple EC2 instances need access to the same file system.
+   - Ideal for content management systems, web serving environments, and applications with shared data requirements.
+
+### Storage Type:
+
+1. **EBS:**
+   - Provides block-level storage that is directly attached to EC2 instances.
+   - EBS volumes are used as raw block devices, and file systems need to be created on top of them.
+
+2. **EFS:**
+   - Provides file-level storage accessible by multiple EC2 instances concurrently.
+   - Offers a file system interface, and data can be accessed concurrently from multiple EC2 instances using NFS protocols.
+
+### Accessibility:
+
+1. **EBS:**
+   - Attached to a single EC2 instance at a time.
+   - Suitable for scenarios where data needs to be localized to a specific instance.
+
+2. **EFS:**
+   - Can be mounted on multiple EC2 instances simultaneously.
+   - Ideal for scenarios where multiple instances need shared access to the same data.
+
+### Performance:
+
+1. **EBS:**
+   - Performance is tied to the specific EBS volume type chosen (e.g., General Purpose, Provisioned IOPS, Throughput Optimized, Cold HDD).
+   - Suited for applications with specific I/O and throughput requirements.
+
+2. **EFS:**
+   - Performance scales automatically with the size of the file system.
+   - Designed for general-purpose workloads with moderate throughput requirements.
+
+### Scaling:
+
+1. **EBS:**
+   - Scaling involves resizing or adding additional EBS volumes to individual EC2 instances.
+   - Each EBS volume is attached to a specific EC2 instance.
+
+2. **EFS:**
+   - Scales horizontally with the number of EC2 instances that can mount the file system.
+   - No need to manually resize; it grows and shrinks as files are added or removed.
+
+### Durability and Availability:
+
+1. **EBS:**
+   - EBS volumes are replicated within an Availability Zone (AZ) for durability.
+   - Supports snapshots for backup and recovery.
+
+2. **EFS:**
+   - Data is automatically replicated across multiple Availability Zones (AZs) within a region for high availability.
+   - Suitable for use cases requiring higher availability and redundancy.
+
+### Cost Model:
+
+1. **EBS:**
+   - Billed based on provisioned capacity (per GB) and the chosen volume type.
+   - Cost is incurred for each EBS volume attached to an EC2 instance.
+
+2. **EFS:**
+   - Billed based on the amount of data stored (per GB).
+   - Additional costs may apply for data transfer and requests.
+
+### Summary:
+
+- Use EBS for applications that require dedicated block-level storage and need to be localized to specific EC2 instances.
+- Use EFS for shared file storage scenarios where multiple EC2 instances need concurrent access to the same file system.
