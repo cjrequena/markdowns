@@ -36,14 +36,14 @@ and MariaDB.
 ## Advantages
 
 - RDS is a managed service.
-  - Automated provisioning, OS Patching.
-  - Continuous backups and restore to a specific point in time (Point in time restore).
-  - Monitoring dashboards.
-  - Read replicas for improved read performance.
-  - Multi AZ setup for Disaster Recovery and high availability.
-  - Maintenance windows for upgrades.
-  - Scaling capabilities (Vertical and Horizontal)
-  - Storage backed by EBS (gp2 or io1)
+- Automated provisioning, OS Patching.
+- Continuous backups and restore to a specific point in time (Point in time restore).
+- Monitoring dashboards.
+- Read replicas for improved read performance.
+- Multi AZ setup for Disaster Recovery and high availability.
+- Maintenance windows for upgrades.
+- Scaling capabilities (Vertical and Horizontal)
+- Storage backed by EBS (gp2 or io1)
 - You cannot ssh into your instances.  
 
 ## Key Concepts:
