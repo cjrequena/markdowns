@@ -139,3 +139,4 @@ and MariaDB.
 - No manual intervention in apps.
 - Not used for scaling.
 
+## RDS Custom
