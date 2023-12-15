@@ -112,7 +112,7 @@ and MariaDB.
     - Define a window for routine maintenance.
     - Automated backups and software patching occur during this window.
 
-## Storage Auto Scaling
+## RDS Storage Auto Scaling
 
 - Helps you increase storage on your RDS DB instance dynamically.
 - When RDS detects you are running out of free database storage, it scales automatically.
@@ -123,3 +123,19 @@ and MariaDB.
     - Low-storage lasts at least 5 minutes.
     - 6 hours have passed since last modification.
 - Useful for applications with unpredictable workloads.
+
+## RDS Read Replicas
+- Up to 15 read replicas within AZ, cross AZ, cross region.
+- Replication is ASYNC so reads are eventually consistent.
+- Replicas can be promoted to their own DB.
+- Applications must update the connection string to leverage read replicas,
+
+## RDS Multi AZ
+- Mainly used for disaster recovery.
+- SYNC replication.
+- One DNS name -- automatic app fail over to standby.
+- Increase the availability.
+- Fail over in case of loss of AZ, loss of network, instance or storage failure.
+- No manual intervention in apps.
+- Not used for scaling.
+
