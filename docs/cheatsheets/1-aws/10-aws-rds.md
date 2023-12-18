@@ -140,3 +140,16 @@ and MariaDB.
 - Not used for scaling.
 
 ## RDS Custom
+- Full admin access to the underlying OS and the database.
+- For Managed Oracle and Microsoft SQL Server.
+
+## Amazon Aurora
+- Aurora is a propietary technology from AWS (Not open source).
+- Postgres and MySQL are both supported by Aurora DB (that means your driver will work as if Aurora was a Postgres or MySQL database)
+- Aurora is "AWS Cloud Optimized" and claims 5x performance improvement over MySQL and 3x over Postgres on RDS.
+- Aurora storage automatically grows in increments of 10 GB, up to 128 TB.
+- Aurora can have up to 15 read replicas and the replication process is faster than MySQL.
+- Failover in Aurora is instantaneous. It is HA native.
+- Aurora costs more the RDS (20% more).
+
+
