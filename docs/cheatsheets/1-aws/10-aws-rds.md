@@ -143,6 +143,17 @@ and MariaDB.
 - Full admin access to the underlying OS and the database.
 - For Managed Oracle and Microsoft SQL Server.
 
+## RDS Backups
+- Automated backups:
+    - Daily full backup of the database (during the backup window).
+    - Transaction logs are backed-up by RDS every 5 minutes.
+    - Ability to restore to any point in time(from oldest backup to 5 minutes ago).
+    - 1 to 35 days of retention, set 0 to disable automated backups.
+- Manual backups:
+    - Manually triggered by the user
+    - Retention of backup for as long as you want.
+- Trick: In a stopped RDS database, you will pay for storage. If you plan on stopping it for a long period of time, make a snapshot and restore instead.
+
 ## Amazon Aurora
 - Aurora is a propietary technology from AWS (Not open source).
 - Postgres and MySQL are both supported by Aurora DB (that means your driver will work as if Aurora was a Postgres or MySQL database)
@@ -152,4 +163,24 @@ and MariaDB.
 - Failover in Aurora is instantaneous. It is HA native.
 - Aurora costs more the RDS (20% more).
 
+### Aurora HA and Read Scaling
+- 6 copies of your data across 3 AZ
+- One Aurora instance takes writes (master)
+- Automated Failover for master in less than 30 seconds.
+- Master + up to 15 read replicas.
+- Support cross region replication
 
+### Aurora DB Cluster
+- Writer Endpoint pointing to the master.
+- Reader Endpoint pointing to a load balancer that poing to an autoscaling instances.
+
+
+## Aurora Backups
+- Automated backups:
+  - 1 to 35 days of retention (cannot be disabled).
+  - Point in time recovery in that timeframe.
+- Manual backups:
+    - Manually triggered by the user
+    - Retention of backup for as long as you want.
+
+## RDS and Aurora Security
