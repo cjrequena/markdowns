@@ -184,3 +184,13 @@ and MariaDB.
     - Retention of backup for as long as you want.
 
 ## RDS and Aurora Security
+
+- **At-rest encryption**
+  - Database master and replicas encryption using AWS KMS --must be defined at launch time.
+  - If the master is not encrypted, the replicas cannot be encrypted.
+  - To encrypt an unencrypted database, go through a DB snapshot and restore as encrypted.
+- **In-transit encryption** TLS ready by default, use the AWS TLS root certificates client-side
+- **IAM Authentication** IAM roles to connect to your database (instead of user/pass)
+- **Security Groups** Control network access to your RDS/Aurora DB
+- **Not SSH available** Except for RDS Custom
+- **Audit Logs can be enabled** and send to CloudWatch logs for longer retention.
