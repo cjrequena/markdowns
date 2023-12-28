@@ -61,21 +61,8 @@ General Purpose SSD (gp2) volumes are versatile and cost-effective storage optio
 
 Always consult the latest AWS documentation for any updates or changes to EBS offerings and performance characteristics.
 
-### Provisioned IOPS SSD (io2 and io1):
 
-Amazon Elastic Block Store (EBS) io classes, specifically io1 and io2, are designed for applications that require high levels of input/output operations per second (IOPS) and
-low-latency storage performance. Below is a detailed overview of the EBS io classes as of my last knowledge update in January 2022. Please verify the most up-to-date information in
-the AWS documentation, as offerings may have evolved since then.
-
-- **Volume Size**: 4 GiB to 16 TiB
-
-- **Throughput**: 256 KiB/s per provisioned IOPS, with a minimum of 100 MiB/s
-
-- **IOPS**: Up to 64,000 IOPS (io2) or 32,000 IOPS (io1) per volume
-
-- **Max IOPS-to-Volume Size Ratio**: 500 IOPS per GiB (io2) or 50 IOPS per GiB (io1)
-
-#### **io1 (Provisioned IOPS SSD):**
+### **io1 (Provisioned IOPS SSD):**
 
 - **Use Cases:** io1 volumes are suitable for applications with high I/O requirements, such as relational databases (e.g., MySQL, PostgreSQL), NoSQL databases (e.g., Cassandra), and transactional applications.
 
@@ -87,7 +74,7 @@ the AWS documentation, as offerings may have evolved since then.
 
 - **Durability:** io1 volumes are designed to provide high durability and availability for critical applications.
 
-#### **io2 (Provisioned IOPS SSD):**
+### **io2 (Provisioned IOPS SSD):**
 
 - **Use Cases:** io2 volumes are designed for critical production workloads that require consistently high IOPS performance, low-latency storage, and enhanced durability. They are suitable for applications like SAP HANA, high-performance databases, and financial applications.
 
