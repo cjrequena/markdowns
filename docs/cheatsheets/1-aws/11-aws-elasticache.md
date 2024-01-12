@@ -3,10 +3,10 @@ layout: default
 title: aws-route53
 parent: aws
 grand_parent: cheatsheets
-permalink: /docs/aws/aws-route53
+permalink: /docs/aws/aws-elasticache
 nav_order: 11
 ---
-# AWS Route53
+# AWS Elasticache
 {: .no_toc }
 
 ## Table of contents
