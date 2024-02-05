@@ -1,6 +1,6 @@
 ---
 layout: default
-title: aws-route53
+title: aws-elasticache
 parent: aws
 grand_parent: cheatsheets
 permalink: /docs/aws/aws-elasticache

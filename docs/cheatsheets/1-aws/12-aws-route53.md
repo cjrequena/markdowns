@@ -25,7 +25,7 @@ nav_order: 12
   - api.example.com
   - http://api.www.example.com
 
-<img style="float: left;" src="https://cjrequena/marckdown/assets/url.png" width="50%" alt=""/>
+<img style="float: left;" src="https://cjrequena.com/markdowns/assets/url.png" width="50%" alt=""/>
 
 - 
 ## Test 2
