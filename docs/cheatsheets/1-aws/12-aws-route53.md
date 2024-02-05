@@ -25,6 +25,14 @@ nav_order: 12
   - api.example.com
   - http://api.www.example.com
 
+### DNS Terminologies
+- **Domain Registrar:** AWS Route 53, GoDaddy, ...
+- **DNS Records:** A, AAAA, CNAME, NS, ...
+- **Zone File:** Contains DNS records
+- **Name Server:** Resolves DNS queries (Authoritative or Non-Authoritative)
+- **Top Level Domain (TLD):** .com, .eu, .io, .es, ...
+- **Second Level Domain (SLD):** amazon.com, cjrequena.com, google.com
+
 <img style="display: block; margin-left: 0x; margin-right: auto; width: 50%;" src="https://cjrequena.com/markdowns/assets/images/url.png" width="50%" alt=""/>
 
 - 
