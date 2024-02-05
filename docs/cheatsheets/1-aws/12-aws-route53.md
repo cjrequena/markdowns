@@ -17,7 +17,17 @@ nav_order: 12
 
 ---
 
-## Test 1
+## What is a DNS?
+- The Domain Name System (DNS) is a fundamental protocol on the Internet that translates human-readable domain names into machine-readable IP addresses. DNS plays a crucial role in ensuring users can access websites, send emails, and perform various online activities seamlessly.
+- DNS uses hierarchical naming structure
+  - .com
+  - example.com
+  - api.example.com
+  - http://api.www.example.com
+
+<img float: left; src="https://cjrequena/marckdown/assets/url.png" width="50%" alt=""/>
+
+- 
 ## Test 2
 ## Test 3
 ## Test 4
