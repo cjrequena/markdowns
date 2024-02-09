@@ -66,7 +66,6 @@ nav_order: 12
 - **IP-based**
 - **Multi Value**
 
-
 ### **5. Health Checks:**
 - Monitor the health of resources to ensure availability.
 - Configure health checks for endpoints and automatically route traffic away from unhealthy resources.
@@ -115,6 +114,33 @@ CNAME (Canonical Name) and Alias records serve similar purposes in AWS Route 53,
 - when you need better performance and integration with AWS services like ELB, S3, or CloudFront.
 - Alias Records cannot be set for EC2 DNS name
 
-## Test 4
-## Test 5
-## Test 6
+## ### AWS Route 53 Cheat Sheet:
+
+**1. Create a Hosted Zone:**
+- Navigate to the Route 53 console.
+- Choose "Create Hosted Zone" and follow the wizard.
+- Obtain the assigned nameservers for the hosted zone.
+
+**2. Create DNS Records:**
+- Within the hosted zone, select "Create Record Set."
+- Choose the desired record type (A, CNAME, etc.).
+- Enter the necessary information and save changes.
+
+**3. Traffic Policies:**
+- Configure routing policies under "Traffic Management."
+- Create policies for weighted, latency-based, geolocation, or failover routing.
+
+**4. Health Checks:**
+- Set up health checks under "Health Checks."
+- Define the protocol, port, and endpoint for health monitoring.
+
+**5. Domain Registration:**
+- Register a new domain via the Route 53 console.
+- Manage existing domains and update registration details.
+
+**6. Alias Records:**
+- Utilize alias records to map domains to AWS resources.
+- Choose "Alias" when creating records for AWS services.
+
+**7. Integration with Other Services:**
+- Link domains to various AWS services using Alias records.
