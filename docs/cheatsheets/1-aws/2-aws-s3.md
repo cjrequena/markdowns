@@ -13,17 +13,26 @@ nav_order: 2
 
 - **Simple Storage Service** (S3) Object-based storage. Store **unlimited** amount of data without worry of underlying storage
   infrastructure.
+- S3 allows people to store objects (files) in buckets (directories)
 - S3 replicates data across at least 3 AZs to ensure 99.99% Availability and 11'9s of durability.
 - Objects contain data (they're like files).
 - Objects can be size anywhere from 0 Bytes up to 5 Terabytes.
 - Objects consist of the following:  
-  Key: This is simply the name of the object.  
-  Value: This is simply the data and is made up of a sequence of Bytes.  
-  VersionId: Used for versioning  
-  Metadata: Data about the data you are storing  
-  Sub-resources: ACLs, torrent
+  **Key:** This is simply the name of the object.  The key is the full path, e.g: s3://my-bucket/my_file.txt
+  **Value:** This is simply the data and is made up of a sequence of Bytes.  
+  **VersionId:** Used for versioning  
+  **Metadata:** Data about the data you are storing  
+  **Sub-resources:** ACLs, torrent
 - Buckets contain objects. Buckets can also contain folders which can in turn can contain objects.
 - Bucket names are unique across all AWS accounts. Like a domain name.
+- Buckets are define at region level. S3 looks like a global service but are created in a region.
+- Buckets naming convention:
+  - No uppercase, No underscore
+  - 3 to 63 characters long
+  - Not an IP
+  - Must start with a lowercase letter or a number.
+  - Must not start with the prefix xn--
+  - Must not end with suffix -s3alias
 - When you upload a file to S3 successfully you'll receive a HTTP 200 code.
 - S3 data consistency:  
   Read after write consistency for PUTS of new objects    
