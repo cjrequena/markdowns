@@ -37,6 +37,7 @@ nav_order: 5
 
 1. **EC2 Instance Types:**
 - EC2 instances come in various types optimized for different workloads (e.g., t2.micro, m5.large, c5.xlarge).
+- [EC2 instance Types](https://aws.amazon.com/ec2/instance-types/)
 
 2. **Regions and Availability Zones:**
 - Choose the AWS region and availability zone carefully for fault tolerance and proximity to users.
