@@ -41,7 +41,7 @@ shasum [OPTIONS] [FILES]
 
 ### Examples:
 
-#### Calculating SHA (Secure Hash Algorithm):
+**Calculating SHA (Secure Hash Algorithm):**
 
 1. **Calculate SHA-256 Hash:**
    ```shell
@@ -68,7 +68,7 @@ shasum [OPTIONS] [FILES]
    shasum -a 256 -p filename
    ```
 
-#### Verifying and checking SHA (Secure Hash Algorithm):
+**Verifying and checking SHA (Secure Hash Algorithm):**
 
 1. **Check Single File Integrity:**
    ```shell
