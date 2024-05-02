@@ -49,22 +49,22 @@ shasum [OPTIONS] [FILES]
    ```
 
 2. **Calculate SHA-512 Hash (Verbose Output):**
-   ```
+   ```shell
    shasum -a 512 -v filename
    ```
 
 3. **Calculate SHA-256 Hash for Multiple Files:**
-   ```
+   ```shell
    shasum -a 256 file1.txt file2.txt
    ```
 
 4. **Calculate SHA-256 Hash in Binary Mode:**
-   ```
+   ```shell
    shasum -a 256 -b filename
    ```
 
 5. **Calculate SHA-256 Hash in Portable Mode:**
-   ```
+   ```shell
    shasum -a 256 -p filename
    ```
 
@@ -72,7 +72,7 @@ shasum [OPTIONS] [FILES]
 
 1. **Check Single File Integrity:**
    ```shell
-   shasum --check checksums.txt --ignore-missing
+   shasum --check checksums.txt
    ```
    ```shell
    shasum -a 256 -c checksums.txt
@@ -83,46 +83,46 @@ shasum [OPTIONS] [FILES]
    ```shell
    shasum -a 512 -c checksums.txt --ignore-missing
    ```
-   - This commands reads the checksums from the `checksums.txt` file and verifies the integrity of the files listed.
+   - These commands read the checksums from the `checksums.txt` file and verifies the integrity of the files listed.
 
 2. **Check Multiple File Integrity:**
-   ```
+   ```shell
    shasum -a 512 -c *.sha512
    ```
    - This command reads the checksums from all `.sha512` files in the current directory and verifies the integrity of the corresponding files using SHA-512 hash algorithm.
 
 3. **Check Integrity with Verbose Output:**
-   ```
+   ```shell
    shasum -a 256 -c -v checksums.txt
    ```
    - The `-v` option provides verbose output, displaying the filename along with the result of the integrity check for each file.
 
 4. **Check Integrity of Binary Files:**
-   ```
+   ```shell
    shasum -a 256 -c -b checksums.bin
    ```
    - Use the `-b` option to read binary files and verify their integrity against the checksums provided in `checksums.bin`.
 
 5. **Check Integrity of a Single File:**
-   ```
+   ```shell
    shasum -a 1 -c file1.txt.sha1
    ```
    - This command verifies the integrity of `file1.txt` using the SHA-1 hash algorithm and the checksum provided in `file1.txt.sha1`.
 
 6. **Check Integrity and Suppress Output:**
-   ```
+   ```shell
    shasum -a 256 -s -c checksums.txt
    ```
    - The `-s` option suppresses normal output, useful for scripting. It only shows a summary of the integrity check status.
 
 7. **Check Integrity of Files Listed in a Directory:**
-   ```
+   ```shell
    shasum -a 256 -c /path/to/directory/checksums.txt
    ```
    - This command reads the checksums from `checksums.txt` located in the specified directory and verifies the integrity of the files listed within it using SHA-256 hash algorithm.
 
 8. **Check Integrity Using Portable Mode:**
-   ```
+   ```shell
    shasum -a 256 -c -p checksums.txt
    ```
    - The `-p` option produces a portable result, which can be useful when comparing checksums across different platforms or systems.
