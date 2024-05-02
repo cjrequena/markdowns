@@ -41,38 +41,92 @@ shasum [OPTIONS] [FILES]
 
 ### Examples:
 
-1. Calculate the SHA-256 checksum of a file:
+#### Calculating SHA (Secure Hash Algorithm):
+
+1. **Calculate SHA-256 Hash:**
    ```shell
-   shasum myfile.txt
+   shasum -a 256 filename
    ```
-2. Calculate the SHA-512 checksum of multiple files:
+
+2. **Calculate SHA-512 Hash (Verbose Output):**
+   ```
+   shasum -a 512 -v filename
+   ```
+
+3. **Calculate SHA-256 Hash for Multiple Files:**
+   ```
+   shasum -a 256 file1.txt file2.txt
+   ```
+
+4. **Calculate SHA-256 Hash in Binary Mode:**
+   ```
+   shasum -a 256 -b filename
+   ```
+
+5. **Calculate SHA-256 Hash in Portable Mode:**
+   ```
+   shasum -a 256 -p filename
+   ```
+
+#### Verifying and checking SHA (Secure Hash Algorithm):
+
+1. **Check Single File Integrity:**
    ```shell
-   shasum -a 512 file1.txt file2.txt
+   shasum --check checksums.txt --ignore-missing
    ```
-3. Verify checksums stored in a file:
    ```shell
-   shasum -c checksums.txt
+   shasum -a 256 -c checksums.txt
    ```
-4. Calculate the SHA-256 checksum of a file and display only the checksum value:
    ```shell
-   shasum -a 256 -p myfile.txt
+   shasum -a 256 -c checksums.txt --ignore-missing
    ```
-5. Verify checksums and display the status:
    ```shell
-   shasum -s -c checksums.txt
+   shasum -a 512 -c checksums.txt --ignore-missing
    ```
-6. If you have a specific checksum value (e.g., a1b2c3d4e5f6) and want to verify a single file, use the following command:
-   ```shell
-   shasum -c <<< "a1b2c3d4e5f6  filename.txt"
+   - This commands reads the checksums from the `checksums.txt` file and verifies the integrity of the files listed.
+
+2. **Check Multiple File Integrity:**
    ```
-7. Check the hash of a file
-   ```shell
-   $ echo "{hash}  {filename}" | shasum -a 256 -c -
-   $ echo | shasum -a 256 {filename} | shasum -a 256 -c -
-   $ shasum -c <<< "{hash}  {filename}"
-   $ shasum -c <<< "a4bffc71f406e7c381b3a9692e980d233c244ce26b3f7ea7170c447f8fe3f1e5  BlockstreamGreen_MacOS_x86_64.zip"
-   $ shasum -c SHA256SUMS.asc
+   shasum -a 512 -c *.sha512
    ```
+   - This command reads the checksums from all `.sha512` files in the current directory and verifies the integrity of the corresponding files using SHA-512 hash algorithm.
+
+3. **Check Integrity with Verbose Output:**
+   ```
+   shasum -a 256 -c -v checksums.txt
+   ```
+   - The `-v` option provides verbose output, displaying the filename along with the result of the integrity check for each file.
+
+4. **Check Integrity of Binary Files:**
+   ```
+   shasum -a 256 -c -b checksums.bin
+   ```
+   - Use the `-b` option to read binary files and verify their integrity against the checksums provided in `checksums.bin`.
+
+5. **Check Integrity of a Single File:**
+   ```
+   shasum -a 1 -c file1.txt.sha1
+   ```
+   - This command verifies the integrity of `file1.txt` using the SHA-1 hash algorithm and the checksum provided in `file1.txt.sha1`.
+
+6. **Check Integrity and Suppress Output:**
+   ```
+   shasum -a 256 -s -c checksums.txt
+   ```
+   - The `-s` option suppresses normal output, useful for scripting. It only shows a summary of the integrity check status.
+
+7. **Check Integrity of Files Listed in a Directory:**
+   ```
+   shasum -a 256 -c /path/to/directory/checksums.txt
+   ```
+   - This command reads the checksums from `checksums.txt` located in the specified directory and verifies the integrity of the files listed within it using SHA-256 hash algorithm.
+
+8. **Check Integrity Using Portable Mode:**
+   ```
+   shasum -a 256 -c -p checksums.txt
+   ```
+   - The `-p` option produces a portable result, which can be useful when comparing checksums across different platforms or systems.
+
 ### Output Format:
 
 The default output format of `shasum` is:
