@@ -36,9 +36,37 @@ Subnets in Amazon Virtual Private Cloud (VPC) are logical segments of IP address
 role in segmenting and isolating resources, providing network security, and enabling communication between instances. 
 
 ### Route Tables
-Route tables in Amazon Virtual Private Cloud (VPC) control the routing of network traffic between subnets and to external 
-networks, such as the internet or on-premises networks. Each subnet in a VPC must be associated with a route table, which 
-determines how traffic is directed.
+Route tables in AWS are used to determine where network traffic is directed within a virtual private cloud (VPC). They 
+act as a set of rules, called routes, that specify how packets should be forwarded. Each VPC comes with a default route 
+table, and you can create additional custom route tables to suit your networking needs.
+
+**Components of a Route Table:**
+1. **Routes**: Routes define the destination network and the target where traffic should be sent. This target can be an internet gateway, a virtual private gateway (for VPN connections), a VPC peering connection, a network interface, or a NAT gateway.
+
+2. **Associations**: Route tables are associated with subnets within a VPC. Each subnet can only be associated with one route table at a time. If a subnet isn't explicitly associated with a custom route table, it uses the default route table of the VPC.
+
+3. **Propagation**: Route tables can propagate routes from VPN connections and Direct Connect gateways. This allows you to route traffic from your VPC to your corporate network or other networks connected to your AWS infrastructure.
+
+**Example Scenario:**
+Let's consider a simple scenario where you have a VPC with two subnets: one public subnet and one private subnet. You want instances in the public subnet to have internet access, while instances in the private subnet should only communicate with each other and with resources within your VPC.
+
+1. **Create a Custom Route Table**:
+    - First, you create a custom route table named "PublicRouteTable" for your public subnet. This route table will have a route pointing to an internet gateway (IGW) to enable internet access.
+
+2. **Define Routes**:
+    - In the "PublicRouteTable", you add a route with a destination of `0.0.0.0/0` (which represents all internet-bound traffic) and the target as the internet gateway ID.
+
+3. **Associate with Public Subnet**:
+    - Next, you associate the "PublicRouteTable" with your public subnet.
+
+4. **Create a Default Route Table**:
+    - Your VPC already has a default route table. This default route table will be used for your private subnet unless you specify otherwise.
+
+5. **Configure Private Subnet**:
+    - Since you want your private subnet to communicate only within the VPC, you don't need an internet gateway. Instances in the private subnet can communicate with each other and resources in the VPC.
+
+6. **Associate with Private Subnet**:
+    - The default route table is automatically associated with any subnet created within the VPC that isn't explicitly associated with another route table. So, your private subnet will use the default route table by default.
 
 ### Network ACLs
 Network Access Control Lists (ACLs) in Amazon Virtual Private Cloud (VPC) act as stateless firewalls for controlling 
