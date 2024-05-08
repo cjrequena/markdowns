@@ -17,11 +17,10 @@ nav_order: 3
 
 ---
 
-## 1. Introduction to AWS VPC
+## Introduction to AWS VPC
 AWS Virtual Private Cloud (VPC) allows you to create isolated network environments within the AWS cloud. It enables you to launch resources in a logically isolated section of the AWS Cloud.
 
-## 2. VPC Basics
-### Components of a VPC
+## Components of a VPC
 A VPC consists of:
 - IP Address Range (CIDR block)
 - Subnets
@@ -51,47 +50,47 @@ Security Groups in Amazon Virtual Private Cloud (VPC) act as virtual firewalls t
 for instances at instance level. They are a fundamental component of network security within AWS and play a crucial role 
 in enforcing access control policies.
 
-## 3. Subnet Configuration
+## Subnet Configuration
 ### Public Subnets
 Public subnets have direct route to the internet via an Internet Gateway. Typically used for resources that need public accessibility.
 
 ### Private Subnets
 Private subnets have no direct route to the internet. Used for resources requiring additional security.
 
-## 4. Network Access Control
+## Network Access Control
 ### Security Groups
 Act as a virtual firewall for EC2 instances. Control inbound/outbound traffic at the instance level.
 
 ### Network ACLs
 Control traffic entering/exiting the subnet. Stateless and rule-based. Applied at the subnet level.
 
-## 5. VPC Peering
+## VPC Peering
 Connect VPCs together, allowing resources to communicate across VPCs securely using private IP addresses.
 
-## 6. VPN and Direct Connect
+## VPN and Direct Connect
 Establish secure connections between on-premises networks and VPCs using VPN (Virtual Private Network) or Direct Connect.
 
-## 7. Internet Gateway and NAT Gateway
+## Internet Gateway and NAT Gateway
 - **Internet Gateway**: Allows resources in public subnets to connect to the internet.
 - **NAT Gateway**: Enables instances in private subnets to access the internet while preventing inbound traffic.
 
-## 8. VPC Endpoints
+## VPC Endpoints
 Enable private connectivity between VPCs and supported AWS services (e.g., S3, DynamoDB) without using public internet.
 
-## 9. VPC Flow Logs
+## VPC Flow Logs
 Capture information about IP traffic going to and from network interfaces in your VPC. Useful for troubleshooting and security analysis.
 
-## 10. Best Practices
+## Best Practices
 - Properly design your VPC architecture for scalability, fault tolerance, and security.
 - Use security groups and network ACLs effectively to control traffic.
 - Utilize public and private subnets based on resource requirements.
 
-## 11. Troubleshooting
+## Troubleshooting
 - Check security group and network ACL rules.
 - Review route tables and internet/NAT gateway configurations.
 - Analyze VPC flow logs for traffic insights.
 
-## 12. Further Resources
+## Further Resources
 - [AWS VPC Documentation](https://docs.aws.amazon.com/vpc)
 - [AWS Well-Architected Framework](https://aws.amazon.com/architecture/well-architected/)
 - [VPC Cheat Sheet](https://cjrequena.com/markdowns/docs/aws/aws-cli#aws-cli-commands-for-amazon-vpc)
