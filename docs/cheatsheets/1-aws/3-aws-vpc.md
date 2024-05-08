@@ -47,7 +47,7 @@ table, and you can create additional custom route tables to suit your networking
 
 3. **Propagation**: Route tables can propagate routes from VPN connections and Direct Connect gateways. This allows you to route traffic from your VPC to your corporate network or other networks connected to your AWS infrastructure.
 
-**Example Scenario:**
+**Example Scenario:**   
 Let's consider a simple scenario where you have a VPC with two subnets: one public subnet and one private subnet. You want instances in the public subnet to have internet access, while instances in the private subnet should only communicate with each other and with resources within your VPC.
 
 1. **Create a Custom Route Table**:
