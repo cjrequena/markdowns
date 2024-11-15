@@ -1,6 +1,6 @@
 ---
 layout: default
-title: cryptography
+title: unix
 nav_order: 4
 has_children: true
 parent: cheatsheets
