@@ -17,6 +17,7 @@ nav_order: 1
 {:toc}
 
 ---
+### chmod
 
 `chmod` is a command used in Unix-based systems (like Linux and macOS) to modify the access permissions of files and directories. Permissions define who can read, write, or execute a file. This guideline provides an overview of how to use `chmod` effectively.
 
