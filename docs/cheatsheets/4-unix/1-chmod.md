@@ -22,22 +22,6 @@ nav_order: 1
 
 ---
 
-### Table of Contents
-1. **Understanding Permissions**
-   - Permission Types
-   - Permission Symbols and Numeric Codes
-2. **Basic Syntax of `chmod`**
-3. **Using Symbolic Permissions**
-4. **Using Numeric (Octal) Permissions**
-5. **Recursive Permissions**
-6. **Examples of Common `chmod` Commands**
-7. **Special Permissions**
-   - Setuid
-   - Setgid
-   - Sticky Bit
-
----
-
 ### 1. Understanding Permissions
 
 Permissions on Unix-like systems are split into three categories:
