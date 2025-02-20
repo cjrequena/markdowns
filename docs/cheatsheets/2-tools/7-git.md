@@ -12,18 +12,14 @@ nav_order: 7
 This cheat sheet features the most important and commonly used git commands for easy reference.
 Git Tips and Tricks (A collection of useful tips and tricks for Git)
 
+## External Resources
+- [Git Cheat Sheet PDF](https://education.github.com/git-cheat-sheet-education.pdf)
 
 ## Table of contents
 {: .no_toc .text-delta }
 
 1. TOC
 {:toc}
-
----
-
-
-## External Resources
-- [Git Cheat Sheet PDF](https://education.github.com/git-cheat-sheet-education.pdf)
 
 ---
 
