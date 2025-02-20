@@ -1,8 +1,10 @@
 ---
 layout: default
 title: git
-parent: cheatsheets
-nav_order: 101
+parent: tools
+grand_parent: cheatsheets
+permalink: /docs/tools/git
+nav_order: 7
 ---
 
 # Git Cheat Sheet
