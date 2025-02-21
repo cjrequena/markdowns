@@ -18,12 +18,12 @@ Git Tips and Tricks (A collection of useful tips and tricks for Git)
 ## Table of contents
 {: .no_toc .text-delta }
 
-TOC
+1. TOC
 {:toc}
 
 ---
 
-## **1. Configurations**
+## **Configurations**
 
 ### Setup & Configuration
 ```bash
@@ -36,7 +36,7 @@ git config --global core.autocrlf true             # Handle line endings
 
 ---
 
-## **2. Creating and Managing Repositories**
+## **Creating and Managing Repositories**
 
 ### Initialize a Repository
 ```bash
@@ -51,7 +51,7 @@ git status                      # Check status of files
 
 ---
 
-## **3. Working with Files**
+## **Working with Files**
 
 ### Adding and Removing Files
 ```bash
@@ -69,7 +69,7 @@ git diff --staged               # View staged changes
 
 ---
 
-## **4. Committing Changes**
+## **Committing Changes**
 
 ### Basic Commit
 ```bash
@@ -84,7 +84,7 @@ git commit -a -m "Your commit message"    # Add all tracked files and commit
 
 ---
 
-## **5. Branching**
+## **Branching**
 
 ### Basic Branch Commands
 ```bash
@@ -98,7 +98,7 @@ git branch -D <branch_name>             # Force delete a branch
 
 ---
 
-## **6. Merging and Rebasing**
+## **Merging and Rebasing**
 
 ### Merging
 ```bash
@@ -121,7 +121,7 @@ git rebase --abort                       # Abort rebase
 
 ---
 
-## **7. Stashing**
+## **Stashing**
 
 ### Saving Temporary Changes
 ```bash
@@ -134,7 +134,7 @@ git stash drop                           # Delete the stash
 
 ---
 
-## **8. Viewing History**
+## **Viewing History**
 
 ### Log Commands
 ```bash
@@ -146,7 +146,7 @@ git log -p                               # Show changes in each commit
 
 ---
 
-## **9. Undoing Changes**
+## **Undoing Changes**
 
 ### Discard Changes
 ```bash
@@ -163,7 +163,7 @@ git reset --hard <commit_hash>           # Reset to a previous commit (discard c
 
 ---
 
-## **10. Synchronizing with Remote**
+## **Synchronizing with Remote**
 
 ### Managing Remotes
 ```bash
@@ -182,7 +182,7 @@ git push -u origin <branch_name>         # Push branch and set upstream
 
 ---
 
-## **11. Tags**
+## **Tags**
 
 ### Working with Tags
 ```bash
@@ -195,7 +195,7 @@ git push origin --tags                   # Push all tags to remote
 
 ---
 
-## **12. Collaboration**
+## **Collaboration**
 
 ### Viewing and Working on Changes
 ```bash
@@ -212,7 +212,7 @@ git commit
 
 ---
 
-## **13. Advanced Commands**
+## **Advanced Commands**
 
 ### Clean Untracked Files
 ```bash
@@ -232,7 +232,7 @@ git rebase -i HEAD~<number_of_commits>   # Squash commits interactively
 
 ---
 
-## **14. Hooks**
+## **Hooks**
 
 ### Common Hooks
 ```bash
@@ -243,7 +243,7 @@ pre-push                                 # Script that runs before a push
 
 ---
 
-## **15. Troubleshooting**
+## **Troubleshooting**
 
 ### Unfinished Operations
 ```bash
@@ -259,15 +259,7 @@ git push --force                         # Force push changes
 
 ---
 
-Here’s an **updated Git cheat sheet**, now including **rewriting history** and a deeper dive into **stashing**.
-
----
-
-# **Git Cheat Sheet with Advanced Topics**
-
----
-
-## **16. Rewriting History**
+## **Rewriting History**
 
 ### Modifying the Most Recent Commit
 ```bash
@@ -321,7 +313,7 @@ git push --force                             # Push rewritten history to remote
 
 ---
 
-## **17. Advanced Stashing**
+## **Advanced Stashing**
 
 ### Save Changes to Stash
 ```bash
@@ -368,12 +360,12 @@ git stash clear                              # Remove all stashes
 ---
 
 ## **Key Differences: Apply vs. Pop**
-- **`git stash apply`:** Applies the stash but keeps it in the stash list.
-- **`git stash pop`:** Applies the stash and removes it from the stash list.
+- **`git stash apply`:**Applies the stash but keeps it in the stash list.
+- **`git stash pop`:**Applies the stash and removes it from the stash list.
 
 ---
 
-## **18. Additional Tips for History Rewriting**
+## **Additional Tips for History Rewriting**
 
 ### Remove Sensitive Data from History
 If a file with sensitive data (e.g., `passwords.txt`) was committed:
@@ -390,9 +382,7 @@ git push --force --all
 
 ---
 
-These advanced topics are vital for working with complex Git repositories and maintaining a clean history. If you'd like further explanations or examples for any section, let me know!
-
-This guide should provide you with everything you need for daily Git operations. If you need additional details on any command, use:
+If you need additional details on any command, use:
 ```bash
 git help <command>
 ```
