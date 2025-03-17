@@ -37,15 +37,11 @@ If Homebrew is not installed, install it with:
 ```
 Then, restart your terminal.
 
----
-
 ### **Install Visual Studio Code**
 Run:
 ```sh
 brew install --cask visual-studio-code
 ```
-
----
 
 ### **Verify Installation**
 Check if VS Code is installed:
@@ -53,8 +49,6 @@ Check if VS Code is installed:
 code --version
 ```
 If VS Code doesn’t open, restart your terminal and try again.
-
----
 
 ### **(Optional) Add `code` Command to PATH**
 If the `code` command doesn’t work, add it manually:
@@ -65,8 +59,6 @@ Now, you can open VS Code from the terminal using:
 ```sh
 code .
 ```
-
----
 
 ### **(Optional) Install Useful Extensions via Homebrew**
 You can install VS Code extensions directly from Homebrew:
