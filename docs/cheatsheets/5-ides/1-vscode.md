@@ -210,7 +210,7 @@ Now, when you open the project, it runs inside a **containerized environment**.
 
 ---
 
-## **Bonus: Automate Setup on a New Machine**
+## **Automate Setup on a New Machine**
 To restore everything quickly on a new machine:
 1. Install **VS Code**.
 2. Enable **Settings Sync**.
@@ -218,3 +218,66 @@ To restore everything quickly on a new machine:
 4. Install all necessary **profiles and extensions**.
 
 ---
+
+## **Uninstall VS Code**
+
+### Uninstall using Homebrew
+If you installed **VS Code** using Homebrew, run:
+```sh
+brew uninstall --cask visual-studio-code
+```
+To confirm it's gone, check:
+```sh
+brew list --cask | grep visual-studio-code
+```
+
+If it's still listed, force remove it:
+```sh
+brew uninstall --cask --force visual-studio-code
+```
+
+### **Delete Configuration Files and Cache**
+Even after uninstalling, VS Code leaves behind settings, extensions, and cache. Remove them manually:
+
+### **Delete VS Code User Data**
+```sh
+rm -rf ~/Library/Application\ Support/Code
+```
+
+### **Delete VS Code Extensions**
+```sh
+rm -rf ~/.vscode
+```
+
+### **Delete Cache Files**
+```sh
+rm -rf ~/Library/Caches/com.microsoft.VSCode
+rm -rf ~/Library/Caches/com.microsoft.VSCode.ShipIt
+```
+
+### **Remove Logs**
+```sh
+rm -rf ~/Library/Logs/Code
+```
+
+### **Remove Saved Application State**
+```sh
+rm -rf ~/Library/Saved\ Application\ State/com.microsoft.VSCode.savedState
+```
+
+### **Verify VS Code is Fully Removed**
+Run:
+```sh
+ls ~/Library/Application\ Support/ | grep Code
+ls ~/.vscode
+```
+If nothing appears, **VS Code is completely removed**.
+
+### **Remove Homebrew Cask Data (Optional)**
+To ensure all traces are removed from Homebrew:
+```sh
+brew cleanup
+```
+
+### **Restart Your Mac (Recommended)**
+This ensures no background processes are running from VS Code.
