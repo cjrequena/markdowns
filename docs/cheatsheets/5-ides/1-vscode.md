@@ -3,7 +3,7 @@ layout: default
 title: vscode
 parent: ides
 grand_parent: cheatsheets
-permalink: /docs/unix/vscode
+permalink: /docs/ides/vscode
 nav_order: 1
 ---
 
