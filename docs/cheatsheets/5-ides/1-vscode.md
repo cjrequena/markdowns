@@ -221,7 +221,7 @@ To restore everything quickly on a new machine:
 
 ## **Uninstall VS Code**
 
-### Uninstall using Homebrew
+### **Uninstall using Homebrew**
 If you installed **VS Code** using Homebrew, run:
 ```sh
 brew uninstall --cask visual-studio-code
