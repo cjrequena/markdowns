@@ -1,6 +1,6 @@
 ---
 layout: default
-title: template
+title: business-rule-data-model-and-structure-specification
 parent: software-engineering
 nav_order: 999
 ---
