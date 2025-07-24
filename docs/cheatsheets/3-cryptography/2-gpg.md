@@ -363,6 +363,66 @@ Examples:
 
 ---
 
+## Shell Script: Symmetric → Asymmetric Encryption :: Asymmetric --> Symmetric Decryption
+
+```shell
+#!/bin/bash
+
+# Filename: gpg_encrypt_symmetric_then_asymmetric.sh
+# Description: Encrypts a file symmetrically, then asymmetrically.
+#              Can also decrypt the result by reversing the steps.
+
+# Encrypt: ./gpg_encrypt_symmetric_then_asymmetric.sh encrypt input.txt recipient@example.com
+# Decrypt: ./gpg_encrypt_symmetric_then_asymmetric.sh decrypt input.txt.asymmetric.gpg
+
+encrypt_file() {
+    INPUT="$1"
+    RECIPIENT="$2"
+    SYM_FILE="${INPUT}.symmetric.gpg"
+    FINAL_FILE="${INPUT}.asymmetric.gpg"
+
+    echo "🔐 [1/2] Symmetric encryption of '$INPUT'..."
+    gpg --batch --yes --symmetric --cipher-algo AES256 --output "$SYM_FILE" "$INPUT"
+
+    echo "🔐 [2/2] Asymmetric encryption of '$SYM_FILE' for $RECIPIENT..."
+    gpg --batch --yes --encrypt --recipient "$RECIPIENT" --output "$FINAL_FILE" "$SYM_FILE"
+
+    rm -f "$SYM_FILE"
+    echo "✅ Encrypted: $FINAL_FILE"
+}
+
+decrypt_file() {
+    ENCRYPTED_FILE="$1"
+    INTERMEDIATE_FILE="${ENCRYPTED_FILE%.asymmetric.gpg}.symmetric.gpg"
+    OUTPUT_FILE="${ENCRYPTED_FILE%.asymmetric.gpg}.decrypted"
+
+    echo "🔓 [1/2] Asymmetric decryption of '$ENCRYPTED_FILE'..."
+    gpg --batch --yes --output "$INTERMEDIATE_FILE" --decrypt "$ENCRYPTED_FILE"
+
+    echo "🔓 [2/2] Symmetric decryption of '$INTERMEDIATE_FILE'..."
+    gpg --batch --yes --output "$OUTPUT_FILE" --decrypt "$INTERMEDIATE_FILE"
+
+    rm -f "$INTERMEDIATE_FILE"
+    echo "✅ Decrypted: $OUTPUT_FILE"
+}
+
+# Main
+if [[ "$1" == "encrypt" && -n "$2" && -n "$3" ]]; then
+    encrypt_file "$2" "$3"
+elif [[ "$1" == "decrypt" && -n "$2" ]]; then
+    decrypt_file "$2"
+else
+    echo "Usage:"
+    echo "  Encrypt: $0 encrypt <input_file> <recipient_email>"
+    echo "  Decrypt: $0 decrypt <encrypted_file>"
+    exit 1
+fi
+
+```
+
+
+---
+
 ## Conclusion
 
 GPG is a vital tool for secure communication and data protection. With the right understanding and best practices, you can confidently manage your cryptographic keys, sign and verify data, and encrypt/decrypt files.
