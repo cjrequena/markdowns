@@ -217,6 +217,52 @@ gpg --fingerprint user@email.com
 * **Enigmail** (Legacy Thunderbird plugin): Email encryption
 * **Mailvelope**: Browser extension for OpenPGP email encryption
 
+
+To change the **GPG passphrase cache timeout**, you need to configure `gpg-agent`, which handles caching for both asymmetric (private key) and symmetric (password-based) decryption.
+
+---
+
+## gpg-agent
+
+### Edit `gpg-agent.conf`
+
+Create or edit the GPG agent configuration file:
+
+```bash
+nano ~/.gnupg/gpg-agent.conf
+```
+
+Then add or modify the following lines:
+
+```ini
+default-cache-ttl 600
+max-cache-ttl 7200
+```
+
+* `default-cache-ttl`: Time (in seconds) the passphrase is cached after first use (e.g. 600 seconds = 10 minutes).
+* `max-cache-ttl`: Maximum time a cached passphrase is kept alive (even if used repeatedly).
+
+You can set them to something like:
+
+```ini
+default-cache-ttl 60       # 1 minute
+max-cache-ttl 300          # 5 minutes
+```
+
+---
+
+### Reload gpg-agent
+
+After saving the file, run:
+
+```bash
+gpgconf --kill gpg-agent
+```
+
+This will stop the agent, and it will restart automatically with the new settings the next time it's needed.
+
+---
+
 ## Help
 ```sh=
 Supported algorithms:
