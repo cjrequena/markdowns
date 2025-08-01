@@ -365,6 +365,9 @@ Examples:
 
 ## gpgfy.sh
 
+This script, `gpgfy.sh`, is a **Bash utility to securely encrypt and decrypt files using GPG (GNU Privacy Guard)**. It combines **symmetric** and **asymmetric** encryption methods for added security.
+
+
 ```shell
 #!/bin/bash
 
@@ -446,8 +449,6 @@ else
     exit 1
 fi
 ```
-
-This script, `gpgfy.sh`, is a **Bash utility to securely encrypt and decrypt files using GPG (GNU Privacy Guard)**. It combines **symmetric** and **asymmetric** encryption methods for added security.
 
 ---
 
