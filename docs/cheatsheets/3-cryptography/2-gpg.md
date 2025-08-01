@@ -363,17 +363,17 @@ Examples:
 
 ---
 
-## Shell Script: Symmetric → Asymmetric Encryption :: Asymmetric --> Symmetric Decryption
+## gpgfy.sh
 
 ```shell
 #!/bin/bash
 
-# Filename: gpg_encrypt_symmetric_then_asymmetric.sh
+# Filename: gpgfy.sh
 # Description: Encrypts a file symmetrically, then asymmetrically.
 #              Can also decrypt the result by reversing the steps.
 
-# Encrypt: ./gpg_encrypt_symmetric_then_asymmetric.sh encrypt input.txt recipient@example.com
-# Decrypt: ./gpg_encrypt_symmetric_then_asymmetric.sh decrypt input.txt.asymmetric.gpg
+# Encrypt: ./gpgfy.sh encrypt input.txt recipient@example.com
+# Decrypt: ./gpgfy.sh decrypt input.txt.asymmetric.gpg
 
 encrypt_file() {
     INPUT="$1"
@@ -385,7 +385,7 @@ encrypt_file() {
     gpg --batch --yes --symmetric --cipher-algo AES256 --output "$SYM_FILE" "$INPUT"
 
     echo "🔐 [2/2] Asymmetric encryption of '$SYM_FILE' for $RECIPIENT..."
-    gpg --batch --yes --encrypt --recipient "$RECIPIENT" --output "$FINAL_FILE" "$SYM_FILE"
+    gpg -vv --batch --yes --encrypt --recipient "$RECIPIENT" --output "$FINAL_FILE" "$SYM_FILE"
 
     rm -f "$SYM_FILE"
     echo "✅ Encrypted: $FINAL_FILE"
@@ -400,26 +400,175 @@ decrypt_file() {
     gpg --batch --yes --output "$INTERMEDIATE_FILE" --decrypt "$ENCRYPTED_FILE"
 
     echo "🔓 [2/2] Symmetric decryption of '$INTERMEDIATE_FILE'..."
-    gpg --batch --yes --output "$OUTPUT_FILE" --decrypt "$INTERMEDIATE_FILE"
+    gpg -vv --batch --yes --output "$OUTPUT_FILE" --decrypt "$INTERMEDIATE_FILE"
 
     rm -f "$INTERMEDIATE_FILE"
     echo "✅ Decrypted: $OUTPUT_FILE"
 }
+
+
+help() {
+    cat <<EOF
+🔐 gpgfy - Encrypt and decrypt files using symmetric + asymmetric GPG encryption
+
+Usage:
+  gpgfy encrypt <input_file> <recipient_email>
+      Encrypt the input file using AES256 (symmetric), then GPG (asymmetric).
+
+  gpgfy decrypt <encrypted_file>
+      Decrypt a file encrypted by this script.
+
+  gpgfy help
+      Show this help message.
+
+Examples:
+  gpgfy encrypt notes.txt alice@example.com
+  gpgfy decrypt notes.txt.asymmetric.gpg
+
+Notes:
+- Requires GPG to be installed and properly configured.
+- For encryption, the recipient must have a public key in your GPG keyring.
+EOF
+}
+
+
 
 # Main
 if [[ "$1" == "encrypt" && -n "$2" && -n "$3" ]]; then
     encrypt_file "$2" "$3"
 elif [[ "$1" == "decrypt" && -n "$2" ]]; then
     decrypt_file "$2"
+elif [[ "$1" == "help" || "$1" == "--help" || "$1" == "-h" ]]; then
+    help
 else
-    echo "Usage:"
-    echo "  Encrypt: $0 encrypt <input_file> <recipient_email>"
-    echo "  Decrypt: $0 decrypt <encrypted_file>"
+    echo "❌ Invalid arguments."
+    help
     exit 1
 fi
-
 ```
 
+This script, `gpgfy.sh`, is a **Bash utility to securely encrypt and decrypt files using GPG (GNU Privacy Guard)**. It combines **symmetric** and **asymmetric** encryption methods for added security.
+
+---
+
+### Purpose
+
+* **Encrypt mode**:
+  Encrypts a file *first symmetrically* with a passphrase (AES256), then *asymmetrically* with a recipient's public key (GPG).
+* **Decrypt mode**:
+  Reverses the process: decrypts the outer asymmetric layer, then decrypts the inner symmetric layer.
+
+---
+
+### How It Works
+
+####  `encrypt_file()`
+
+1. **Input Parameters**:
+
+    * `$1`: input file (e.g., `input.txt`)
+    * `$2`: GPG recipient email (e.g., `recipient@example.com`)
+2. **Step 1: Symmetric Encryption**
+
+    * Encrypts `input.txt` into `input.txt.symmetric.gpg` using a passphrase (you'll be prompted to enter one).
+    * Algorithm: AES256.
+3. **Step 2: Asymmetric Encryption**
+
+    * Encrypts the symmetric file using GPG public key encryption for the recipient.
+    * Output: `input.txt.asymmetric.gpg`
+4. **Cleanup**: Deletes the intermediate symmetric file for security.
+
+####  `decrypt_file()`
+
+1. **Input Parameter**:
+
+    * `$1`: Encrypted file (e.g., `input.txt.asymmetric.gpg`)
+2. **Step 1: Asymmetric Decryption**
+
+    * Decrypts the `.asymmetric.gpg` file using your private key, revealing the intermediate `.symmetric.gpg`.
+3. **Step 2: Symmetric Decryption**
+
+    * Prompts you for the original passphrase to decrypt the inner file.
+    * Outputs `input.txt.decrypted`
+4. **Cleanup**: Deletes the intermediate symmetric file.
+
+---
+
+### Usage
+
+**Encrypt:**
+
+```bash
+./gpgfy.sh encrypt input.txt recipient@example.com
+```
+
+**Decrypt:**
+
+```bash
+./gpgfy.sh decrypt input.txt.asymmetric.gpg
+```
+
+---
+
+### Why Use Both Symmetric and Asymmetric?
+
+* **Symmetric (AES256)**: Fast and strong encryption, but requires securely sharing the password.
+* **Asymmetric (GPG)**: Solves key sharing by encrypting with the recipient's public key.
+* Combining both:
+
+    * Protects the actual content with a symmetric key.
+    * Protects the symmetric key with the recipient’s public key.
+
+| Mode      | Action                                                     |
+| --------- | ---------------------------------------------------------- |
+| `encrypt` | Encrypt file with AES256, then encrypt result with GPG key |
+| `decrypt` | Decrypt GPG layer, then decrypt AES256 layer               |
+
+---
+
+### Step-by-Step: Install `gpgfy.sh` as a system command
+
+#### 1. **Make the Script Executable**
+
+```bash
+chmod +x gpgfy.sh
+```
+
+#### 2. **Move It to a Directory in Your PATH**
+
+A typical location is `/usr/local/bin`, which is meant for custom scripts:
+
+```bash
+sudo mv gpgfy.sh /usr/local/bin/gpgfy
+```
+
+> You’re renaming it to `gpgfy` (dropping the `.sh`) so you can run it like: `gpgfy encrypt ...`
+
+#### 3. **Verify It's in Your PATH**
+
+Run:
+
+```bash
+which gpgfy
+```
+
+You should see:
+
+```bash
+/usr/local/bin/gpgfy
+```
+
+#### 4. **Test It**
+
+Try:
+
+```bash
+gpgfy
+gpgfy encrypt secrets.txt recipient@example.com
+gpgfy decrypt secrets.txt.asymmetric.gpg
+```
+
+You should see the usage output.
 
 ---
 
