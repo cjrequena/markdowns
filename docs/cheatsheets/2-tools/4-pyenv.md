@@ -155,15 +155,15 @@ eval "$(pyenv virtualenv-init -)"
 
 * Create virtualenv:
 
-  ```bash
-  pyenv virtualenv 3.10.6 myenv
-  ```
+```bash
+pyenv virtualenv 3.10.6 myenv
+```
 
 * Activate virtualenv:
 
-  ```bash
-  pyenv activate myenv
-  ```
+```bash
+pyenv activate myenv
+```
 
 * Deactivate:
 
@@ -173,9 +173,9 @@ pyenv deactivate
 
 * Auto-activate per-project:
 
-  ```bash
-  echo "myenv" > .python-version
-  ```
+```bash
+echo "myenv" > .python-version
+```
 * Set the local environment using pyenv local
 
 ```bash
@@ -189,6 +189,7 @@ pyenv virtualenvs
 ```
 
 * Delete the Virtual Environment
+
 ```bash
 pyenv uninstall <env-name>
 ```
