@@ -139,19 +139,19 @@ pyenv shell 3.8.18
 
 ## pyenv-virtualenv (manage virtual environments)
 
-**Install:**
+### Install:
 
 ```bash
 brew install pyenv-virtualenv
 ```
 
-Add to shell config:
+### Add to shell config:
 
 ```bash
 eval "$(pyenv virtualenv-init -)"
 ```
 
-**Usage:**
+### Usage:
 
 * Create virtualenv:
 
