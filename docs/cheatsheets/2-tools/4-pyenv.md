@@ -177,6 +177,17 @@ eval "$(pyenv virtualenv-init -)"
   echo "myenv" > .python-version
   ```
 
+* List pyenv virtualenvs
+
+```bash
+pyenv virtualenvs
+```
+
+* Delete the Virtual Environment
+```bash
+pyenv uninstall <env-name>
+```
+
 ---
 
 ## Upgrading Python in an Existing Project
