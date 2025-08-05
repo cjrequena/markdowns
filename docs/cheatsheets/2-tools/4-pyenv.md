@@ -167,15 +167,20 @@ eval "$(pyenv virtualenv-init -)"
 
 * Deactivate:
 
-  ```bash
-  pyenv deactivate
-  ```
+```bash
+pyenv deactivate
+```
 
 * Auto-activate per-project:
 
   ```bash
   echo "myenv" > .python-version
   ```
+* Set the local environment using pyenv local
+
+```bash
+pyenv local my-awesome-env
+```
 
 * List pyenv virtualenvs
 
