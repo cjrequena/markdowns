@@ -4,7 +4,7 @@ title: pip
 parent: tools
 grand_parent: cheatsheets
 permalink: /docs/tools/pip
-nav_order: 4
+nav_order: 9
 ---
 # pip Cheat Sheet
 {: .no_toc }
