@@ -23,7 +23,7 @@ nav_order: 4
 
 ---
 
-## ⚙Installation
+## Installation
 
 ### Prerequisites
 
@@ -137,9 +137,7 @@ pyenv shell 3.8.18
 
 ---
 
-## Using pyenv with Plugins
-
-### pyenv-virtualenv (manage virtual environments)
+## pyenv-virtualenv (manage virtual environments)
 
 **Install:**
 
@@ -181,6 +179,17 @@ eval "$(pyenv virtualenv-init -)"
 
 ---
 
+## Upgrading Python in an Existing Project
+If a project needs a new Python version:
+
+```bash
+pyenv install 3.13.0
+pyenv virtualenv 3.13.0 newenv
+pyenv local newenv
+pip install -r requirements.txt
+```
+
+---
 ## Troubleshooting
 
 ### pyenv not found?
