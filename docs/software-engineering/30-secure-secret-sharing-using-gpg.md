@@ -17,7 +17,7 @@ nav_order: 30
 
 ## Abstract
 This document outlines a complete workflow for securely exchanging sensitive information between a client and a server 
-using PGP encryption. It details the step-by-step process for clients to generate a PGP key pair, verify their email, 
+using [PGP](https://cjrequena.com/markdowns/docs/cryptography/gpg) encryption. It details the step-by-step process for clients to generate a PGP key pair, verify their email, 
 and publish their public key on keys.openpgp.org via command-line tools, graphical interfaces, or dedicated applications 
 across different operating systems. On the server side, it describes how to fetch, verify, and use the client’s public key 
 to encrypt confidential data before delivery, ensuring only the intended recipient can decrypt it. Additional recommendations 
@@ -25,7 +25,7 @@ include optional features such as one-time downloads, expiration metadata, signe
 security and traceability. A final summary table consolidates the protocol steps for quick reference.
 
 ## Use case
-A secure protocol for delivering API credentials to a client using PGP (GPG) encryption. The client generates a PGP key pair, 
+A secure protocol for delivering API credentials to a client using PGP ([GPG](https://cjrequena.com/markdowns/docs/cryptography/gpg)) encryption. The client generates a PGP key pair, 
 verifies their email, and uploads their public key to keys.openpgp.org. The API provider retrieves and verifies the public key, 
 then encrypts the API credentials so only the client’s private key can decrypt them. Step-by-step instructions cover key generation 
 for multiple platforms, key publishing, secure encryption, and decryption. Optional enhancements, such as one-time downloads, 
