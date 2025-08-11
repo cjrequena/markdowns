@@ -114,7 +114,7 @@ CNAME (Canonical Name) and Alias records serve similar purposes in AWS Route 53,
 - when you need better performance and integration with AWS services like ELB, S3, or CloudFront.
 - Alias Records cannot be set for EC2 DNS name
 
-## ### AWS Route 53 Cheat Sheet:
+## AWS Route 53 Cheat Sheet:
 
 **1. Create a Hosted Zone:**
 - Navigate to the Route 53 console.
