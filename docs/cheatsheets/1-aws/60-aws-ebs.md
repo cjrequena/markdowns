@@ -4,7 +4,7 @@ title: aws-ebs
 parent: aws
 grand_parent: cheatsheets
 permalink: /docs/aws/aws-ebs
-nav_order: 6
+nav_order: 60
 ---
 # AWS EBS
 {: .no_toc }

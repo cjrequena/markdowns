@@ -4,7 +4,7 @@ title:  aws-ec2
 parent: aws
 grand_parent: cheatsheets
 permalink: /docs/aws/aws-ec2
-nav_order: 5
+nav_order: 50
 ---
 # AWS EC2
 {: .no_toc }

@@ -4,7 +4,7 @@ title: aws-cli
 parent: aws
 grand_parent: cheatsheets
 permalink: /docs/aws/aws-cli
-nav_order: 1
+nav_order: 10
 ---
 # AWS CLI
 {: .no_toc }

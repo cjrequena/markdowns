@@ -4,7 +4,7 @@ title:  aws-iam
 parent: aws
 grand_parent: cheatsheets
 permalink: /docs/aws/aws-iam
-nav_order: 4
+nav_order: 40
 ---
 # AWS IAM
 {: .no_toc }

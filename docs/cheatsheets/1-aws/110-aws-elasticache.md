@@ -4,7 +4,7 @@ title: aws-elasticache
 parent: aws
 grand_parent: cheatsheets
 permalink: /docs/aws/aws-elasticache
-nav_order: 11
+nav_order: 110
 ---
 # AWS Elasticache
 {: .no_toc }

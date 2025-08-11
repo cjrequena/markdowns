@@ -4,7 +4,7 @@ title: aws-s3
 parent: aws
 grand_parent: cheatsheets
 permalink: /docs/aws/aws-s3
-nav_order: 2
+nav_order: 20
 ---
 # AWS S3 cheatsheet
 {: .no_toc }

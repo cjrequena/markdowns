@@ -4,7 +4,7 @@ title:  aws-vpc
 parent: aws
 grand_parent: cheatsheets
 permalink: /docs/aws/aws-vpc
-nav_order: 3
+nav_order: 30
 ---
 # AWS VPC Reference Guideline
 {: .no_toc }

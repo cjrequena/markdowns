@@ -4,7 +4,7 @@ title: aws-efs
 parent: aws
 grand_parent: cheatsheets
 permalink: /docs/aws/aws-efs
-nav_order: 7
+nav_order: 70
 ---
 # Amazon Elastic File System (EFS) Cheat Sheet
 {: .no_toc }

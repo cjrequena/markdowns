@@ -4,7 +4,7 @@ title: sns-to-sqs-different-accounts
 parent: aws
 grand_parent: cheatsheets
 permalink: /docs/aws/sns-to-sqs-different-accounts
-nav_order: 998
+nav_order: 130
 ---
 # How to send Amazon Simple Notification Service (SNS) messages to an Amazon Simple Queue Service (SQS) queue in a different AWS account
 {: .no_toc }

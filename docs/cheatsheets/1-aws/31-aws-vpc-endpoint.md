@@ -4,7 +4,7 @@ title:  aws-vpc-endpoint
 parent: aws
 grand_parent: cheatsheets
 permalink: /docs/aws/aws-vpc-endpoint
-nav_order: 3
+nav_order: 31
 ---
 # AWS VPC Endpoint CheatSheet
 {: .no_toc }

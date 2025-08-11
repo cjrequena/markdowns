@@ -4,7 +4,7 @@ title: aws-route53
 parent: aws
 grand_parent: cheatsheets
 permalink: /docs/aws/aws-route53
-nav_order: 12
+nav_order: 120
 ---
 # AWS Route53
 {: .no_toc }

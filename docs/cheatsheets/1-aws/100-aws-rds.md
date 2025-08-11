@@ -4,7 +4,7 @@ title: aws-rds
 parent: aws
 grand_parent: cheatsheets
 permalink: /docs/aws/aws-rds
-nav_order: 10
+nav_order: 100
 ---
 # AWS RDS 
 {: .no_toc }
