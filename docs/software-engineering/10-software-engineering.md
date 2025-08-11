@@ -1,4 +1,17 @@
-# api-design-reference-guideline
+---
+layout: default
+title: api-design-reference-guideline
+parent: software-engineering
+nav_order: 10
+---
+# API Design Reference Guideline
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
 
 ## Introduction
 
@@ -398,15 +411,12 @@ RESTful URI should refer to a resource that is a thing (noun) instead of referri
 
 **HTTP verbs are POST,  GET,  PUT,  DELETE,  PATCH**
 
-+------------+---------------------------+---------------------+---------------------+--------------------------------------+------------+
-|**RESOURCE**|**GET**                    |**POST**             |**PUT**              |**PATCH**                             |**DELETE**  |
-+------------+---------------------------+---------------------+---------------------+--------------------------------------+------------+
-|/hotels     |get a collection list      |create new           |update               |bad request (400)                     |delete all  |
-+------------+---------------------------+---------------------+---------------------+--------------------------------------+------------+
-|/hotel/1    |get a single resource by ID|bad request (400) new|If exists then update|If exists then update the fields given|delete by ID|
-|            |                           |                     |                     |                                      |            |
-|            |                           |                     |else 404             |else 404                              |            |
-+------------+---------------------------+---------------------+---------------------+--------------------------------------+------------+
+| **RESOURCE** | **GET**                        | **POST**             | **PUT**               | **PATCH**                              | **DELETE**    |
+|--------------|--------------------------------|----------------------|------------------------|----------------------------------------|---------------|
+| `/hotels`    | Get a collection list          | Create new           | Update                 | Bad Request (400)                      | Delete all    |
+| `/hotel/1`   | Get a single resource by ID    | Bad Request (400), new | If exists, then update | If exists, update the fields given     | Delete by ID  |
+|              |                                |                      | Else 404               | Else 404                               |               |
+
 
 ### ==Must: Use lowercase separate words with hyphens for path segments==
 
@@ -1074,4 +1084,4 @@ Trace-Id : 73306c019b9271a0
 
 See: <https://tools.ietf.org/html/rfc6648>
 
-
+---
