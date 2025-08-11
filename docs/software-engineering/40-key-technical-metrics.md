@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Key Technical Metrics in Systems and Scientific Research
+title: key-technical-metrics
 parent: software-engineering
 nav_order: 40
 ---
