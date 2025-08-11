@@ -1,6 +1,6 @@
 ---
 layout: default
-title: key-technical-metrics
+title: Key Technical Metrics in Systems and Scientific Research
 parent: software-engineering
 nav_order: 40
 ---
@@ -15,15 +15,15 @@ nav_order: 40
 
 ---
 
-## **Abstract**
+## Abstract
 
 This document presents 21 essential terms used across disciplines such as software engineering, data science, and scientific research. These terms define core concepts like performance, reliability, and accuracy, and are critical for assessing and communicating system quality, experimental validity, and user experience. Definitions are provided in both **English** and **Spanish**, and grouped by thematic relevance to facilitate understanding and application across bilingual, interdisciplinary teams.
 
 ---
 
-## **System and Software Engineering**
+## System and Software Engineering
 
-### *(Ingeniería de Sistemas y Software)*
+### (Ingeniería de Sistemas y Software)
 
 | **Term (EN)**    | **Término (ES)**    | **Definition (English)**                                     | **Definición (Español)**                                                           |
 | ---------------- | ------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
@@ -39,9 +39,9 @@ This document presents 21 essential terms used across disciplines such as softwa
 
 ---
 
-## **Data Quality & Measurement**
+## Data Quality & Measurement
 
-### *(Calidad de Datos y Medición)*
+### (Calidad de Datos y Medición)
 
 | **Term (EN)**          | **Término (ES)**        | **Definition (English)**                                 | **Definición (Español)**                                         |
 | ---------------------- | ----------------------- | -------------------------------------------------------- | ---------------------------------------------------------------- |
@@ -54,9 +54,9 @@ This document presents 21 essential terms used across disciplines such as softwa
 
 ---
 
-## **Responsiveness & Behavior**
+## Responsiveness & Behavior
 
-### *(Capacidad de Respuesta y Comportamiento del Sistema)*
+### (Capacidad de Respuesta y Comportamiento del Sistema)
 
 | **Term (EN)**  | **Término (ES)**       | **Definition (English)**                                 | **Definición (Español)**                                      |
 | -------------- | ---------------------- | -------------------------------------------------------- | ------------------------------------------------------------- |
