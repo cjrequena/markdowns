@@ -15,7 +15,7 @@ nav_order: 50
 
 ---
 
-## **Abstract**
+## Abstract
 
 This reference document provides a comprehensive overview of the relationship annotations in Java Persistence API (JPA), focusing on `@ManyToOne` and including all other core relationship types: `@OneToOne`, `@OneToMany`, and `@ManyToMany`. Each annotation is explained with its purpose, use cases, and complete property specifications. It details the behaviour and configuration of relationship mappings, including fetch strategies (`FetchType`), cascading operations (`CascadeType`), and join management (`@JoinColumn`, `@JoinTable`).
 
