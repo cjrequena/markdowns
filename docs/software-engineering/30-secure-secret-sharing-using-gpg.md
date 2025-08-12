@@ -24,6 +24,8 @@ to encrypt confidential data before delivery, ensuring only the intended recipie
 include optional features such as one-time downloads, expiration metadata, signed payloads, and audit trails to enhance 
 security and traceability. A final summary table consolidates the protocol steps for quick reference.
 
+---
+
 ## Use case
 A secure protocol for delivering API credentials to a client using PGP ([GPG](https://cjrequena.com/markdowns/docs/cryptography/gpg)) encryption. The client generates a PGP key pair, 
 verifies their email, and uploads their public key to keys.openpgp.org. The API provider retrieves and verifies the public key, 
@@ -31,6 +33,8 @@ then encrypts the API credentials so only the client’s private key can decrypt
 for multiple platforms, key publishing, secure encryption, and decryption. Optional enhancements, such as one-time downloads, 
 key expiry checks, and signed payloads, further strengthen confidentiality and integrity. This process ensures that API secrets 
 are exchanged over untrusted channels without risk of exposure.
+
+---
 
 ## Client-Side (Your Consumer)
 
@@ -44,6 +48,7 @@ _**Required Info for All Methods:**_
 - **Email**: Must be real (used for verifying key with the server)
 - **Key Type**: RSA 2048+ or ECC
 - **Passphrase**: Strong and secure; protects the private key
+---
 
 _**Option A: Command Line (Linux & Windows WSL)**_
 
@@ -65,6 +70,8 @@ After creation:
 gpg --armor --export client@example.com > pubkey.asc
 ```
 
+---
+
 _**Option B: GPG Suite (macOS)**_
 
 _Recommended for macOS users_
@@ -79,6 +86,8 @@ Export Public Key:
 
 - Right-click your key → **Export…**
 - Choose `.asc` format
+
+---
 
 _**Option C: Kleopatra (Windows GUI)**_
 
@@ -98,6 +107,8 @@ Export Public Key:
 - Right-click the key → **Export…**
 - Save as `pubkey.asc`
 
+---
+
 ### Step 2: Upload Public Key to keys.openpgp.org
 
 Regardless of how the key was generated:
@@ -108,6 +119,8 @@ _**Option 1: Upload Manually**_
 2. Click “Submit Key”
 3. Upload your `pubkey.asc`
 4. Click the verification link sent to your email
+
+---
 
 _**Option 2: From Terminal (if using GPG CLI)**_
 
@@ -125,6 +138,8 @@ Then check your inbox and click the confirmation link to publish it.
 
 **You now have a PGP public key tied to an email address, hosted on keys.openpgp.org.**
 
+---
+
 ## Server-Side (Your System)
 
 ### Step 3: Fetch the Client’s Public Key
@@ -134,6 +149,8 @@ curl "https://keys.openpgp.org/vks/v1/by-email/client@example.com" > client_pubk
 ```
 
 Or use your preferred HTTP client (Python, Go, etc.).
+
+---
 
 ### Step 4: Verify the Key (Optional but Recommended)
 
@@ -149,6 +166,8 @@ Use GPG to import and inspect:
 gpg --import client_pubkey.asc
 gpg --list-keys client@example.com
 ```
+
+---
 
 ### Step 5: Encrypt Secrets Using the Client's Public Key
 
@@ -176,6 +195,8 @@ You can now send this securely to the client:
 
 Only **the client with the private key** can decrypt it.
 
+---
+
 ## Client-Side (Decrypting the Secrets)
 
 When the client receives `client_secrets.txt.asc`, they run:
@@ -192,6 +213,8 @@ CLIENT_SECRET=xyz789
 API_KEY=api_key_456
 ```
 
+---
+
 ## Optional Enhancements
 
 | Feature                 | Description                                                              |
@@ -201,6 +224,8 @@ API_KEY=api_key_456
 | **Key Expiry Checking** | Before encrypting, check if the client’s key is still valid.             |
 | **Signed Payload**      | Optionally sign the secret payload with your server’s private PGP key.   |
 | **Audit Trail**         | Log key fingerprints, timestamps, and delivery events.                   |
+
+---
 
 ## Summary
 
