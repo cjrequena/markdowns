@@ -18,13 +18,16 @@ nav_order: 60
 
 ## Abstract
 
-This document presents a reference architecture and best practices for using CloudEvents as a standardized event format across diverse messaging systems including Kafka, AWS SNS, Kinesis, and SQS. It outlines how to structure events, handle metadata and extensions, and ensure schema validation consistency in heterogeneous environments.
+This document presents a reference architecture and best practices for using CloudEvents as a standardized event format across diverse messaging systems including Kafka, AWS SNS, Kinesis, and SQS. 
+
+It outlines how to structure events, handle metadata and extensions, and ensure schema validation consistency in heterogeneous environments.
 
 This document defines a dual-mode CloudEvents reference architecture for integrating Apache Kafka with AWS messaging systems (SNS, SQS, Kinesis).
 
 The recommended approach is to adopt:
 
 1. **CloudEvents in binary mode** When Event-Router / Broker does have native support for message headers. **In binary mode**, event metadata **(CloudEvents attributes)** are sent as message headers, and event data is sent as the message body. Optimizing for performance and metadata flexibility.
+
 2. **CloudEvents in structured mode**, When Event-Router / Broker does not have native support for message headers. Encapsulating all event metadata and the payload in a single JSON object. This ensures maximum portability across transports..
 
 A conversion pipeline is introduced to map binary CloudEvents from Kafka to structured CloudEvents for downstream AWS systems, and vice versa. This enables seamless event replication, transformation, and routing across environments while preserving schema validation, event traceability, and event semantics.
@@ -35,17 +38,19 @@ To address schema validation needs, it is advised to validate only the `data` po
 
 ## CloudEvents
 
-**CloudEvents** is a CNCF specification for describing event data in a consistent, structured way across services and platforms. It’s transport-neutral and supports formats like JSON, Avro, and Protobuf.
+**[CloudEvents](https://github.com/cloudevents/spec)** is a CNCF specification for describing event data in a consistent, structured way across services and platforms. 
 
-**Core Components**
+It’s transport-neutral and supports formats like JSON, Avro, and Protobuf. 
+
+### Core Components
 
 - **Producer**: The service that generates the event.
-- **Event Router / Broker**: Middleware like Knative Eventing, Kafka, etc.
+- **Event Router / Broker**: Middleware like native Eventing, Kafka, etc.
 - **Consumer**: Services that subscribe to and handle events.
 - **Event Format**: JSON/Avro with CloudEvents envelope
 - **Transport Binding**: HTTP, Kafka, MQTT, NATS, SNS, Kinesis, SQS
 
-**Basic JSON Example CloudEvent:**
+### JSON Example 1:**
 
 ```json
 {
@@ -62,7 +67,7 @@ To address schema validation needs, it is advised to validate only the `data` po
 }
 ```
 
-**CloudEvent JSON Example: Hotel Booking Created**
+### JSON Example 2:**
 
 ```json
 {
@@ -91,7 +96,7 @@ To address schema validation needs, it is advised to validate only the `data` po
 }
 ```
 
-**Explanation of Fields**
+## Explanation of Fields
 
 | **Attribute**   | **Required** | **Description**                                                           |
 | --------------- | ------------ | ------------------------------------------------------------------------- |
