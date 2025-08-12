@@ -38,14 +38,14 @@ are exchanged over untrusted channels without risk of exposure.
 
 This is the foundation of the whole protocol — the client needs to generate a PGP key pair and upload their **public key** to [`https://keys.openpgp.org`](https://keys.openpgp.org).
 
-#### Required Info for All Methods:
+**Required Info for All Methods:**
 
 - **Name**: Client name or company name
 - **Email**: Must be real (used for verifying key with the server)
 - **Key Type**: RSA 2048+ or ECC
 - **Passphrase**: Strong and secure; protects the private key
 
-#### Option A: Command Line (Linux & Windows WSL)
+**Option A: Command Line (Linux & Windows WSL)**
 
 If comfortable with the terminal:
 
@@ -65,7 +65,7 @@ After creation:
 gpg --armor --export client@example.com > pubkey.asc
 ```
 
-#### Option B: GPG Suite (macOS)
+**Option B: GPG Suite (macOS)**
 
 **Recommended for macOS users**
 
@@ -80,7 +80,7 @@ Export Public Key:
 - Right-click your key → **Export…**
 - Choose `.asc` format
 
-#### Option C: Kleopatra (Windows GUI)
+**Option C: Kleopatra (Windows GUI)**
 
 **Recommended for Windows users**
 
@@ -102,14 +102,14 @@ Export Public Key:
 
 Regardless of how the key was generated:
 
-#### Option 1: Upload Manually
+**Option 1: Upload Manually**
 
 1. Go to: <https://keys.openpgp.org>
 2. Click “Submit Key”
 3. Upload your `pubkey.asc`
 4. Click the verification link sent to your email
 
-#### Option 2: From Terminal (if using GPG CLI)
+**Option 2: From Terminal (if using GPG CLI)**
 
 ```bash
 gpg --send-keys --keyserver hkps://keys.openpgp.org <KEY_ID>
