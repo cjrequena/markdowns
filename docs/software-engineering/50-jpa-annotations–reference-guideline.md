@@ -4,6 +4,7 @@ title: jpa-annotations–reference-guideline
 parent: software-engineering
 nav_order: 50
 ---
+
 # JPA Annotations Reference Guideline
 {: .no_toc }
 
