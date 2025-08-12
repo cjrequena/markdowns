@@ -50,7 +50,7 @@ It’s transport-neutral and supports formats like JSON, Avro, and Protobuf.
 - **Event Format**: JSON/Avro with CloudEvents envelope
 - **Transport Binding**: HTTP, Kafka, MQTT, NATS, SNS, Kinesis, SQS
 
-### JSON Example 1:**
+### JSON Example 1
 
 ```json
 {
@@ -67,7 +67,7 @@ It’s transport-neutral and supports formats like JSON, Avro, and Protobuf.
 }
 ```
 
-### JSON Example 2:**
+### JSON Example 2
 
 ```json
 {
@@ -96,7 +96,7 @@ It’s transport-neutral and supports formats like JSON, Avro, and Protobuf.
 }
 ```
 
-## Explanation of Fields
+### Explanation of Fields
 
 | **Attribute**   | **Required** | **Description**                                                           |
 | --------------- | ------------ | ------------------------------------------------------------------------- |
@@ -116,9 +116,9 @@ It’s transport-neutral and supports formats like JSON, Avro, and Protobuf.
 
 **Extensions** are custom attributes added to a CloudEvent outside the standard ones (like `id`, `type`, etc.).
 
-**How to Set:**
+### How to Set
 
-Just add key-value pairs at the top level:
+Just add key-value pairs at the top level for **structure-mode** or at header level for **binary-mode**
 
 ```json
 {
@@ -131,15 +131,13 @@ Just add key-value pairs at the top level:
 }
 ```
 
-**Best Practices:**
+### Best Practices:**
 
 - Use lower-case keys with no special characters
 - Use namespaced keys to avoid collisions, e.g., `com.company.traceid`
 - Only use for routing, filtering, tracing—**not** for business data
 
----
-
-## Custom Extensions
+### Custom Extensions
 
 | Extension Name        | Type      | Description                                                               |
 | --------------------- | --------- | ------------------------------------------------------------------------- |
@@ -166,13 +164,13 @@ Just add key-value pairs at the top level:
 
 Validating CloudEvent payloads ensures downstream systems can trust the structure.
 
-**When to Use Schema Validation:**
+### When to Use Schema Validation
 
 - **Before publishing**: To prevent garbage data
 - **Before processing**: To enforce contracts
 - **In regulated or mission-critical systems**
 
-**Recommended Approach:**
+### Recommended Approach
 
 Use **Schema Registry** (like Confluent, AWS Glue, or Apicurio) to:
 
@@ -193,16 +191,16 @@ Use **Schema Registry** (like Confluent, AWS Glue, or Apicurio) to:
 
 ---
 
-## Kafka – Binary Mode
+## Binary Mode - Kafka
 
-**Key Features:**
+### Key Features
 
 - Format: **Binary mode CloudEvents**
 - Metadata and extensions → **Kafka headers**
 - Payload → Raw `data` as message body
 - High-throughput, minimal duplication
 
-**Example Kafka Message:**
+### Example Kafka Message
 
 - **Headers:**
 
@@ -236,22 +234,22 @@ ce_dataschema: https://schemas.example.com/hotel-booking-created-v1.json
 }
 ```
 
-**Schema Validation Strategy:**
+### Schema Validation Strategy
 
 - Use `ce_dataschema` to fetch schema.
 - Validate payload (`data`) only.
 
 ---
 
-## SNS, SQS, Kinesis – Structured Mode
+## Structured Mode - SNS, SQS, Kinesis
 
-**Key Features:**
+### Key Features
 
 - Format: **Structured mode CloudEvents (JSON)**
 - Entire event in the **message body**
 - Optional: Use **MessageAttributes** for routing in SNS/SQS
 
-**Example SNS/SQS/Kinesis Payload:**
+### Example SNS/SQS/Kinesis Message
 
 ```json
 {
@@ -289,7 +287,7 @@ ce_dataschema: https://schemas.example.com/hotel-booking-created-v1.json
 }
 ```
 
-**Schema Validation Strategy:**
+### Schema Validation Strategy
 
 - Use `dataschema` to fetch schema.
 - Validate payload (`data`) only.
