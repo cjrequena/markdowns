@@ -48,6 +48,7 @@ _**Required Info for All Methods:**_
 - **Email**: Must be real (used for verifying key with the server)
 - **Key Type**: RSA 2048+ or ECC
 - **Passphrase**: Strong and secure; protects the private key
+
 ---
 
 _**Option A: Command Line (Linux & Windows WSL)**_
