@@ -1415,11 +1415,131 @@ Run this in **MongoDB Shell**, Compass, or Atlas UI:
 use shop;
 
 db.products.insertMany([
-  { name: "Laptop", description: "Powerful and portable", category: "Electronics", price: 1200 },
-  { name: "Phone", description: "Fast, sleek smartphone", category: "Electronics", price: 499 },
-  { name: "Shoes", description: "Comfortable running shoes", category: "Clothing", price: 79 },
-  { name: "Watch", description: "Stylish analog watch", category: "Accessories", price: 199 },
-  { name: "Headphones", description: "Noise-cancelling headphones", category: "Electronics", price: 199 }
+  {
+    name: "Laptop",
+    description: "Powerful and portable computing device",
+    translations: {
+      en: {
+        name: "Laptop",
+        description: "Powerful and portable computing device"
+      },
+      es: {
+        name: "Portátil",
+        description: "Dispositivo informático potente y portátil"
+      },
+      fr: {
+        name: "Ordinateur portable",
+        description: "Appareil informatique puissant et portable"
+      },
+      de: {
+        name: "Laptop",
+        description: "Leistungsstarkes und tragbares Computergerät"
+      }
+    },
+    category: "Electronics",
+    price: 1200,
+    defaultLanguage: "en"
+  },
+  {
+    name: "Phone",
+    description: "Fast, sleek smartphone",
+    translations: {
+      en: {
+        name: "Phone",
+        description: "Fast, sleek smartphone"
+      },
+      es: {
+        name: "Teléfono",
+        description: "Teléfono inteligente rápido y elegante"
+      },
+      fr: {
+        name: "Téléphone",
+        description: "Smartphone rapide et élégant"
+      },
+      de: {
+        name: "Telefon",
+        description: "Schnelles, elegantes Smartphone"
+      }
+    },
+    category: "Electronics",
+    price: 499,
+    defaultLanguage: "en"
+  },
+  {
+    name: "Shoes",
+    description: "Comfortable running shoes",
+    translations: {
+      en: {
+        name: "Shoes",
+        description: "Comfortable running shoes"
+      },
+      es: {
+        name: "Zapatos",
+        description: "Zapatos cómodos para correr"
+      },
+      fr: {
+        name: "Chaussures",
+        description: "Chaussures de course confortables"
+      },
+      de: {
+        name: "Schuhe",
+        description: "Bequeme Laufschuhe"
+      }
+    },
+    category: "Clothing",
+    price: 79,
+    defaultLanguage: "en"
+  },
+  {
+    name: "Watch",
+    description: "Stylish analog watch",
+    translations: {
+      en: {
+        name: "Watch",
+        description: "Stylish analog watch"
+      },
+      es: {
+        name: "Reloj",
+        description: "Reloj analógico elegante"
+      },
+      fr: {
+        name: "Montre",
+        description: "Montre analogique élégante"
+      },
+      de: {
+        name: "Uhr",
+        description: "Stilvolle analoge Uhr"
+      }
+    },
+    category: "Accessories",
+    price: 199,
+    defaultLanguage: "en"
+  },
+  {
+    name: "Headphones",
+    description: "Noise-cancelling headphones",
+    translations: {
+      en: {
+        name: "Headphones",
+        description: "Noise-cancelling headphones"
+      },
+      es: {
+        name: "Auriculares",
+        description: "Auriculares con cancelación de ruido"
+      },
+      fr: {
+        name: "Écouteurs",
+        description: "Écouteurs à réduction de bruit"
+      },
+      de: {
+        name: "Kopfhörer",
+        description: "Geräuschunterdrückende Kopfhörer"
+      }
+    },
+    category: "Electronics",
+    price: 199,
+    defaultLanguage: "en"
+  }
 ]);
 ```
 
@@ -1436,10 +1556,97 @@ Choose **JSON Editor** and paste:
   "mappings": {
     "dynamic": false,
     "fields": {
-      "name":        { "type": "string" },
-      "description": { "type": "string" },
-      "category":    { "type": "string" },
-      "price":       { "type": "number" }
+      "name": {
+        "type": "autocomplete",
+        "analyzer": "lucene.english",
+        "foldDiacritics": true,
+        "maxGrams": 12,
+        "minGrams": 3,
+        "tokenization": "edgeGram"
+      },
+      "description": {
+        "type": "string",
+        "analyzer": "lucene.english"
+      },
+      "category": {
+        "type": "string"
+      },
+      "price": {
+        "type": "number"
+      },
+      "translations": {
+        "type": "document",
+        "fields": {
+          "en": {
+            "type": "document",
+            "fields": {
+              "name": {
+                "type": "autocomplete",
+                "analyzer": "lucene.english",
+                "foldDiacritics": true,
+                "maxGrams": 12,
+                "minGrams": 3,
+                "tokenization": "edgeGram"
+              },
+              "description": {
+                "type": "string",
+                "analyzer": "lucene.english"
+              }
+            }
+          },
+          "es": {
+            "type": "document",
+            "fields": {
+              "name": {
+                "type": "autocomplete",
+                "analyzer": "lucene.spanish",
+                "foldDiacritics": true,
+                "maxGrams": 12,
+                "minGrams": 3,
+                "tokenization": "edgeGram"
+              },
+              "description": {
+                "type": "string",
+                "analyzer": "lucene.spanish"
+              }
+            }
+          },
+          "fr": {
+            "type": "document",
+            "fields": {
+              "name": {
+                "type": "autocomplete",
+                "analyzer": "lucene.french",
+                "foldDiacritics": true,
+                "maxGrams": 12,
+                "minGrams": 3,
+                "tokenization": "edgeGram"
+              },
+              "description": {
+                "type": "string",
+                "analyzer": "lucene.french"
+              }
+            }
+          },
+          "de": {
+            "type": "document",
+            "fields": {
+              "name": {
+                "type": "autocomplete",
+                "analyzer": "lucene.german",
+                "foldDiacritics": true,
+                "maxGrams": 12,
+                "minGrams": 3,
+                "tokenization": "edgeGram"
+              },
+              "description": {
+                "type": "string",
+                "analyzer": "lucene.german"
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -1539,22 +1746,20 @@ db.products.aggregate([
 
 **5. Autocomplete (needs special index)**
 
-**Index requirement:**
-
-```json
-{
-  "mappings": {
-    "dynamic": false,
-    "fields": {
-      "name": {
-        "type": "autocomplete"
+```js
+db.products.aggregate([
+  {
+    $search: {
+      index: "autocomplete_index",
+      autocomplete: {
+        query: "lap",
+        path: "name", // Simple root-level search
+        fuzzy: { maxEdits: 2 }
       }
     }
   }
-}
+])
 ```
-
-**Query:**
 
 ```js
 db.products.aggregate([
@@ -1562,8 +1767,9 @@ db.products.aggregate([
     $search: {
       index: "autocomplete_index",
       autocomplete: {
-        query: "Lap",
-        path: "name"
+        query: "por",
+        path: "translations.es.name",
+        fuzzy: { maxEdits: 2 }
       }
     }
   }
@@ -1580,7 +1786,7 @@ You can test all these queries directly in:
 
 ---
 
-## MongoDB vs Relational Database - Complete Comparison
+## 18. MongoDB vs Relational Database - Complete Comparison
 
 | **Concept** | **Relational Database** | **MongoDB** | **Description/Analogy** |
 |-------------|-------------------------|-------------|-------------------------|
