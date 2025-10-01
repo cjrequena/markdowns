@@ -160,37 +160,6 @@ Just add key-value pairs at the top level for **structure-mode** or at header le
 
 ---
 
-## Schema Validation & Schema Registry
-
-Validating CloudEvent payloads ensures downstream systems can trust the structure.
-
-### When to Use Schema Validation
-
-- **Before publishing**: To prevent garbage data
-- **Before processing**: To enforce contracts
-- **In regulated or mission-critical systems**
-
-### Recommended Approach
-
-Use **Schema Registry** (like Confluent, AWS Glue, or Apicurio) to:
-
-- Register Avro/JSON schemas for each event `type`
-- Validate against them using schema IDs or versioned URLs
-- Use CloudEvent’s `dataschema` field to point to the schema:
-
-```json
-{
-  "specversion": "1.0",
-  "type": "com.example.user.created",
-  "source": "/user-service",
-  "id": "7890",
-  "dataschema": "https://schemas.example.com/user-created-v1.json",
-  "data": { ... }
-}
-```
-
----
-
 ## Binary Mode - Kafka
 
 ### Key Features
