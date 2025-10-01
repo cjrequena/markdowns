@@ -139,24 +139,24 @@ Just add key-value pairs at the top level for **structure-mode** or at header le
 
 ### Custom Extensions
 
-| Extension Name        | Type      | Description                                                               |
-| --------------------- | --------- | ------------------------------------------------------------------------- |
-| `ext_environment`     | `string`  | Deployment environment (e.g., `"prod"`, `"staging"`, `"dev"`)             |
-| `ext_region`          | `string`  | Cloud region where the event originated (e.g., `"us-west-2"`)             |
-| `ext_trace_id`        | `string`  | Trace ID for distributed tracing (OpenTelemetry or Zipkin format)         |
-| `ext_span_id`         | `string`  | Span ID for tracing within a transaction                                  |
-| `ext_booking_channel` | `string`  | Channel used to create the booking (e.g., `"mobile"`, `"web"`, `"agent"`) |
-| `ext_user_id`         | `string`  | ID of the authenticated user who made the booking                         |
-| `ext_correlation_id`  | `string`  | Correlation ID for linking events across services                         |
-| `ext_retry_count`     | `integer` | Number of retries attempted for delivering this event                     |
-| `ext_tenant_id`       | `string`  | ID of the customer or tenant (for multi-tenant SaaS platforms)            |
-| `ext_operation_type`  | `string`  | Operation being performed (`"create"`, `"update"`, `"cancel"`)            |
-| `ext_locale`          | `string`  | Locale or language setting of the client (e.g., `"en-US"`)                |
-| `ext_currency_code`   | `string`  | Currency used in the transaction (e.g., `"USD"`, `"EUR"`)                 |
-| `ext_app_version`     | `string`  | Version of the client app or API                                          |
-| `ext_event_priority`  | `string`  | Priority of the event (`"low"`, `"normal"`, `"high"`)                     |
-| `ext_processing_node` | `string`  | Logical or physical name of the node that processed the event             |
-| `ext_schema_id`       | `string`  | Schema registry ID for data validation                                    |
+| Extension Name  | Type      | Description                                                               |
+| --------------- | --------- | ------------------------------------------------------------------------- |
+| `ext_environment` | `string`  | Deployment environment (e.g., `"prod"`, `"staging"`, `"dev"`)             |
+| `ext_region`    | `string`  | Cloud region where the event originated (e.g., `"us-west-2"`)             |
+| `ext_traceid`   | `string`  | Trace ID for distributed tracing (OpenTelemetry or Zipkin format)         |
+| `ext_spanid`    | `string`  | Span ID for tracing within a transaction                                  |
+| `ext_bookingchannel` | `string`  | Channel used to create the booking (e.g., `"mobile"`, `"web"`, `"agent"`) |
+| `ext_userid`    | `string`  | ID of the authenticated user who made the booking                         |
+| `ext_correlationid` | `string`  | Correlation ID for linking events across services                         |
+| `ext_retrycount` | `integer` | Number of retries attempted for delivering this event                     |
+| `ext_tenantid`  | `string`  | ID of the customer or tenant (for multi-tenant SaaS platforms)            |
+| `ext_operationtype` | `string`  | Operation being performed (`"create"`, `"update"`, `"cancel"`)            |
+| `ext_locale`    | `string`  | Locale or language setting of the client (e.g., `"en-US"`)                |
+| `ext_currencycode` | `string`  | Currency used in the transaction (e.g., `"USD"`, `"EUR"`)                 |
+| `ext_appversion` | `string`  | Version of the client app or API                                          |
+| `ext_eventpriority` | `string`  | Priority of the event (`"low"`, `"normal"`, `"high"`)                     |
+| `ext_processingnode` | `string`  | Logical or physical name of the node that processed the event             |
+| `ext_schemaid`  | `string`  | Schema registry ID for data validation                                    |
 
 ---
 
