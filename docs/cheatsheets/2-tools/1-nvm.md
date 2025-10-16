@@ -38,7 +38,8 @@ Install the last LTS version
 nvm install --lts
 ```
 
-You can select Node.js version by running `nvm use v16.14.0` (or another version number). Another alternative: create a small Bash shell script to enable the right environment variables for your project.
+You can select Node.js version by running `nvm use v16.14.0` (or another version number). Another alternative: create a 
+small Bash shell script to enable the right environment variables for your project.
 ```bash
 nvm use node
 ```
@@ -78,7 +79,7 @@ The `NODE_PATH` variable can also be useful for some applications, for example, 
 
 ### Install the latest LTS version
 ```bash
-nvm install lts
+nvm install --lts
 ```
 
 ### Install a specific Node.js version. `nvm install <version>`
@@ -89,7 +90,8 @@ nvm install 14.17.0
 ### Use a specific Node.js version. `nvm use <version>`
 ```bash
 nvm use 14.17.0
-nvm use lts
+nvm use --lts
+nvm use -g --lts
 ```
 
 ### Uninstall a specific Node.js version. `nvm uninstall <version>`

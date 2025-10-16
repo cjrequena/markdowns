@@ -24,57 +24,57 @@ nav_order: 2
 
 ### Generate a plain old package.json using legacy init:
 ```bash
-$ npm init
+npm init
 ```
 
 ### Alias for npm install
 ```bash
-$ npm i
+npm i
 ```
 
 ### Install everything in package.json
 ```bash
-$ npm install
+npm install
 ```
 
 ### Install everything in package.json, except devDependecies
 ```bash
-$ npm install --production
+npm install --production
 ```
 
 ### Install a package
 ```bash
-$ npm install <package>
+npm install <package>
 ```
 
 ### Install a package as devDependency
 ```bash
-$ npm install --save-dev <package>
+npm install --save-dev <package>
 ```
 
 ### Install a package with exact
 ```bash
-$ npm install --save-exact <package>
+npm install --save-exact <package>
 ```
 
 ### Bump the package version
 ```bash
-$ npm version <version>
+npm version <version>
 ```
 
 ### Bump the major package version by 1 (1.2.3 → 2.0.0)
 ```bash
-$ npm version major
+npm version major
 ```
 
 ### Bump the minor package version by 1 (1.2.3 → 1.3.0)
 ```bash
-$ npm version minor
+npm version minor
 ```
 
 ### Bump the patch package version by 1 (1.2.3 → 1.2.4)
 ```bash
-$ npm version patch
+npm version patch
 ```
 
 --save is the default as of npm@5. Previously, using npm install without --save doesn’t update package.json.
@@ -82,22 +82,22 @@ $ npm version patch
 ## Listing
 ### Lists the installed versions of all dependencies in this software
 ```bash
-$ npm list	
+npm list	
 ```
 
 ### Lists the installed versions of all globally installed packages
 ```bash
-$ npm list -g --depth 0
+npm list -g --depth 0
 ```
 
 ### Lists the latest versions of all dependencies in this software
 ```bash
-$ npm view
+npm view
 ```
 
 ### Lists only the dependencies in this software which are outdated
 ```bash
-$ npm outdated
+npm outdated
 ```
 	
 
@@ -107,7 +107,7 @@ $ npm outdated
 
 ---
 ## NPM Ussage
-````bash
+```bash
 Usage:
 
 npm install        install all the dependencies in your project
@@ -137,4 +137,4 @@ or on the command line via: npm <command> --key=value
 
 More configuration info: npm help config
 Configuration fields: npm help 7 config
-````
+```
