@@ -24,41 +24,41 @@ see [Installing Node.js with `nvm` to Linux & macOS & WSL](https://gist.github.c
 ### NVM On macOS
 
 Install NVM on macOS using brew
-````bash
-$ brew install nvm
-````
+```bash
+brew install nvm
+```
 
 Create a folder for the current user `.nvm` where the files will reside.
-````bash
-$ mkdir ~/.nvm
-````
+```bash
+mkdir ~/.nvm
+```
 
 Install the last LTS version
-````bash
-$ nvm install --lts
-````
+```bash
+nvm install --lts
+```
 
 You can select Node.js version by running `nvm use v16.14.0` (or another version number). Another alternative: create a small Bash shell script to enable the right environment variables for your project.
-````bash
-$ nvm use node
-````
+```bash
+nvm use node
+```
 
 Check if everything is working as expected
-````bash
-$ nvm run node --version
-````
+```bash
+nvm run node --version
+```
 
 Create two user environment variables `NVM_DIR` and `NVM_HOMEBREW`
-````bash
+```bash
 export NVM_DIR="$HOME/.nvm"
 NVM_HOMEBREW="/usr/local/opt/nvm/nvm.sh"
 [ -s "$NVM_HOMEBREW" ] && \. "$NVM_HOMEBREW"
-````
+```
 
 The `NODE_PATH` variable can also be useful for some applications, for example, VScode, this is the code you need to put after the previous variables.
-````bash
+```bash
 [ -x "$(command -v npm)" ] && export NODE_PATH=$NODE_PATH:`npm root -g`
-````
+```
 
 ### NVM On Ubuntu/Linux/macOS
 1. Open Terminal.
@@ -78,63 +78,63 @@ The `NODE_PATH` variable can also be useful for some applications, for example, 
 
 ### Install the latest LTS version
 ```bash
-$ nvm install lts
+nvm install lts
 ```
 
 ### Install a specific Node.js version. `nvm install <version>`
 ```bash
-$ nvm install 14.17.0
+nvm install 14.17.0
 ```
 
 ### Use a specific Node.js version. `nvm use <version>`
 ```bash
-$ nvm use 14.17.0
-$ nvm use lts
+nvm use 14.17.0
+nvm use lts
 ```
 
 ### Uninstall a specific Node.js version. `nvm uninstall <version>`
 ```bash
-$ nvm uninstall 14.17.0
+nvm uninstall 14.17.0
 ```
 
 ### List installed Node.js versions.
 ```bash
-$ nvm ls
+nvm ls
 ```
 
 ### List available Node.js versions that can be installed.
 ```bash
-$ nvm ls-remote
+nvm ls-remote
 ```
 
 ### Display the currently active Node.js version.
 ```bash
-$ nvm current
+nvm current
 ```
 
 ### Create an alias for a specific Node.js version. `nvm alias <name> <version>`
 ```bash
-$ nvm alias default 14.17.0
+nvm alias default 14.17.0
 ```
 
 ###  Use the default Node.js version set by an alias.
 ```bash
-$ nvm use default
+nvm use default
 ```
 
 ###  Display the path to a specific Node.js version. `nvm which <version>`
 ```bash
-$ nvm which 14.17.0
+nvm which 14.17.0
 ```
 
 ###  Display the current NVM version.
 ```bash
-$ nvm version
+nvm version
 ```
 
 ###  Display the current NVM version (alternative command)
 ```bash
-$ nvm --version
+nvm --version
 ```
 
 Note: Replace `<version>` with the desired Node.js version (e.g., 14.17.0, 12.22.1).
@@ -142,7 +142,7 @@ Note: Replace `<version>` with the desired Node.js version (e.g., 14.17.0, 12.22
 That's it! You now have a cheat sheet for installing and using Node Version Manager (NVM) on different operating systems.
 
 ## NVM Usage
-````bash
+```bash
 Usage:
   nvm --help                                  Show this message
     --no-colors                               Suppress colored output
@@ -229,4 +229,4 @@ Example:
   nvm use --lts                         Use the latest LTS version
 
   nvm set-colors cgYmW                  Set text colors to cyan, green, bold yellow, magenta, and white
-````
+```
