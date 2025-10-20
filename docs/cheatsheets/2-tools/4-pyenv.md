@@ -85,6 +85,7 @@ exec "$SHELL"
 
 ```bash
 pyenv install --list
+pyenv install --list | grep -E ' 3\.([1-9][0-9]+)'
 ```
 
 ### Install a version
@@ -107,6 +108,7 @@ pyenv uninstall 3.11.9
 
 ```bash
 pyenv version
+ls $PYENV_ROOT/versions/
 ```
 
 ### List all installed versions

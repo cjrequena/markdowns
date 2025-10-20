@@ -246,13 +246,13 @@ db.users.find({ name: /john/i })  // Case-insensitive match
     ).sort({ score: { $meta: "textScore" } })
     ```
 
-### **How It Works:**
+### How It Works:
 
 MongoDB builds an internal searchable word map from these fields.
 
 This index supports efficient keyword and phrase matching.
 
-###  **What this Does:**
+###  What this Does:
 
 Finds documents where the title or content contains "MongoDB", "indexing", or both.
 
@@ -265,7 +265,7 @@ Uses natural language processing (NLP) like stemming and stop word filtering.
 | Flexible indexing?      | ❌ One text index only       | ✅ Fully configurable      |
 | Use case                | Simple keyword search       | Advanced full-text search |
 
-### **MongoDB Built-in Text Search Overview**
+### MongoDB Built-in Text Search Overview
 
 **Supported:**
 - Searching strings in one or more fields
@@ -278,7 +278,7 @@ Uses natural language processing (NLP) like stemming and stop word filtering.
 - Fuzzy search (typos)
 - Nested fields or advanced analyzers
 
-### **Limitations (Compared to Atlas Search)**
+### Limitations (Compared to Atlas Search)
 
 | Feature             | Text Index | Atlas Search |
 | ------------------- | ---------- | ------------ |
@@ -688,6 +688,9 @@ Transforms or renames fields.
 
 **8. `$facet`: Multiple parallel pipelines**
 
+A facet is a stage in the aggregation pipeline (```$facet```) that allows you to run multiple sub-pipelines in parallel on the 
+same set of input documents — and then return all their results together in a single document.
+
 ```js
 {
   $facet: {
@@ -972,9 +975,11 @@ db.users.aggregate([
 | `$group`, `$project`          | `GROUP BY`, `SELECT` |
 
 
-### `$facet` -  multiple sub-pipelines in parallel on the same input documents and outputs
+### `$facet` -  multiple sub-pipelines in parallel on the same set of input documents.
 
-`$facet` runs **multiple sub-pipelines** in parallel on the **same input documents** and outputs their results together. It’s incredibly useful for **multi-dimensional analysis**, such as paginated results + counts, or filtering + faceted navigation (like on e-commerce sites).
+`$facet` runs **multiple sub-pipelines** in parallel on the same input documents and outputs their results together. 
+It’s incredibly useful for **multi-dimensional analysis**, such as paginated results + counts, or filtering + faceted 
+navigation (like on e-commerce sites).
 
 
 **Syntax**
@@ -1214,7 +1219,8 @@ db.products.aggregate([
 
 ## 17. Atlas Search Index
 
-**MongoDB Atlas Search** enables full-text search capabilities within your database using **Lucene-powered** search indexes. It integrates seamlessly with the aggregation framework using the `$search` stage.
+**MongoDB Atlas Search** enables full-text search capabilities within your database using **Lucene-powered** search indexes. 
+It integrates seamlessly with the aggregation framework using the `$search` stage.
 
 See: [search-playground](https://search-playground.mongodb.com/tools/search-demo-builder/snapshots/new)
 
