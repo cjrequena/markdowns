@@ -416,10 +416,10 @@ db.collection.updateMany({}, { $rename: { "oldField": "newField" } })
   }
 ]
 ```
-### Mongo Play Ground
+### Mongo Play Ground and Search Play Ground
 
-[mongoplayground](https://mongoplayground.net/)
-[search-playground](https://search-playground.mongodb.com/)
+- [mongoplayground](https://mongoplayground.net/)
+- [search-playground](https://search-playground.mongodb.com/)
 
 ---
 
