@@ -131,6 +131,13 @@ pyenv local 3.10.12
 
 Creates a `.python-version` file in current directory.
 
+### Set a virtual env inside the project (using Python’s venv)
+
+```bash
+python -m venv .env
+```
+Create `.env/` folder inside the project
+
 ### Set shell-specific version
 
 ```bash
