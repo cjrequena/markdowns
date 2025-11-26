@@ -167,7 +167,7 @@ This ensures a clean separation of concerns while enabling consistent and reusab
 
 ---
 
-## DDD Component Mapping
+## 7. DDD Component Mapping
 
 | Component                         | Domain        |
 | --------------------------------- | ------------- |
@@ -185,7 +185,7 @@ This ensures a clean separation of concerns while enabling consistent and reusab
 
 ---
 
-## 7. Entities
+## 8. Entities
 
 ### GeoShape
 
@@ -360,7 +360,7 @@ pickup_time
 metadata (JSONB)
 ```
 
-### 7.5 Hotel
+### Hotel
 
 ```text
 
@@ -381,7 +381,7 @@ created_at,
 updated_at
 ```
 
-## DB script
+## 8. DB script
 
 ```sql=
 ----------------------------------------------------
@@ -594,10 +594,10 @@ CREATE INDEX idx_hotel_location ON hotel(location_id);
 
 ```
 ---
-## EER model
+## 9. EER model
 ![](../../assets/images/geolocation-system-eer-model.png)
 
-## Very Basic High Level Design (HLD)
+## 10. Very Basic High Level Design (HLD)
 
 ![](../../assets/images/hld-geolocation-system-drawio.png)
 
