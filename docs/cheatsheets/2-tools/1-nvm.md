@@ -139,6 +139,11 @@ nvm version
 nvm --version
 ```
 
+### Reinstall or migrate from older node versions to lts.
+```bash
+nvm install --lts --reinstall-packages-from=current
+```
+
 Note: Replace `<version>` with the desired Node.js version (e.g., 14.17.0, 12.22.1).
 
 That's it! You now have a cheat sheet for installing and using Node Version Manager (NVM) on different operating systems.
