@@ -1,6 +1,6 @@
 ---
 layout: default
-title: software-evelopment-documentation-reference-guide
+title: software-development-documentation-reference-guide
 parent: software-engineering
 nav_order: 70
 ---
