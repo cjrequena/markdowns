@@ -4,7 +4,7 @@ title: aws-elb
 parent: aws
 grand_parent: cheatsheets
 permalink: /docs/aws/aws-elb
-nav_order: 8
+nav_order: 80
 ---
 # AWS Elastic Load Balancer (ELB) Cheat Sheet
 {: .no_toc }
