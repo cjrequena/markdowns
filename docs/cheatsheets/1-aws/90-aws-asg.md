@@ -4,7 +4,7 @@ title: aws-asg
 parent: aws
 grand_parent: cheatsheets
 permalink: /docs/aws/aws-asg
-nav_order: 9
+nav_order: 90
 ---
 # AWS Auto Scaling Group (ASG) Cheat Sheet
 {: .no_toc }
