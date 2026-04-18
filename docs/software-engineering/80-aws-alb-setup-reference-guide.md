@@ -38,56 +38,9 @@ Before creating an ALB, ensure the following are in place:
 
 ---
 
-## Step 1 — Create the ALB
+## Step 1 — Configure Security Groups
 
-### AWS Console
-
-1. Open the **EC2 Console** → **Load Balancers** → **Create Load Balancer**.
-2. Select **Application Load Balancer**.
-3. Configure basic settings:
-   - **Name**: A descriptive name (e.g., `my-app-alb`).
-   - **Scheme**: `internet-facing` (public) or `internal` (private).
-   - **IP address type**: `ipv4` or `dualstack` (IPv4 + IPv6).
-4. Under **Network mapping**:
-   - Select the **VPC**.
-   - Select at least **two subnets** in different AZs.
-5. Click **Next** to proceed to security group configuration.
-
-### AWS CLI
-
-```bash
-aws elbv2 create-load-balancer \
-  --name my-app-alb \
-  --subnets subnet-0abc1234 subnet-0def5678 \
-  --security-groups sg-0abc1234 \
-  --scheme internet-facing \
-  --type application \
-  --ip-address-type ipv4
-```
-
-### Terraform
-
-```hcl
-resource "aws_lb" "app" {
-  name               = "my-app-alb"
-  internal           = false
-  load_balancer_type = "application"
-  security_groups    = [aws_security_group.alb.id]
-  subnets            = [aws_subnet.public_a.id, aws_subnet.public_b.id]
-
-  enable_deletion_protection = true
-
-  tags = {
-    Environment = "production"
-  }
-}
-```
-
----
-
-## Step 2 — Configure Security Groups
-
-The ALB requires a security group that allows inbound traffic from clients and outbound traffic to targets.
+The ALB requires a security group at creation time. Create security groups for both the ALB and its targets first.
 
 ### ALB Security Group
 
@@ -143,6 +96,53 @@ resource "aws_security_group" "targets" {
     to_port         = 8080
     protocol        = "tcp"
     security_groups = [aws_security_group.alb.id]
+  }
+}
+```
+
+---
+
+## Step 2 — Create the ALB
+
+### AWS Console
+
+1. Open the **EC2 Console** → **Load Balancers** → **Create Load Balancer**.
+2. Select **Application Load Balancer**.
+3. Configure basic settings:
+   - **Name**: A descriptive name (e.g., `my-app-alb`).
+   - **Scheme**: `internet-facing` (public) or `internal` (private).
+   - **IP address type**: `ipv4` or `dualstack` (IPv4 + IPv6).
+4. Under **Network mapping**:
+   - Select the **VPC**.
+   - Select at least **two subnets** in different AZs.
+5. Assign the security group created in Step 1.
+
+### AWS CLI
+
+```bash
+aws elbv2 create-load-balancer \
+  --name my-app-alb \
+  --subnets subnet-0abc1234 subnet-0def5678 \
+  --security-groups sg-0abc1234 \
+  --scheme internet-facing \
+  --type application \
+  --ip-address-type ipv4
+```
+
+### Terraform
+
+```hcl
+resource "aws_lb" "app" {
+  name               = "my-app-alb"
+  internal           = false
+  load_balancer_type = "application"
+  security_groups    = [aws_security_group.alb.id]
+  subnets            = [aws_subnet.public_a.id, aws_subnet.public_b.id]
+
+  enable_deletion_protection = true
+
+  tags = {
+    Environment = "production"
   }
 }
 ```
