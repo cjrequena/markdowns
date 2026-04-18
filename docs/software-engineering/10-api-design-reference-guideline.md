@@ -67,9 +67,9 @@ The requirement level keywords **"MUST"**, **"MUST NOT"**, **"REQUIRED", "SHALL"
 
 ## General
 
-### ==Must: Follow API first principle==
+### Must: Follow API first principle
 
-### ==Must: Provide API reference definition using OpenAPI==
+### Must: Provide API reference definition using OpenAPI
 
 We use the OpenAPI specification (aka Swagger spec) as standard for our REST API definitions. You may choose YAML or JSON as a format of your OpenAPI API definition file; however, YAML is generally preferred due to its improved readability.
 
@@ -77,7 +77,7 @@ We also call the OpenAPI API definition the "API Reference definition" (or "API 
 
 The OpenAPI API specification file should be the subject of version control together with source code management. Services also have to support an endpoint to access the API Reference definition for their external API(s).
 
-### ==Should: Provide API user manual==
+### Should: Provide API user manual
 
 In addition to the API Specification, it is good practice to provide an API user manual to improve client developer experience, especially of engineers that are less experienced in using this API.
 
@@ -90,11 +90,11 @@ A helpful API user manual typically describes the following API aspects:
 
 The user manual must be published online, e.g. via our documentation hosting platform service, GHE pages, or specific team web servers. Please do not forget to include a link to the API user manual into the API specification using the #/externalDocs/url property.
 
-### ==Must: Write APIs in English==
+### Must: Write APIs in English
 
 ## Security
 
-### ==Must: Secure endpoints with OAuth 2.0==
+### Must: Secure endpoints with OAuth 2.0
 
 Every API endpoint needs to be secured using OAuth 2.0 using the auth service. Please refer to the official OpenAPI spec on how to specify security definitions in your API specification or take a look at the following example.
 
@@ -123,7 +123,7 @@ Unfortunately the flow field is mandatory and cannot be omitted. API endpoints s
 
 clientCredentials and ignore this information.
 
-### ==Must: Define and assign access rights (Scopes)==
+### Must: Define and assign access rights (Scopes)
 
 APIs must define permissions to protect their resources. Thus, at least one permission must be assigned to each endpoint.&#x20;
 
@@ -174,7 +174,7 @@ paths:
 
 ## Compatibility
 
-### ==Must: Do not break backward compatibility==
+### Must: Do not break backward compatibility
 
 Change APIs, but keep all consumers running. Consumers usually have independent release lifecycles, focus on stability, and avoid changes that do not provide additional value. APIs are service contracts that cannot be broken via unilateral decisions.
 
@@ -185,11 +185,11 @@ There are two techniques to change APIs without breaking them:
 
 We strongly encourage using compatible API extensions and discourage versioning. With Postel’s Law in mind, here are some rules for providers and consumers that allow us to make compatible changes without versioning:
 
-### ==Must: Do not use URI versioning==
+### Must: Do not use URI versioning
 
 With URI versioning a (major) version number is included in the path, e.g. /v1/customers. The consumer has to wait until the provider has been released and deployed. If the consumer also supports hypermedia links — even in their APIs — to drive workflows (HATEOAS), this quickly becomes complex. So does coordinating version upgrades — especially with hyperlinked service dependencies — when using URL versioning. To avoid this tighter coupling and complexer release management we do not use URI versioning, and go instead with media type versioning and content negotiation (see above).
 
-### ==Should: Avoid versioning if backward compatibility can be maintained.==
+### Should: Avoid versioning if backward compatibility can be maintained.
 
 When changing your RESTful APIs, do so in a compatible way and avoid generating additional API versions. Multiple versions can significantly complicate understanding, testing, maintaining, evolving, operating and releasing our systems (supplementary reading).
 
@@ -201,7 +201,7 @@ If changing an API can’t be done in a compatible way, then proceed in one of t
 
 As we discourage versioning by all means because of the manifold disadvantages, we suggest to only use the first two approaches.
 
-### ==Should: Provide Version Information in OpenAPI Documentation==
+### Should: Provide Version Information in OpenAPI Documentation
 
 Only the documentation, not the API itself, needs version information.
 
@@ -221,15 +221,15 @@ Example:
 
 Versioning is one of the most important considerations when designing your Web API.
 
-### ==Must: Never release an API without a version. Make the version mandatory.==
+### Must: Never release an API without a version. Make the version mandatory.
 
-### ==Must: Specify the version with a ‘v’ (e.g. v1).==
+### Must: Specify the version with a ‘v’ (e.g. v1).
 
-### ==Must: Use a simple ordinal number.==
+### Must: Use a simple ordinal number.
 
 Don’t use the dot notation like v1.2 because it implies a granularity of versioning that doesn’t work well with APIs--it’s an interface not an implementation. Stick with v1, v2, and so on.
 
-### ==Must:  Use the Accept & the Accept-Version headers==
+### Must:  Use the Accept & the Accept-Version headers
 
 There is a well-known HTTP header called Accept which is sent on a request from a client to a server. For instance
 
@@ -254,12 +254,12 @@ Using headers is more correct for many reasons: it leverages existing HTTP stand
 ```http
 http://company.com/api/customer/123
 
-===>
+=>
 GET /customer/123 HTTP/1.1
 Accept: application/xml
 Accept-Version: vnd.myapi.v3
   
-<===
+<=
 HTTP/1.1 200 OK
 Content-Type: application/xml
 <customer>
@@ -271,19 +271,19 @@ Content-Type: application/xml
 
 JSON here refers to RFC 7159 (which updates RFC 4627), the “application/json” media type and custom JSON media types defined for APIs.
 
-### ==Must: Use Consistent Property Names==
+### Must: Use Consistent Property Names
 
-### ==Must: Property names must be snake\_case (and never camelCase).==
+### Must: Property names must be snake\_case (and never camelCase).
 
 No established industry standard exists, but many popular Internet companies prefer snake\_case: e.g. GitHub, Stack Exchange, Twitter. Others, like Google and Amazon, use both - but not only camelCase. It’s essential to establish a consistent look and feel such that JSON looks as if it came from the same hand.
 
-### ==Must: Property names must be an ASCII subset==
+### Must: Property names must be an ASCII subset
 
 Property names are restricted to ASCII encoded strings. The first character must be a letter, an underscore or a dollar sign, and subsequent characters can be a letter, an underscore, a dollar sign, or a number.
 
-### ==Must: Use consistent property values==
+### Must: Use consistent property values
 
-### ==Must: Boolean property values must not be null==
+### Must: Boolean property values must not be null
 
 Schema-based JSON properties that are by design booleans must not be presented as nulls.&#x20;
 
@@ -291,7 +291,7 @@ A boolean is essentially a closed enumeration of two values, true and false.&#x2
 
 If the content has a meaningful null value, strongly prefer to replace the boolean with enumeration of named values or statuses - for example accepted\_terms\_and\_conditions with true or false can be replaced with terms\_and\_conditions with values yes, no and unknown.
 
-### ==Must: Date property values must conform to RFC 3339==
+### Must: Date property values must conform to RFC 3339
 
 Use the date and time formats defined by RFC 3339:
 
@@ -322,7 +322,7 @@ Date strings, though more verbose and requiring more effort to parse, avoid this
 
 See: <https://www.utctime.net/>
 
-### ==Must: Use standards for language==
+### Must: Use standards for language
 
 To ensure **consistency, interoperability, and clarity**, always use standardized codes for language, country, and currency.
 
@@ -359,25 +359,25 @@ To ensure **consistency, interoperability, and clarity**, always use standardize
 | **Language** | ISO 639-1 / BCP-47 | `en`, `es-ES`, `fr-CA` |
 | **Currency** | ISO 4217           | `USD`, `EUR`, `JPY`    |
 
-### ==Should: Reserved JavaScript keywords should be avoided==
+### Should: Reserved JavaScript keywords should be avoided
 
 Most API content is consumed by non-JavaScript clients today, but for security and sanity reasons, JavaScript (strictly, ECMAScript) keywords are worth avoiding. A list of keywords can be found in the ECMAScript Language Specification.
 
-### ==Should: Array names should be pluralized==
+### Should: Array names should be pluralized
 
 To indicate that they contain multiple values, **prefer pluralizing array names**. This implies that **object names should, in turn, be singular**.
 
-### ==Must: Null values must have their fields removed==
+### Must: Null values must have their fields removed
 
-### ==Should: Empty array values should not be null==
+### Should: Empty array values should not be null
 
 Empty array values can unambiguously be represented as the empty list, \[].
 
-### ==Should: Enumerations should be represented as Strings==
+### Should: Enumerations should be represented as Strings
 
 Strings are a reasonable target for values that are by design enumerations.
 
-### ==Could: Time durations and intervals could conform to ISO 8601==
+### Could: Time durations and intervals could conform to ISO 8601
 
 Schema-based JSON properties that represent **durations and intervals** should be **formatted as strings**, following the **ISO 8601** standard. *(Appendix A of RFC 3339 provides a grammar for durations.)*
 
@@ -393,7 +393,7 @@ REST APIs use Uniform Resource Identifiers (URIs) to address resources. REST A
 
 The best practices in naming resources are listed in the subsections below.
 
-### ==Must: Use nouns in order to name a resource==
+### Must: Use nouns in order to name a resource
 
 RESTful URI should refer to a resource that is a thing (noun) instead of referring to an action (verb) because nouns have properties which verbs do not have – similar to resources have attributes.
 
@@ -416,7 +416,7 @@ RESTful URI should refer to a resource that is a thing (noun) instead of referri
 |              |                                |                        | Else create (201)      | Else 404                               |               |
 
 
-### ==Must: Use lowercase separate words with hyphens for path segments==
+### Must: Use lowercase separate words with hyphens for path segments
 
 Example:
 
@@ -430,7 +430,7 @@ Examples:
 
 `customer_number, order_id, billing_address`
 
-### ==Must: Use Hyphenated HTTP Headers==
+### Must: Use Hyphenated HTTP Headers
 
 This is for consistency in your documentation (most other headers follow this convention).&#x20;
 
@@ -449,7 +449,7 @@ Accept-Version
 
 **See also: HTTP Headers are case-insensitive (RFC 7230).**
 
-### ==Must: Pluralize resource names==
+### Must: Pluralize resource names
 
 Usually, a collection of resource instances is provided (at least API should be ready here). The special case of a resource singleton is a collection with cardinality 1.
 
@@ -462,11 +462,11 @@ Given that the first thing most people probably do with a RESTful API is a GET, 
 | /bookings     |
 | /transfers    |
 
-### ==Must: Avoid Trailing Slashes==
+### Must: Avoid Trailing Slashes
 
 The trailing slash must not have specific semantics. Resource paths must deliver the same results whether they have the trailing slash or not.
 
-### ==Should: Not use /api as base path==
+### Should: Not use /api as base path
 
 In most cases, all resources provided by a service are part of the public API, and therefore should be made available under the root "/" base path.
 
@@ -510,7 +510,7 @@ POST /api/orders      → No added value from `/api`
 
 ## Resources
 
-### ==Must: Avoid actions — Think about resources==
+### Must: Avoid actions — Think about resources
 
 REST is all about your resources, so consider the domain entities that take part in web service interaction, and aim to model your API around these using the standard HTTP methods as operation indicators. For instance, if an application has to lock articles explicitly so that only one user may edit them, create an article lock with PUT or POST instead of using a lock action.
 
@@ -521,11 +521,11 @@ PUT /recipes/100
 
 The added benefit is that you already have a service for browsing and filtering article locks.
 
-### ==Must: Keep URLs Verb-Free==
+### Must: Keep URLs Verb-Free
 
 The API describes resources, so the only place where actions should appear is in the HTTP methods. In URLs, use only nouns.
 
-### ==Must: Use Domain-Specific Resource Names==
+### Must: Use Domain-Specific Resource Names
 
 API resources represent elements of the application’s domain model. Using domain-specific nomenclature for resource names helps developers to understand the functionality and basic semantics of your resources.&#x20;
 
@@ -540,7 +540,7 @@ To provide some guidance the following  characteristics that a name should embo
 
 <br>
 
-### ==Must: Identify resources and Sub-Resources via Path Segments==
+### Must: Identify resources and Sub-Resources via Path Segments
 
 ```http
 Basic URL structure:
@@ -551,17 +551,17 @@ Examples:
 /orders/1681e6b88ec1/items/1
 ```
 
-### ==Must: Simplify associations==
+### Must: Simplify associations
 
 Resources almost always have relationships to other resources. What's a simple way to express these relationships in a Web API?
 
 For example given the following operations GET /owners/5678/dogs and POST /owners/5678/dogs the relationships can be complex. Owners have relationships with veterinarians, who have relationships with dogs, who have relationships with food, and so on.
 
-### ==Should: Define useful resources==
+### Should: Define useful resources
 
 As a rule of thumb resources should be defined to cover 90% of all its client's use cases. A useful resource should contain as much information as necessary, but as little as possible. A great way to support the last 10% is to allow clients to specify their needs for more/less information by supporting filtering and embedding.
 
-### ==Could: Consider Using (Non-) Nested URLs==
+### Could: Consider Using (Non-) Nested URLs
 
 If a sub-resource is only accessible via its parent resource and may not exists without parent resource, consider using a nested URL structure, for instance:
 
@@ -574,7 +574,7 @@ However, if the resource can be accessed directly via its unique id, then the AP
 /orders/5273gh3k525a
 ```
 
-### ==Should: Limit number of resources==
+### Should: Limit number of resources
 
 To keep maintenance and service evolution manageable, we should follow "functional segmentation" and "separation of concern" design principles and do not mix different business functionalities in same API definition. In this sense the number of resources exposed via API should be limited - our experience is that a typical range of resources for a well-designed API is between 4 and 8. There may be exceptions with more complex business domains that require more resources, but you should first check if you can split them into separate subdomains with distinct APIs.
 
@@ -626,7 +626,7 @@ Instead of a single overloaded API, split it by **domain-specific APIs**:
 
 **Benefit:** Each API remains **focused, modular, and easier to maintain**.
 
-### ==Should: Limit number of Sub-Resource Levels==
+### Should: Limit number of Sub-Resource Levels
 
 APIs should be designed with **clarity, maintainability, and usability** in mind. This includes **limiting sub-resource (nested) levels** to prevent excessive complexity and long URLs.
 
@@ -672,7 +672,7 @@ Actions like the following are your clue that you might not be dealing with a �
 
 For example, you want to make a simple algorithmic calculation like how much tax someone should pay, or do a natural language translation (one language in request; another in response), or convert one currency to another. None involve resources returned from a database.
 
-### ==Must: Use verbs not nouns for operation that do not involve resources.==
+### Must: Use verbs not nouns for operation that do not involve resources.
 
 For example, an API to convert 100 euros to Chinese Yen: /convert?from=EUR\&to=CNY\&amount=100. Make it clear in your API documentation that these “non-resource” scenarios are different.&#x20;
 
@@ -719,11 +719,11 @@ POST /report
 POST /notification
 ```
 
-### ==Must: Specify and document in the API documentation or OpenAPI specification that the operation does not involve a resource==
+### Must: Specify and document in the API documentation or OpenAPI specification that the operation does not involve a resource
 
 ## HTTP
 
-### ==Must: Use HTTP Methods Correctly==
+### Must: Use HTTP Methods Correctly
 
 Be compliant with the standardized HTTP method semantics summarized as follows:
 
@@ -826,7 +826,7 @@ Successful DELETE requests will usually generate 
 
 **Note**: OPTIONS is rarely implemented, though it could be used to self-describe the full functionality of a resource.
 
-### ==Must: Use HTTP status codes==
+### Must: Use HTTP status codes
 
 | **STATUS CODE** | **DESCRIPTION**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -847,7 +847,7 @@ Successful DELETE requests will usually generate 
 
 ## Sorting
 
-### ==Might: Use sorting in the HTTP Get Request==
+### Might: Use sorting in the HTTP Get Request
 
 In case you want to provide a query parameter to sort the http response, the current microservice archetype by means of Jade library supports the sorting feature. To do this, you only have to include the "sort" attribute as a query parameter in the request.
 
@@ -855,11 +855,11 @@ In case you want to provide a query parameter to sort the http response, the cur
 
 ## Pagination (Not needed for reactive endpoints)
 
-### ==Must: Support Pagination for synchronous services==
+### Must: Support Pagination for synchronous services
 
 Access to lists of data items must support pagination for best client side batch processing and iteration experience. This holds true for all lists that are (potentially) larger than just a few hundred entries.
 
-### ==Must: Use Offset and limit operators==
+### Must: Use Offset and limit operators
 
 The offset and limit operators are used for pagination. Access to lists of data items must support pagination for best client-side batch processing and iteration experience. This holds true for all lists that are (potentially) larger than just a few hundred entries.
 
@@ -870,15 +870,15 @@ The offset and limit operators are used for pagination. Access to lists of data 
 
 **Note**: It is not a must if the api calls to an external system that it has not limit and offset.
 
-### ==Must: Define a maximum value for the limit query parameter.==
+### Must: Define a maximum value for the limit query parameter.
 
 In the case the limit value exceeds the maximum value established, the service will respond with an HTTP Error 400.
 
-### ==Must: Not allowed to retrieve the whole resource collection without setting a limit==
+### Must: Not allowed to retrieve the whole resource collection without setting a limit
 
 It is not allowed for security reasons to enable any kind of backdoor that allows retrieving the whole set of a collection. That is, you cannot set the limit value to zero.
 
-### ==Must: Include Pagination Http Response Header==
+### Must: Include Pagination Http Response Header
 
 For all the HTTP GET request, the HTTP response must include the next HTTP Headers:
 
@@ -910,7 +910,7 @@ By default, the server sends back the full representation of a resource after pr
 
 To request a partial response, use the fields request parameter to specify the fields you want returned . You can use this parameter with any request that returns a response body.
 
-### ==Must: Use Fields operator==
+### Must: Use Fields operator
 
 In the case you want to allow partial response, you have to use the fields operator. Fields allows you to choose what fields to return from an entity. You can choose multiple values by combining comma-separated operators.
 
@@ -947,14 +947,14 @@ fields=items.id,items.snippet.title,items.snippet.position
 
 ## Filtering
 
-### ==Might: Support filtering==
+### Might: Support filtering
 
 In case the API requires filtering, there are two different ways of achieving this:
 
 1. Dynamic Filtering
 2. Static Filtering
 
-### ==Might: Support Dynamic Filtering==
+### Might: Support Dynamic Filtering
 
 Use RSQL for dynamic filtering. RSQL is a query language for parametrized filtering of entries in RESTful APIs. It’s based on FIQL (Feed Item Query Language), that was originally specified by Mark Nottingham as a language for querying Atom feeds. However the simplicity of RSQL and its capability to express complex queries in a compact and HTTP URI-friendly way makes it a good candidate for becoming a generic query language for searching REST endpoints.
 
@@ -964,7 +964,7 @@ RSQL introduces simple and composite operators which can be used to build basic 
 
 | Basic Operator | Description         |
 | -------------- | ------------------- |
-| \==            | Equal To            |
+| \            | Equal To            |
 | !=             | Not Equal To        |
 | =gt=           | Greater Than        |
 | =ge=           | Greater Or Equal To |
@@ -984,17 +984,17 @@ RSQL introduces simple and composite operators which can be used to build basic 
 
 We use <https://github.com/jirutka/rsql-parser> as RSQL implementation.
 
-### ==Must: Use filters operator for dynamic filtering==
+### Must: Use filters operator for dynamic filtering
 
 To build the query with RSQL you have to use filters operator as is shown below:
 
 `filters=age=gt=10;age=lt=20;(str=Fero,str=Hero)`
 
-### ==Must: Indicate which parameters are allowed to filter by using the filters operator==
+### Must: Indicate which parameters are allowed to filter by using the filters operator
 
 In the case of using RSQL, the API specification must indicate which are the parameters by it can be filtered. In the same way, the code must only enable filtering by the fields mentioned in the specification.
 
-### ==Should: Use query parameters for mandatory fields==
+### Should: Use query parameters for mandatory fields
 
 In case a resource operation requires filtering by a mandatory parameter, it is recommended to use the query parameter, however, if you want to use RSQL which is also allowed.
 
@@ -1002,7 +1002,7 @@ In case a resource operation requires filtering by a mandatory parameter, it is 
 
 Error handling is a very important piece of the puzzle for any software developer, and especially for API designers.
 
-### ==Must: The error message payload and the header must include the following attributes==
+### Must: The error message payload and the header must include the following attributes
 
 - The status code in the response header.
 - The developer error message in the payload.
@@ -1018,7 +1018,7 @@ HTTP Status Code: 404
 
 ## Common Headers
 
-### ==Must: Use Content Headers Correctly==
+### Must: Use Content Headers Correctly
 
 Content or entity headers are headers with a Content- prefix. They describe the content of the body of the message and they can be used in both, HTTP requests and responses.&#x20;
 
@@ -1032,7 +1032,7 @@ Commonly used content headers include but are not limited to:
 - **Content-Range** is used in responses to range requests to indicate which part of the requested resource representation is delivered with the body.
 - **Content-Type** indicates the media type of the body content.
 
-### ==Must: Use Content-Location Correctly==
+### Must: Use Content-Location Correctly
 
 This header is used in the response of either a successful read (GET, HEAD) or successful write operation (PUT, POST or PATCH).
 
@@ -1054,7 +1054,7 @@ If your API returns the new representation after a PUT, PATCH, or POST you shoul
 
 [More details in rfc7231](https://datatracker.ietf.org/doc/html/rfc9110 "RFC 9110: HTTP Semantics")
 
-### ==Must: Use Sleuth Trace-Id Header==
+### Must: Use Sleuth Trace-Id Header
 
 All the HTTP Requests and Responses must include the Trace-Id Headers.&#x20;
 
@@ -1068,13 +1068,13 @@ Trace-Id : 73306c019b9271a0
 
 ## Custom Headers.
 
-### ==SHOULD NOT prefix their parameter names with "X-" or similar constructs.==
+### SHOULD NOT prefix their parameter names with "X-" or similar constructs.
 
-### ==SHOULD NOT prohibit parameters with an "X-" prefix or similar constructs from being registered.==
+### SHOULD NOT prohibit parameters with an "X-" prefix or similar constructs from being registered.
 
-### ==MUST NOT stipulate that a parameter with an "X-" prefix or similar constructs needs to be understood as unstandardized.==
+### MUST NOT stipulate that a parameter with an "X-" prefix or similar constructs needs to be understood as unstandardized.
 
-### ==MUST NOT stipulate that a parameter without an "X-" prefix or similar constructs needs to be understood as standardized==
+### MUST NOT stipulate that a parameter without an "X-" prefix or similar constructs needs to be understood as standardized
 
 See: <https://tools.ietf.org/html/rfc6648>
 
