@@ -18,259 +18,250 @@ nav_order: 9
 ---
 
 ## AWS Auto Scaling Group (ASG)
-An Auto Scaling Group (ASG) in AWS allows you to automatically scale your EC2 instances based on conditions you define. 
 
-The goal of an Auto Scaling group is to:
+An Auto Scaling Group (ASG) in AWS allows you to automatically scale your EC2 instances based on conditions you define.
 
-- Scale out (Add EC2 instances) to match an increased load.
-- Scale in (Remove EC2 instances) to match a decreased load.
-- Ensure we have a minimum and a maximum number of EC2 instances running.
+The goal of an Auto Scaling Group is to:
+
+- **Scale out** (add EC2 instances) to match an increased load.
+- **Scale in** (remove EC2 instances) to match a decreased load.
+- Ensure a **minimum** and **maximum** number of EC2 instances are running.
 - Automatically register new instances to a load balancer.
-- Re-create an EC2 instance in case a previous one is terminated (ex: if unhealthy).
+- Re-create an EC2 instance if a previous one is terminated (e.g., if unhealthy).
 
-The Auto Scaling Group is free.
+> ASG itself is free — you only pay for the underlying EC2 instances and resources launched.
 
-## Basic Concepts:
-- **Auto Scaling Group (ASG):** Logical grouping of EC2 instances that automatically adjusts its size based on policies.
-- **Launch Configuration:** (Deprecated) Defines settings for EC2 instances on how to launch them within an  ASG:
-  - AMI
-  - Instance Type
+## Basic Concepts
+
+- **Auto Scaling Group (ASG)**: Logical grouping of EC2 instances that automatically adjusts its size based on policies.
+- **Launch Template** (recommended): Defines how to launch EC2 instances within an ASG. Supports versioning, parameterization, and mixed instance types. Includes:
+  - AMI + Instance Type
   - EC2 User Data
   - EBS Volumes
   - Security Groups
   - SSH Key Pair
-  - IAM Role for your EC2 Instances
+  - IAM Role for EC2 Instances
   - Network + Subnets information
-  - Load Balancer information
-- **Launch Template:** Similar to a launch configuration, but allows versioning and parameterization.
+  - Load Balancer / Target Group information
+  - Spot/On-Demand configuration
+- **Launch Configuration** (deprecated): Similar to Launch Template but does not support versioning, mixed instances, or Spot configuration. Migrate to Launch Templates.
+
+### ASG Capacity Settings
+
+| Setting | Description |
+|---|---|
+| **Minimum capacity** | Minimum number of instances the ASG will maintain. |
+| **Desired capacity** | The number of instances the ASG tries to maintain. Adjusted by scaling policies. |
+| **Maximum capacity** | Maximum number of instances the ASG can scale to. |
+
+## Health Checks
+
+ASG uses health checks to determine if instances are healthy. Unhealthy instances are terminated and replaced.
+
+| Health Check Type | Description |
+|---|---|
+| **EC2** (default) | Instance is unhealthy if the EC2 status check fails (hardware/software issues). |
+| **ELB** | Instance is unhealthy if the ELB health check fails (application-level check). Recommended when using a load balancer. |
+| **Custom** | Use with VPC Lattice or custom health check endpoints. |
+
+- **Health check grace period**: Time (default: 300 seconds) after instance launch before health checks begin. Allows time for the instance to bootstrap.
+- If an instance fails health checks, ASG terminates it and launches a replacement.
 
 ## Scaling Policies
 
-  - It is possible to scale and ASG based on CloudWatch Alarms
-  - An alarms monitor a metric (Such as Average CPU, or custom metric)
-  - Metrics such as Average CPU are computed for the overall ASG instances
-  - Base on the alarm;
-    - We can create scale-out policies (increase the number of instances)
-    - We can create scale-in policies (decrease the number of instances)
+Scaling policies adjust ASG capacity based on CloudWatch Alarms. Alarms monitor metrics (e.g., Average CPU) computed across all ASG instances.
 
-### **Simple Scaling Policy:**
-    - **Description:** Adds or removes a fixed number of instances.
-    - **Use Case:** Suitable for predictable, steady-state workloads.
+### Simple Scaling
 
-### **Step Scaling Policy:**
-    - **Description:** Adjusts the ASG capacity in response to changing demand.
-    - **Configuration:**
-        - Define multiple "steps" for scaling adjustments.
-        - Each step has a specified adjustment value and a threshold metric.
+- Adds or removes a **fixed number** of instances when a CloudWatch alarm is triggered.
+- Waits for the cooldown period before evaluating again.
+- **Note**: AWS recommends using Step Scaling instead of Simple Scaling, as Step Scaling can respond to additional alarms during cooldown.
+- Use case: Basic workloads with predictable, steady-state demand.
 
-### **Target Tracking Scaling Policy:**
-    - **Description:** Adjusts the ASG capacity to maintain a target value for a specific metric.
-    - **Configuration:**
-        - Specify a target value for a chosen metric (e.g., CPU utilization).
-        - Auto Scaling adjusts the capacity to maintain the target.
+### Step Scaling
 
-### **Scheduled Scaling:**
-    - **Description:** Automatically adjusts the ASG capacity at specific times.
-    - **Configuration:**
-        - Specify start and end times for the scheduled actions.
-        - Define desired capacity for each scheduled action.
+- Adjusts capacity in **multiple steps** based on the size of the alarm breach.
+- Each step defines a different adjustment value for a different threshold range.
+- Does **not** wait for cooldown — can respond to multiple alarms simultaneously.
+- Use case: Workloads with variable demand that need proportional responses.
 
-### **Custom Scaling Policy (Using AWS Lambda):**
-    - **Description:** Leverage Lambda functions to implement custom logic for scaling decisions.
-    - **Configuration:**
-        - Define Lambda function to evaluate conditions and return scaling recommendations.
+### Target Tracking Scaling
 
-### CloudWatch Metrics for Auto Scaling:
+- Adjusts capacity to maintain a **target value** for a specific metric.
+- Example: Keep average CPU utilization at 50%.
+- ASG automatically creates and manages the CloudWatch alarms.
+- Use case: Most common and simplest policy for dynamic workloads.
 
-1. **GroupDesiredCapacity:**
-    - **Description:** The desired capacity of the Auto Scaling group.
-    - **Use Case:** Monitor the number of instances the ASG should have.
+### Scheduled Scaling
 
-2. **GroupInServiceInstances:**
-    - **Description:** The number of instances that are running and have passed the health checks.
-    - **Use Case:** Monitor the number of healthy instances.
+- Adjusts capacity at **specific times** based on a schedule (cron or one-time).
+- Define start/end times and desired capacity for each scheduled action.
+- Use case: Known traffic patterns (e.g., scale up before business hours).
 
-3. **GroupPendingInstances:**
-    - **Description:** The number of instances that are pending to be added to the group.
-    - **Use Case:** Monitor instances waiting to be launched.
+### Predictive Scaling
 
-4. **GroupStandbyInstances:**
-    - **Description:** The number of instances that are in a 'standby' state.
-    - **Use Case:** Instances in standby are not actively serving traffic but can quickly return to service.
+- Uses **machine learning** to analyze historical load patterns and forecast future traffic.
+- Proactively scales capacity **ahead of predicted demand**.
+- Works alongside other scaling policies.
+- Use case: Cyclical or recurring traffic patterns where reactive scaling is too slow.
 
-5. **GroupTerminatingInstances:**
-    - **Description:** The number of instances that are in the process of being terminated.
-    - **Use Case:** Monitor instances being terminated due to scaling down or other reasons.
+## Scaling Cooldowns
 
-6. **GroupInServiceCapacity:**
-    - **Description:** The total number of capacity units in the InService state.
-    - **Use Case:** Monitor the total capacity of healthy instances.
+- After a scaling activity, ASG enters a **cooldown period** (default: 300 seconds).
+- During cooldown, ASG does not launch or terminate additional instances.
+- Prevents rapid, oscillating scale-out/scale-in cycles.
+- **Tip**: Use a ready-to-use AMI to reduce instance configuration time, which allows you to reduce the cooldown period.
+- Step Scaling and Target Tracking policies can override the default cooldown with their own warm-up time.
 
-7. **GroupTotalCapacity:**
-    - **Description:** The total number of capacity units in the group.
-    - **Use Case:** Monitor the overall capacity of the ASG.
+## Lifecycle Hooks
 
-8. **GroupMaxSize:**
-    - **Description:** The maximum size of the Auto Scaling group.
-    - **Use Case:** Ensure that the ASG does not exceed its maximum configured size.
+Lifecycle hooks let you perform custom actions as ASG launches or terminates instances.
 
-9. **GroupMinSize:**
-    - **Description:** The minimum size of the Auto Scaling group.
-    - **Use Case:** Ensure that the ASG always has a minimum number of instances.
+- **Launching hook**: Instance enters `Pending:Wait` state before going `InService`. Use to install software, pull configuration, register with external services.
+- **Terminating hook**: Instance enters `Terminating:Wait` state before being terminated. Use to collect logs, deregister from services, drain connections.
+- Default timeout: **3600 seconds** (1 hour). Configurable up to 48 hours (with heartbeat).
+- Integrates with **EventBridge**, **SNS**, **SQS**, or **Lambda** for automation.
 
-10. **GroupInServiceCapacity:**
-    - **Description:** The total number of capacity units in the InService state.
-    - **Use Case:** Monitor the total capacity of healthy instances.
+## Termination Policies
 
-11. **CPUUtilization:**
-    - **Description:** The average CPU utilization across all instances in the ASG.
-    - **Use Case:** Common metric for dynamic scaling based on compute demand.
+When ASG needs to scale in, it uses termination policies to decide which instance to terminate.
 
-12. **NetworkIn, NetworkOut:**
-    - **Description:** Network traffic in and out of instances in the ASG.
-    - **Use Case:** Monitor network activity for scaling decisions.
+| Policy | Description |
+|---|---|
+| **Default** | 1) Select AZ with most instances. 2) Terminate instance with oldest launch template/configuration. 3) Terminate instance closest to next billing hour. |
+| **OldestInstance** | Terminate the oldest instance in the group. |
+| **NewestInstance** | Terminate the newest instance in the group. |
+| **OldestLaunchConfiguration** | Terminate instances using the oldest launch configuration. Useful during rolling updates. |
+| **OldestLaunchTemplate** | Terminate instances using the oldest launch template version. |
+| **ClosestToNextInstanceHour** | Terminate the instance closest to the next billing hour. |
+| **AllocationStrategy** | Align with the allocation strategy for Spot/On-Demand mixed instances. |
 
-### Configuring Auto Scaling Policies with CloudWatch Metrics:
+- You can combine multiple policies (evaluated in order).
+- **Instance Protection**: You can protect specific instances from scale-in termination.
+- **Instance Scale-In Protection** can be set at the ASG level or on individual instances.
 
-1. **Navigate to the Auto Scaling Group:**
-    - In the AWS Management Console, go to the EC2 dashboard, and select "Auto Scaling Groups."
+## Instance Standby
 
-2. **Select the Auto Scaling Group:**
-    - Click on the Auto Scaling group for which you want to configure policies.
+You can put an instance into **Standby** state to troubleshoot or perform maintenance without ASG terminating it.
 
-3. **Scaling Policies Tab:**
-    - Navigate to the "Scaling Policies" tab.
+- Instance is removed from the load balancer (deregistered from target group).
+- ASG does **not** replace the instance while it is in standby.
+- You can choose whether ASG decrements the desired capacity or not.
+- Return the instance to `InService` when maintenance is complete.
+- Use case: Debugging a specific instance, applying patches, or investigating issues without affecting the ASG.
 
-4. **Create Policy:**
-    - Click "Create Policy" and choose the policy type (Simple Scaling, Step Scaling, Target Tracking).
+## Instance Refresh
 
-5. **Configure Policy:**
-    - Define the scaling adjustments, metric thresholds, and target values based on the selected policy type.
+Instance Refresh allows you to update all instances in an ASG in a rolling fashion (e.g., after AMI update).
 
-6. **Review and Save:**
-    - Review your configuration and save the policy.
+- Set a **minimum healthy percentage** (e.g., 90%) — ASG replaces instances while keeping at least that percentage healthy.
+- Optionally set a **warm-up time** for new instances before they are considered healthy.
+- Supports **checkpoints** to pause the refresh at a certain percentage for validation.
+- Triggers: Launch template change, new AMI, configuration update.
 
-### Monitoring with CloudWatch Metrics:
+## Warm Pools
 
-1. **Navigate to CloudWatch:**
-    - In the AWS Management Console, go to the CloudWatch dashboard.
+Warm Pools maintain a pool of **pre-initialized instances** that can be quickly placed into service.
+
+- Instances in the warm pool are in a `Stopped`, `Running`, or `Hibernated` state.
+- When ASG scales out, it pulls from the warm pool instead of launching cold instances.
+- Significantly reduces scale-out latency (seconds vs minutes).
+- You pay for stopped instances (EBS volumes) but not for compute.
+- Use case: Applications with long bootstrap times.
 
-2. **Select Metrics:**
-    - Choose "Auto Scaling" from the list of available metrics.
-
-3. **Choose Auto Scaling Group and Metric:**
-    - Select the Auto Scaling group of interest and the metric you want to monitor.
-
-4. **Create Alarms (Optional):**
-    - Set up CloudWatch Alarms based on metric thresholds for proactive monitoring and notification.
-
-## Creating an Auto Scaling Group (ASG) with an Application Load Balancer (ALB) using the AWS Management Console
-
-### Step 1: Create an Application Load Balancer (ALB)
-
-1. **Navigate to the EC2 Dashboard:**
-    - Open the AWS Management Console and go to the EC2 dashboard.
-
-2. **Create Load Balancer:**
-    - Click on "Load Balancers" in the left navigation pane.
-    - Click the "Create Load Balancer" button.
-
-3. **Choose Load Balancer Type:**
-    - Select "Application Load Balancer" and click "Create."
-
-4. **Configure Load Balancer:**
-    - Give your ALB a name.
-    - Configure listeners (usually HTTP on port 80 or HTTPS on port 443).
-    - Configure security settings and optionally configure the routing.
-
-5. **Configure Security Groups:**
-    - Create a new security group or use an existing one.
-    - Configure inbound rules to allow traffic on the required ports.
-
-6. **Configure Routing:**
-    - Set up target groups for routing traffic to instances.
-    - Review and create the ALB.
-
-### Step 2: Create Launch Configuration
-
-1. **Navigate to the EC2 Dashboard:**
-    - In the AWS Management Console, go to the EC2 dashboard.
-
-2. **Create Launch Configuration:**
-    - Click on "Launch Configurations" in the left navigation pane.
-    - Click the "Create launch configuration" button.
-
-3. **Choose AMI and Instance Type:**
-    - Select an Amazon Machine Image (AMI) for your instances.
-    - Choose an instance type.
-    - Configure details like user data, IAM role, etc.
-
-4. **Configure Auto Scaling:**
-    - In the "Advanced Details" section, configure user data or other advanced settings.
-    - Configure storage, security groups, and key pairs.
-
-5. **Review and Create:**
-    - Review your configuration settings and click "Create launch configuration."
-
-### Step 3: Create Auto Scaling Group (ASG)
-
-1. **Navigate to the EC2 Dashboard:**
-    - In the AWS Management Console, go to the EC2 dashboard.
-
-2. **Create Auto Scaling Group:**
-    - Click on "Auto Scaling Groups" in the left navigation pane.
-    - Click the "Create Auto Scaling group" button.
-
-3. **Choose Launch Configuration:**
-    - Select the launch configuration you created earlier.
-
-4. **Configure Auto Scaling Group Details:**
-    - Give your Auto Scaling group a name.
-    - Set the desired capacity, minimum, and maximum size.
-    - Configure subnets for your instances.
-
-5. **Configure Scaling Policies:**
-    - Choose "Use scaling policies to adjust the capacity of this group."
-    - Add scaling policies or create them later.
-
-6. **Configure Notifications:**
-    - Set up notifications if desired.
-
-7. **Configure Tags:**
-    - Add any necessary tags.
-
-8. **Configure Advanced Details:**
-    - Configure health checks, placement groups, etc.
-
-9. **Review and Create:**
-    - Review your configuration settings and click "Create Auto Scaling group."
-
-### Step 4: Attach Auto Scaling Group to ALB
-
-1. **Navigate to the EC2 Dashboard:**
-    - In the AWS Management Console, go to the EC2 dashboard.
-
-2. **Select Auto Scaling Group:**
-    - Click on "Auto Scaling Groups" in the left navigation pane.
-    - Select the Auto Scaling group you created.
-
-3. **Edit Auto Scaling Group:**
-    - Click the "Edit" button.
-
-4. **Configure Load Balancer:**
-    - In the "Load balancing" section, select your ALB.
-    - Configure target group(s).
-
-5. **Review and Confirm:**
-    - Review your changes and click "Update Auto Scaling group."
-
-### Step 5: Test Auto Scaling
-
-1. **Monitor ASG:**
-    - Go to the Auto Scaling group dashboard.
-    - Monitor instances and scaling activities.
-
-2. **Test Load Balancer:**
-    - Access your ALB's DNS name.
-    - Observe traffic being distributed among instances.
-
+## Mixed Instances Policy
+
+Allows an ASG to use a combination of **On-Demand** and **Spot Instances** across multiple instance types.
+
+- Define a **base capacity** of On-Demand instances.
+- Define the **percentage split** above base (e.g., 70% Spot, 30% On-Demand).
+- Specify multiple instance types for diversification (reduces Spot interruption risk).
+- ASG automatically selects the optimal instance type based on availability and price.
+- Use case: Cost optimization while maintaining availability.
+
+## Suspend and Resume Processes
+
+You can suspend specific ASG processes to temporarily disable certain behaviors.
+
+| Process | Description |
+|---|---|
+| `Launch` | Suspends launching new instances. |
+| `Terminate` | Suspends terminating instances. |
+| `HealthCheck` | Suspends health check evaluations. |
+| `ReplaceUnhealthy` | Suspends replacement of unhealthy instances. |
+| `AZRebalance` | Suspends rebalancing instances across AZs. |
+| `AlarmNotification` | Suspends acting on CloudWatch alarm notifications. |
+| `ScheduledActions` | Suspends scheduled scaling actions. |
+| `AddToLoadBalancer` | Suspends registering new instances with the load balancer. |
+| `InstanceRefresh` | Suspends instance refresh operations. |
+
+- Use case: Suspend `Terminate` and `ReplaceUnhealthy` during debugging to prevent ASG from terminating instances you're investigating.
+- Use case: Suspend `AZRebalance` during maintenance in a specific AZ.
+- **Warning**: Suspending `Launch` or `Terminate` for extended periods can cause the ASG to drift from its desired state.
+
+## Activity History and Notifications
+
+- ASG records all scaling activities in the **Activity History** (visible in the console or via API).
+- Each activity entry includes: cause, status, start/end time, and affected instances.
+- Configure **SNS notifications** for the following events:
+  - Instance launch
+  - Instance terminate
+  - Instance launch error
+  - Instance terminate error
+- Integrate with **Amazon EventBridge** for more advanced event-driven automation (e.g., trigger Lambda on scale-out).
+
+## CloudWatch Metrics for Auto Scaling
+
+### ASG-Level Metrics
+
+| Metric | Description |
+|---|---|
+| `GroupDesiredCapacity` | Desired capacity of the ASG. |
+| `GroupInServiceInstances` | Number of running instances that passed health checks. |
+| `GroupPendingInstances` | Number of instances pending launch. |
+| `GroupStandbyInstances` | Number of instances in standby state. |
+| `GroupTerminatingInstances` | Number of instances being terminated. |
+| `GroupInServiceCapacity` | Total capacity units in InService state. |
+| `GroupTotalCapacity` | Total capacity units in the group. |
+| `GroupMaxSize` | Maximum size of the ASG. |
+| `GroupMinSize` | Minimum size of the ASG. |
+
+### Common Scaling Metrics
+
+| Metric | Description |
+|---|---|
+| `CPUUtilization` | Average CPU utilization across all ASG instances. |
+| `NetworkIn` / `NetworkOut` | Network traffic in/out of ASG instances. |
+| `RequestCountPerTarget` | Average request count per target (from ALB). |
+| Custom metrics | Any custom CloudWatch metric pushed from your application. |
+
+## Integration with ELB
+
+- ASG automatically registers new instances with the attached **target group(s)**.
+- ASG automatically deregisters terminated instances.
+- When using **ELB health checks**, ASG can terminate instances that fail application-level checks.
+- Supports ALB, NLB, and CLB integration.
+
+### Quick Setup: ASG with ALB
+
+1. Create an ALB with target group and health checks.
+2. Create a Launch Template (AMI, instance type, security groups, user data).
+3. Create an ASG → attach the Launch Template → set min/desired/max capacity.
+4. Attach the ALB target group to the ASG.
+5. Configure scaling policies (Target Tracking recommended).
+6. Monitor via CloudWatch → adjust policies based on traffic patterns.
+
+## Quotas and Constraints
+
+| Quota | Default Value |
+|---|---|
+| Max ASGs per region | 200 |
+| Max launch configurations per region | 200 |
+| Max scaling policies per ASG | 50 |
+| Max scheduled actions per ASG | 125 |
+| Max lifecycle hooks per ASG | 50 |
+| Max step adjustments per step scaling policy | 20 |
+| Max instances per ASG | Determined by desired capacity and account EC2 limits |
+| Max warm pool size per ASG | Equal to the difference between max capacity and desired capacity |
+
+> **Note**: Quotas can be increased via AWS Service Quotas. Check the [ASG Quotas documentation](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-quotas.html) for latest values.

@@ -30,7 +30,7 @@ API First encompasses a set of quality-related standards and fosters a peer revi
 - Follow a consistent RESTful style and syntax.
 - Are consistent with other teams’ APIs and our global architecture
 
-## Conventions Used in These Guideline
+## Conventions Used in These Guidelines
 
 The requirement level keywords **"MUST"**, **"MUST NOT"**, **"REQUIRED", "SHALL", "SHALL NOT"**, **"SHOULD", "SHOULD NOT"**, **"RECOMMENDED"**, **"MAY"**, and **"OPTIONAL"** used in this document are to be interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119 "RFC 2119: Key words for use in RFCs to Indicate Requirement Levels") and in [RFC 8174](https://datatracker.ietf.org/doc/html/rfc8174 "RFC 8174: Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words")
 
@@ -144,7 +144,7 @@ Some examples for standard and resource-specific scopes:
 | **Application ID**    | **Resource ID** | **Access Type** | **Example**                                  |
 | --------------------- | --------------- | --------------- | -------------------------------------------- |
 | booking-issue-service | booking-issue   | retrieve        | booking-issue-service.booking-issue.retrieve |
-| booking-issue-service | booking-issue   | create          | booking-issue-service.booking-issue.crearte  |
+| booking-issue-service | booking-issue   | create          | booking-issue-service.booking-issue.create  |
 
 After scopes names are defined and the scope is declared in the security definition at the top of an API specification, it should be assigned to each API operation by specifying a security requirement like this:
 
@@ -217,8 +217,6 @@ Example:
 }
 ```
 
-Example:
-
 ## Versioning
 
 Versioning is one of the most important considerations when designing your Web API.
@@ -287,7 +285,7 @@ Property names are restricted to ASCII encoded strings. The first character must
 
 ### ==Must: Boolean property values must not be null==
 
-Schema basedJSON properties that are by design booleans must not be presented as nulls.&#x20;
+Schema-based JSON properties that are by design booleans must not be presented as nulls.&#x20;
 
 A boolean is essentially a closed enumeration of two values, true and false.&#x20;
 
@@ -316,7 +314,7 @@ Localization of dates should be done by the services that provide user interface
 
 When it comes to storage, all dates should be consistently stored in UTC without a zone offset.
 
-Localization should be done locally by the services that provide userinterfaces, if required.
+Localization should be done locally by the services that provide user interfaces, if required.
 
 Sometimes it can seem data is naturally represented using numerical timestamps, but this can introduce interpretation issues with precision - for example whether to represent a timestamp as 1460062925, 1460062925000 or 1460062925.000.&#x20;
 
@@ -373,7 +371,7 @@ To indicate that they contain multiple values, **prefer pluralizing array names*
 
 ### ==Should: Empty array values should not be null==
 
-Empty array values can unambiguously be represented as the the emptylist, \[] .
+Empty array values can unambiguously be represented as the empty list, \[].
 
 ### ==Should: Enumerations should be represented as Strings==
 
@@ -393,7 +391,7 @@ We can identify a single “customer” resource using the URI “/customers/{cu
 
 REST APIs use Uniform Resource Identifiers (URIs) to address resources. REST API designers should create URIs that convey a REST API’s resource model to its potential client developers. When resources are named well, an API is intuitive and easy to use. If done poorly, that same API can feel difficult to use and understand.
 
-The best practices in naming resources are listed in the subsecctions below.
+The best practices in naming resources are listed in the subsections below.
 
 ### ==Must: Use nouns in order to name a resource==
 
@@ -414,8 +412,8 @@ RESTful URI should refer to a resource that is a thing (noun) instead of referri
 | **RESOURCE** | **GET**                        | **POST**             | **PUT**               | **PATCH**                              | **DELETE**    |
 |--------------|--------------------------------|----------------------|------------------------|----------------------------------------|---------------|
 | `/hotels`    | Get a collection list          | Create new           | Update                 | Bad Request (400)                      | Delete all    |
-| `/hotel/1`   | Get a single resource by ID    | Bad Request (400), new | If exists, then update | If exists, update the fields given     | Delete by ID  |
-|              |                                |                      | Else 404               | Else 404                               |               |
+| `/hotels/1`  | Get a single resource by ID    | Bad Request (400)      | If exists, update      | If exists, update the fields given     | Delete by ID  |
+|              |                                |                        | Else create (201)      | Else 404                               |               |
 
 
 ### ==Must: Use lowercase separate words with hyphens for path segments==
@@ -553,7 +551,7 @@ Examples:
 /orders/1681e6b88ec1/items/1
 ```
 
-### ==Must: Must simplify associations==
+### ==Must: Simplify associations==
 
 Resources almost always have relationships to other resources. What's a simple way to express these relationships in a Web API?
 
@@ -680,7 +678,7 @@ For example, an API to convert 100 euros to Chinese Yen: /convert?from=EUR\&to=C
 
 Simply separate out a section of documentation that makes it clear that you use verbs in cases like this – where some action is taken to generate or calculate the response, rather than returning a resource directly.
 
-> If it is a verb that recovers persits data without apply transformations and it doesn't recover additional data is a GET, otherwise, is a POST.
+> If it is a verb that recovers persisted data without applying transformations and it does not recover additional data, it is a GET; otherwise, it is a POST.
 
 For API operations that **do not correspond to a resource**, use **verbs instead of nouns** to clearly indicate an action is being performed.
 
@@ -721,7 +719,7 @@ POST /report
 POST /notification
 ```
 
-### ==Must: Expecify and document in the API documentation or SWAGGER that that operation do not involve a resource.==
+### ==Must: Specify and document in the API documentation or OpenAPI specification that the operation does not involve a resource==
 
 ## HTTP
 
@@ -736,7 +734,7 @@ GET requests are used to **read** either a single or a collection resource.
 - GET requests for individual resources will usually generate a 404 if the resource does not exist
 - GET requests for collection resources may return either 
   - **200** (if the collection is empty)&#x20;
-- **404** (if the collection is missing)
+  - **404** (if the collection is missing)
 - GET requests must NOT have a request body payload (see GET With Body)
 
 **Note**: GET requests on collection resources should provide sufficient filter and Pagination mechanisms.
@@ -806,12 +804,12 @@ DELETE requests are used to delete resources. The semantic is best described 
 
 DELETE requests are usually applied to single resources, not on collection resources, as this would imply deleting the entire collection
 
-successful DELETE requests will usually generate 
+Successful DELETE requests will usually generate 
 
-- 200 (if the deleted resource is returned)&#x20;
-- 204 (if no content is returned)
--  404 (if the resource cannot be found)&#x20;
-- 410 (if the resource was already deleted before)
+- **200** (if the deleted resource is returned)&#x20;
+- **204** (if no content is returned)
+- **404** (if the resource cannot be found)
+- **410** (if the resource was already deleted before)
 
 **Important**: After deleting a resource with DELETE, a GET request on the resource is expected to either return 404 (not found) or 410 (gone) depending on how the resource is represented after deletion. Under no circumstances the resource must be accessible after this operation on its endpoint.
 
@@ -844,7 +842,7 @@ successful DELETE requests will usually generate 
 | 409             | **Conflict** Indicates that the request could not be processed because of conflict in the request, such as an edit conflict between multiple simultaneous updates.                                                                                                                                                                                                                                                                                                                                                |
 | 410             | **Gone** Indicates that the resource requested is no longer available and will not be available again. This should be used when a resource has been intentionally removed and the resource should be purged. Upon receiving a 410 status code, the client should not request the resource in the future. Clients such as search engines should remove the resource from their indices. Most use cases do not require clients and search engines to purge the resource, and a "404 Not Found" may be used instead. |
 | 429             | **Too Many Requests** The user has sent too many requests in a given amount of time.                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| 500             | **Internal Server Error** A generic error message, given when an unexpected condition was encountered andno more specific message is suitable.                                                                                                                                                                                                                                                                                                                                                                    |
+| 500             | **Internal Server Error** A generic error message, given when an unexpected condition was encountered and no more specific message is suitable.                                                                                                                                                                                                                                                                                                                                                                    |
 | 501             | **Not Implemented** The server either does not recognize the request method, or it lacks the ability to fulfil the request. Usually this implies future availability (e.g., a new feature of a web-service API).                                                                                                                                                                                                                                                                                                  |
 
 ## Sorting
@@ -865,7 +863,7 @@ Access to lists of data items must support pagination for best client side batch
 
 The offset and limit operators are used for pagination. Access to lists of data items must support pagination for best client-side batch processing and iteration experience. This holds true for all lists that are (potentially) larger than just a few hundred entries.
 
-**Offset/Limit-based pagination:** numeric offset identifies thefirst page entry
+**Offset/Limit-based pagination:** numeric offset identifies the first page entry
 
 - Use limit and offset. It is more common, well understood in leading databases, and easy for developers. `/dogs?limit=25&offset=50`
 - Include metadata with each response that is paginated that indicated to the developer the total number of records available.
@@ -874,11 +872,11 @@ The offset and limit operators are used for pagination. Access to lists of data 
 
 ### ==Must: Define a maximum value for the limit query parameter.==
 
-In the case the limit value execeeds the maximum value established, the service will respond with an HTTP Error 400
+In the case the limit value exceeds the maximum value established, the service will respond with an HTTP Error 400.
 
 ### ==Must: Not allowed to retrieve the whole resource collection without setting a limit==
 
-It is not allowed for security reasons to enable any kind of backdoors that allows to retrieve the wholse set of a collection. That is, you cannot set  to zero the limit value.
+It is not allowed for security reasons to enable any kind of backdoor that allows retrieving the whole set of a collection. That is, you cannot set the limit value to zero.
 
 ### ==Must: Include Pagination Http Response Header==
 
@@ -914,7 +912,7 @@ To request a partial response, use the fields request parameter to specify the f
 
 ### ==Must: Use Fields operator==
 
-In the case you want to allow partial response, you have use the fields operator. Fields allows you to choose what fields to return from an entity. You can choose multiple values by combining comma separated operators.
+In the case you want to allow partial response, you have to use the fields operator. Fields allows you to choose what fields to return from an entity. You can choose multiple values by combining comma-separated operators.
 
 Field Selectors are the simplest form of query parameters, consisting only of a comma-separated list of field names on the response object.
 
@@ -922,7 +920,7 @@ Field Selectors are the simplest form of query parameters, consisting only of a 
 
 Fields are returned in the order in which they are specified in the query.
 
-In case you do not use fields operator, you have to disable the code intercepetor by means of an annotation from the Jaspe Library: @DisableJaspe
+In case you do not use the fields operator, you have to disable the code interceptor by means of an annotation from the Jaspe Library: @DisableJaspe
 
 See: <https://git.tui-ds.com/architecture/jaspe-v2/blob/master/README.md> (REST API Partial Response Library for Spring Boot Applications)
 
@@ -951,7 +949,7 @@ fields=items.id,items.snippet.title,items.snippet.position
 
 ### ==Might: Support filtering==
 
-In case the API requieres filtering, there are two differents ways of achiving this:
+In case the API requires filtering, there are two different ways of achieving this:
 
 1. Dynamic Filtering
 2. Static Filtering
@@ -992,7 +990,7 @@ To build the query with RSQL you have to use filters operator as is shown below:
 
 `filters=age=gt=10;age=lt=20;(str=Fero,str=Hero)`
 
-### ==Must: Indicate which are the paremeters you allow to filter by filters operator==
+### ==Must: Indicate which parameters are allowed to filter by using the filters operator==
 
 In the case of using RSQL, the API specification must indicate which are the parameters by it can be filtered. In the same way, the code must only enable filtering by the fields mentioned in the specification.
 
@@ -1002,7 +1000,7 @@ In case a resource operation requires filtering by a mandatory parameter, it is 
 
 ## Handling errors
 
-Error handling it is a very important piece of the puzzle for any software developer, and especially for API designers.
+Error handling is a very important piece of the puzzle for any software developer, and especially for API designers.
 
 ### ==Must: The error message payload and the header must include the following attributes==
 
@@ -1017,10 +1015,6 @@ HTTP Status Code: 404
   "message":  "A short developer message information"
 }
 ```
-
-## Data Formats
-
-## Common Data Objects
 
 ## Common Headers
 
