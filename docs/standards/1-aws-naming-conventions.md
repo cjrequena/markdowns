@@ -3,7 +3,7 @@ layout: default
 title: aws-naming-conventions
 parent: standards
 grand_parent: cheatsheets
-permalink: /docs/stanadards/aws-naming-conventions
+permalink: /docs/standards/aws-naming-conventions
 nav_order: 1
 ---
 # AWS Naming Conventions
