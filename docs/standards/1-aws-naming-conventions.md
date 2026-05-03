@@ -59,7 +59,7 @@ improving clarity in cases of potential ambiguity and enhancing aesthetic and pr
 
 **Examples**
 
-<span style="color:silver;">
+<span style="color:#E38D7B;">
 Vpc-CorePlatform-UsEast1-Prod-BigDataAppStack
 <br>
 Vpc-DataTeam-UsWest2-Prod-WebAppStack
@@ -75,7 +75,7 @@ Vpc-DataTeam-UsWest2-Prod-WebAppStack
 ```^Subnet-(UsEast1|UsEast2|UsWest1|UsWest2|CaCentral1|CaWest1|EuWest1|EuWest2|EuWest3|EuCentral1|EuCentral2|EuNorth1|EuSouth1|EuSouth2|ApNortheast1|ApNortheast2|ApNortheast3|ApSoutheast1|ApSoutheast2|ApSoutheast3|ApSoutheast4|ApSouth1|ApSouth2|ApEast1|SaEast1|MeSouth1|MeCentral1|AfSouth1|IlCentral1)-([1-2]{1})([a-c]{1})-(Public|Private)-(Dev|Test|Stg|Prod)-([A-Z][a-z][a-zA-Z0-9]{1,})$```
 
 **Examples**            
-<span style="color:silver;">
+<span style="color:#E38D7B;">
 Subnet-UsEast1-2a-Public-Prod-WebAppStack
 <br>
 Subnet-UsWest1-2b-Private-Prod-DataBaseStack
@@ -91,7 +91,7 @@ Subnet-UsWest1-2b-Private-Prod-DataBaseStack
 ```^Sgr-(Vpc|Subnet|Sgr|Rt|Igw|Ngw|Nacl|Eip|Ec2|Asg|Lc|Lt|Alb|Nlb|Tg|Ecs|Eks|Lambda|Rds|Ddb|S3|Sqs|Sns|Kms|Cw|Cf|Agw|Sfn|Iam|Ecr|Efs|Fsx|Elc|Rs|Kin|Glue|Emr)-(UsEast1|UsEast2|UsWest1|UsWest2|CaCentral1|CaWest1|EuWest1|EuWest2|EuWest3|EuCentral1|EuCentral2|EuNorth1|EuSouth1|EuSouth2|ApNortheast1|ApNortheast2|ApNortheast3|ApSoutheast1|ApSoutheast2|ApSoutheast3|ApSoutheast4|ApSouth1|ApSouth2|ApEast1|SaEast1|MeSouth1|MeCentral1|AfSouth1|IlCentral1)-(Dev|Test|Stg|Prod)-([A-Z][a-z][a-zA-Z0-9]{1,})$```
 
 **Examples**        
-<span style="color:silver;">
+<span style="color:#E38D7B;">
 Sgr-Ec2-UsWest1-Dev-SampleAppInstance1
 </span>
 
