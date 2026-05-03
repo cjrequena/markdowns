@@ -94,3 +94,19 @@ Subnet-UsWest1-2b-Private-Prod-DataBaseStack
 <span style="color:silver;">
 Sgr-Ec2-UsWest1-Dev-SampleAppInstance1
 </span>
+
+---
+## EC2 Instance Naming Conventions
+
+**Default Pattern Format**      
+```Ec2-{RegionCode}-{AvailabilityZoneCode}-{EnvironmentCode}-{ApplicationCode}```
+
+**RegExp**      
+```^Ec2-(UsEast1|UsEast2|UsWest1|UsWest2|CaCentral1|CaWest1|EuWest1|EuWest2|EuWest3|EuCentral1|EuCentral2|EuNorth1|EuSouth1|EuSouth2|ApNortheast1|ApNortheast2|ApNortheast3|ApSoutheast1|ApSoutheast2|ApSoutheast3|ApSoutheast4|ApSouth1|ApSouth2|ApEast1|SaEast1|MeSouth1|MeCentral1|AfSouth1|IlCentral1)-([1-2]{1})([a-c]{1})-(Dev|Test|Stg|Prod)-([A-Z][a-z][a-zA-Z0-9]{1,})$```
+
+**Examples**        
+<span style="color:#E38D7B;">
+Ec2-UsEast1-2a-Prod-Tomcat
+<br>
+Ec2-UsWest1-2b-Prod-Nodejs
+</span>
