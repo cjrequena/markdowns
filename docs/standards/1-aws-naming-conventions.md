@@ -43,6 +43,9 @@ improving clarity in cases of potential ambiguity and enhancing aesthetic and pr
 **{SubnetRouteCode}**   
 ```(Public|Private)```
 
+**{VersionCode}**   
+```(V[0-9]+)```
+
 **{ResourceCode}**   
 ```(Vpc|Subnet|Sgr|Rt|Igw|Ngw|Nacl|Eip|Ec2|Asg|Lc|Lt|Alb|Nlb|Tg|Ecs|Eks|Lambda|Rds|Ddb|S3|Sqs|Sns|Kms|Cw|Cf|Agw|Sfn|Iam|Ecr|Efs|Fsx|Elc|Rs|Kin|Glue|Emr)```
 
@@ -125,3 +128,52 @@ PemKey-UsEast1-Prod-WebAppStack
 <br>
 PemKey-EuWest1-Dev-ApiService
 </span>
+
+---
+## ECS Cluster Naming Conventions
+
+**Default Pattern Format**      
+```Ecs-{RegionCode}-{EnvironmentCode}-{ApplicationCode}```
+
+**RegExp**      
+```^Ecs-(UsEast1|UsEast2|UsWest1|UsWest2|CaCentral1|CaWest1|EuWest1|EuWest2|EuWest3|EuCentral1|EuCentral2|EuNorth1|EuSouth1|EuSouth2|ApNortheast1|ApNortheast2|ApNortheast3|ApSoutheast1|ApSoutheast2|ApSoutheast3|ApSoutheast4|ApSouth1|ApSouth2|ApEast1|SaEast1|MeSouth1|MeCentral1|AfSouth1|IlCentral1)-(Dev|Test|Stg|Prod)-([A-Z][a-z][a-zA-Z0-9]{1,})$```
+
+**Examples**        
+<span style="color:#E38D7B;">
+Ecs-UsEast1-Prod-WebAppStack
+<br>
+Ecs-EuWest1-Dev-ApiService
+</span>
+
+---
+## ECS Task Definition Naming Conventions
+
+**Default Pattern Format**      
+```EcsTd-{RegionCode}-{EnvironmentCode}-{ApplicationCode}-{VersionCode}```
+
+**RegExp**      
+```^EcsTd-(UsEast1|UsEast2|UsWest1|UsWest2|CaCentral1|CaWest1|EuWest1|EuWest2|EuWest3|EuCentral1|EuCentral2|EuNorth1|EuSouth1|EuSouth2|ApNortheast1|ApNortheast2|ApNortheast3|ApSoutheast1|ApSoutheast2|ApSoutheast3|ApSoutheast4|ApSouth1|ApSouth2|ApEast1|SaEast1|MeSouth1|MeCentral1|AfSouth1|IlCentral1)-(Dev|Test|Stg|Prod)-([A-Z][a-z][a-zA-Z0-9]{1,})-(V[0-9]+)$```
+
+**Examples**        
+<span style="color:#E38D7B;">
+EcsTd-UsEast1-Prod-WebAppStack-V1
+<br>
+EcsTd-EuWest1-Dev-ApiService-V3
+</span>
+
+---
+## ECS Service Naming Conventions
+
+**Default Pattern Format**      
+```EcsSvc-{RegionCode}-{EnvironmentCode}-{ApplicationCode}```
+
+**RegExp**      
+```^EcsSvc-(UsEast1|UsEast2|UsWest1|UsWest2|CaCentral1|CaWest1|EuWest1|EuWest2|EuWest3|EuCentral1|EuCentral2|EuNorth1|EuSouth1|EuSouth2|ApNortheast1|ApNortheast2|ApNortheast3|ApSoutheast1|ApSoutheast2|ApSoutheast3|ApSoutheast4|ApSouth1|ApSouth2|ApEast1|SaEast1|MeSouth1|MeCentral1|AfSouth1|IlCentral1)-(Dev|Test|Stg|Prod)-([A-Z][a-z][a-zA-Z0-9]{1,})$```
+
+**Examples**        
+<span style="color:#E38D7B;">
+EcsSvc-UsEast1-Prod-WebAppStack
+<br>
+EcsSvc-EuWest1-Dev-ApiService
+</span>
+
