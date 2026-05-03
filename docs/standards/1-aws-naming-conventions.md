@@ -57,8 +57,7 @@ improving clarity in cases of potential ambiguity and enhancing aesthetic and pr
 
 ```^Vpc-([A-Z][a-zA-Z0-9]{2,})-(UsEast1|UsEast2|UsWest1|UsWest2|CaCentral1|CaWest1|EuWest1|EuWest2|EuWest3|EuCentral1|EuCentral2|EuNorth1|EuSouth1|EuSouth2|ApNortheast1|ApNortheast2|ApNortheast3|ApSoutheast1|ApSoutheast2|ApSoutheast3|ApSoutheast4|ApSouth1|ApSouth2|ApEast1|SaEast1|MeSouth1|MeCentral1|AfSouth1|IlCentral1)-(Dev|Test|Stg|Prod)-([A-Z][a-z][a-zA-Z0-9]{1,})$```
 
-**Examples**
-
+**Examples**    
 <span style="color:#E38D7B;">
 Vpc-CorePlatform-UsEast1-Prod-BigDataAppStack
 <br>
@@ -109,4 +108,20 @@ Sgr-Ec2-UsWest1-Dev-SampleAppInstance1
 Ec2-UsEast1-2a-Prod-Tomcat
 <br>
 Ec2-UsWest1-2b-Prod-Nodejs
+</span>
+
+---
+## PEM Key Naming Conventions
+
+**Default Pattern Format**      
+```PemKey-{RegionCode}-{EnvironmentCode}-{ApplicationCode}```
+
+**RegExp**      
+```^PemKey-(UsEast1|UsEast2|UsWest1|UsWest2|CaCentral1|CaWest1|EuWest1|EuWest2|EuWest3|EuCentral1|EuCentral2|EuNorth1|EuSouth1|EuSouth2|ApNortheast1|ApNortheast2|ApNortheast3|ApSoutheast1|ApSoutheast2|ApSoutheast3|ApSoutheast4|ApSouth1|ApSouth2|ApEast1|SaEast1|MeSouth1|MeCentral1|AfSouth1|IlCentral1)-(Dev|Test|Stg|Prod)-([A-Z][a-z][a-zA-Z0-9]{1,})$```
+
+**Examples**        
+<span style="color:#E38D7B;">
+PemKey-UsEast1-Prod-WebAppStack
+<br>
+PemKey-EuWest1-Dev-ApiService
 </span>
