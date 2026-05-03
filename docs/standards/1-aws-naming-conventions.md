@@ -177,3 +177,35 @@ EcsSvc-UsEast1-Prod-WebAppStack
 EcsSvc-EuWest1-Dev-ApiService
 </span>
 
+---
+## Cognito Naming Conventions
+
+**Default Pattern Format**      
+```Cognito-{RegionCode}-{EnvironmentCode}-{ApplicationCode}```
+
+**RegExp**      
+```^Cognito-(UsEast1|UsEast2|UsWest1|UsWest2|CaCentral1|CaWest1|EuWest1|EuWest2|EuWest3|EuCentral1|EuCentral2|EuNorth1|EuSouth1|EuSouth2|ApNortheast1|ApNortheast2|ApNortheast3|ApSoutheast1|ApSoutheast2|ApSoutheast3|ApSoutheast4|ApSouth1|ApSouth2|ApEast1|SaEast1|MeSouth1|MeCentral1|AfSouth1|IlCentral1)-(Dev|Test|Stg|Prod)-([A-Z][a-z][a-zA-Z0-9]{1,})$```
+
+**Examples**        
+<span style="color:#E38D7B;">
+Cognito-UsEast1-Prod-WebAppStack
+<br>
+Cognito-EuWest1-Dev-ApiService
+</span>
+
+---
+## UserPool Naming Conventions
+
+**Default Pattern Format**      
+```UserPool-{RegionCode}-{EnvironmentCode}-{ApplicationCode}```
+
+**RegExp**      
+```^UserPool-(UsEast1|UsEast2|UsWest1|UsWest2|CaCentral1|CaWest1|EuWest1|EuWest2|EuWest3|EuCentral1|EuCentral2|EuNorth1|EuSouth1|EuSouth2|ApNortheast1|ApNortheast2|ApNortheast3|ApSoutheast1|ApSoutheast2|ApSoutheast3|ApSoutheast4|ApSouth1|ApSouth2|ApEast1|SaEast1|MeSouth1|MeCentral1|AfSouth1|IlCentral1)-(Dev|Test|Stg|Prod)-([A-Z][a-z][a-zA-Z0-9]{1,})$```
+
+**Examples**        
+<span style="color:#E38D7B;">
+UserPool-UsEast1-Prod-WebAppStack
+<br>
+UserPool-EuWest1-Dev-ApiService
+</span>
+
