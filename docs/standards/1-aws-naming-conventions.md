@@ -209,3 +209,19 @@ UserPool-UsEast1-Prod-WebAppStack
 UserPool-EuWest1-Dev-ApiService
 </span>
 
+---
+## Lambda Naming Conventions
+
+**Default Pattern Format**      
+```Lambda-{RegionCode}-{EnvironmentCode}-{ApplicationCode}```
+
+**RegExp**      
+```^Lambda-(UsEast1|UsEast2|UsWest1|UsWest2|CaCentral1|CaWest1|EuWest1|EuWest2|EuWest3|EuCentral1|EuCentral2|EuNorth1|EuSouth1|EuSouth2|ApNortheast1|ApNortheast2|ApNortheast3|ApSoutheast1|ApSoutheast2|ApSoutheast3|ApSoutheast4|ApSouth1|ApSouth2|ApEast1|SaEast1|MeSouth1|MeCentral1|AfSouth1|IlCentral1)-(Dev|Test|Stg|Prod)-([A-Z][a-z][a-zA-Z0-9]{1,})$```
+
+**Examples**        
+<span style="color:#E38D7B;">
+Lambda-UsEast1-Prod-WebAppStack
+<br>
+Lambda-EuWest1-Dev-ApiService
+</span>
+
